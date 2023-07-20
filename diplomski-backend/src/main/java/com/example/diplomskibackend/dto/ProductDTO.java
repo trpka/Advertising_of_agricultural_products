@@ -7,6 +7,7 @@ public class ProductDTO {
     private Long id;
     private String picture;
     private String additional_description;
+    private String name;
     private Long registeredUserId;
 
     public Long getId() {
@@ -41,10 +42,19 @@ public class ProductDTO {
         this.registeredUserId = registeredUserId;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public ProductDTO(Product product) {
         this.id = product.getId();
         this.picture = product.getPicture();
         this.additional_description = product.getAdditional_description();
         this.registeredUserId = product.getRegisteredUser().getId();
+        this.name  = product.getName();
     }
 }

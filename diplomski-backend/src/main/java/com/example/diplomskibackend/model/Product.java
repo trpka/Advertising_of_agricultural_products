@@ -15,6 +15,8 @@ public class Product {
     @Column
     private String picture;
     @Column
+    private String name;
+    @Column
     private String additional_description;
 
     @ManyToOne
@@ -25,11 +27,12 @@ public class Product {
 
     }
 
-    public Product(Long id, String picture, String additional_description, RegisteredUser registeredUser) {
+    public Product(Long id, String picture, String additional_description, RegisteredUser registeredUser, String name) {
         this.id = id;
         this.picture = picture;
         this.additional_description = additional_description;
         this.registeredUser = registeredUser;
+        this.name = name;
     }
 
     public Long getId() {
@@ -62,5 +65,13 @@ public class Product {
 
     public void setRegisteredUser(RegisteredUser registeredUser) {
         this.registeredUser = registeredUser;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

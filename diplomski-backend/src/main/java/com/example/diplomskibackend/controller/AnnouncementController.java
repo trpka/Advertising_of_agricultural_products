@@ -41,7 +41,7 @@ public class AnnouncementController {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<List<AnnouncementDTO>> findAllMechanization()
     {
-        List<AnnouncementDTO> terms= this.announcementService.findAll();
+        List<AnnouncementDTO> terms= this.announcementService.findAllMechanization();
         return new ResponseEntity<>(terms, HttpStatus.OK);
     }
 
