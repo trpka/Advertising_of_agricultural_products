@@ -26,7 +26,7 @@ public class AnnouncementDTO {
 
     private Long registeredUserId;
 
-    private Long productId;
+    private ProductDTO productDTO;
 
     public Long getId() {
         return id;
@@ -108,12 +108,12 @@ public class AnnouncementDTO {
         this.registeredUserId = registeredUserId;
     }
 
-    public Long getProductId() {
-        return productId;
+    public ProductDTO getProductDTO() {
+        return productDTO;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProductDTO(ProductDTO productDTO) {
+        this.productDTO = productDTO;
     }
 
     public AnnouncementDTO(Announcement announcement) {
@@ -127,6 +127,7 @@ public class AnnouncementDTO {
         this.city = announcement.getCity();
         this.mobileNumber = announcement.getMobileNumber();
         this.registeredUserId = announcement.getRegisteredUser().getId();
-        this.productId = announcement.getProduct().getId();
+        this.productDTO=new ProductDTO(announcement.getProduct());
+
     }
 }

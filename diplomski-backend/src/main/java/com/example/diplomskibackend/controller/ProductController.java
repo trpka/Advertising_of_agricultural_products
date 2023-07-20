@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,6 +26,15 @@ public class ProductController {
     public ResponseEntity<ProductDTO> save(@RequestBody Product newproduct){
         ProductDTO productDTO=this.productService.save(newproduct);
         return new ResponseEntity<>(productDTO, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value="api/product/{id}",method = RequestMethod.GET,produces=
+            MediaType.APPLICATION_JSON_VALUE)
+    //@PreAuthorize("hasRole('OWNER')")
+    public ResponseEntity<ProductDTO> getById(@PathVariable Long id){
+        Product product=this.productService.findById(id);
+        ProductDTO productDTO=new ProductDTO(product);
+        return new ResponseEntity<>(productDTO,HttpStatus.OK);
     }
 
 

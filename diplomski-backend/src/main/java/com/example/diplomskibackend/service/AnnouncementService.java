@@ -39,7 +39,7 @@ public class AnnouncementService {
         List<Announcement> announcements = this.announcementRepository.findAll();
         List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
         for(Announcement announcement: announcements){
-            if(announcement.getCategory() == "Mehanizacija"){
+            if(announcement.getCategory().equals("Mehanizacija")){
                 AnnouncementDTO announcementDTO = new AnnouncementDTO(announcement);
                 announcementDTOS.add(announcementDTO);
             }
