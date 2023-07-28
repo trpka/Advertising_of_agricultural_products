@@ -14,7 +14,7 @@
   grid-template-columns: repeat(4, 1r);
   gap: 1rem;
 }
-img{
+mat-card img{
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -23,3 +23,11 @@ img{
   width: 50%;
 }
 
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+.container{
+  background-color: #F5F5F5;
+  }

@@ -2,6 +2,7 @@ package com.example.diplomskibackend.controller;
 
 
 import com.example.diplomskibackend.dto.AnnouncementDTO;
+import com.example.diplomskibackend.dto.ProductDTO;
 import com.example.diplomskibackend.model.Announcement;
 import com.example.diplomskibackend.model.Product;
 import com.example.diplomskibackend.service.AnnouncementService;
@@ -21,6 +22,14 @@ public class AnnouncementController {
     @Autowired
     private AnnouncementService announcementService;
 
+    @RequestMapping(value="api/announcement/{id}",method = RequestMethod.GET,produces=
+            MediaType.APPLICATION_JSON_VALUE)
+    //@PreAuthorize("hasRole('OWNER')")
+    public ResponseEntity<AnnouncementDTO> getById(@PathVariable Long id){
+        Announcement announcement=this.announcementService.findById(id);
+        AnnouncementDTO announcementDTO=new AnnouncementDTO(announcement);
+        return new ResponseEntity<>(announcementDTO,HttpStatus.OK);
+    }
     @RequestMapping(value="api/announcement",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
     //@PreAuthorize("hasRole('REGISTERED_USER')")
@@ -41,8 +50,25 @@ public class AnnouncementController {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<List<AnnouncementDTO>> findAllMechanization()
     {
-        List<AnnouncementDTO> terms= this.announcementService.findAllMechanization();
-        return new ResponseEntity<>(terms, HttpStatus.OK);
+        List<AnnouncementDTO> announcementDTOS= this.announcementService.findAllMechanization();
+        return new ResponseEntity<>(announcementDTOS, HttpStatus.OK);
     }
+
+    @RequestMapping(value="api/announcements/mechanization/subcategories",method = RequestMethod.PUT,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    //@PreAuthorize("hasRole('REGISTERED_USER')")
+    public ResponseEntity<List<AnnouncementDTO>>  findMechanizationSubcategories(@RequestBody String array []){
+        List<AnnouncementDTO> announcementDTOS= this.announcementService.findMechanizationSubcategories(array);
+        return new ResponseEntity<>(announcementDTOS, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="api/announcements/mechanization/sort-by-price", method = RequestMethod.GET,
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    //@PreAuthorize("hasRole('REGISTERED_USER')")
+    public ResponseEntity<List<AnnouncementDTO>> sortAnnouncementsByPrice(){
+        List<AnnouncementDTO> announcementDTOS=this.announcementService.sortAnnouncementsByPrice();
+        return new ResponseEntity<>(announcementDTOS,HttpStatus.OK);
+    }
+
 
 }

@@ -22,7 +22,7 @@ public class RegisteredUser extends User{
     @OneToMany(cascade = CascadeType.ALL)
     private List<Product> products;
 
-    public RegisteredUser(Long id,String username, String password, String email, String firstName, String lastName,
+    public RegisteredUser(Long id,String username, String password, String email, /*String firstName, String lastName,*/
                           String mobile, boolean enabled,String role, List<Authority> authorities,
                           String firstName1, String lastName1, List<Announcement> announcements, List<Product> products) {
         super();
@@ -30,8 +30,8 @@ public class RegisteredUser extends User{
         setUsername(username);
         setPassword(password);
         setEmail(email);
-        setFirstName(firstName);
-        setLastName(lastName);
+//        setFirstName(firstName);
+//        setLastName(lastName);
         setMobile(mobile);
         setEnabled(enabled);
         setRole(role);

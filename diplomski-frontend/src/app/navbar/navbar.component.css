@@ -1,0 +1,11 @@
+.spacer{
+  flex: 1 1 auto;
+}
+
+
+
+.custom-toolbar {
+  background-color: #b3b3cc; /* Replace with your desired color */
+  color: #ffffff; /* Replace with your desired text color */
+  width: 100%;
+}

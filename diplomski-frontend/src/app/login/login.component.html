@@ -1,0 +1,35 @@
+<!-- Add this in the <head> section of your HTML -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Section: Design Block -->
+
+    <div class="container">
+
+
+
+
+          <div class="card center">
+
+              <form>
+                <h1>Ulogujte se </h1>
+                <div class="input">
+                  <input id="username" name="username" type="username" class="form-control center" placeholder="Korisničko ime"  [(ngModel)]="username"/>
+                </div>
+
+                <div class="input">
+                  <input id="password" name="password" type="password" class="form-control center" [(ngModel)]="password" placeholder="Lozinka"/>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary center"   (click)="login()">
+                  Sign up
+                </button>
+              </form>
+
+          </div>
+    </div>
+  <!-- </div> -->
+  <!-- Jumbotron -->
+<!-- Section: Design Block -->
+

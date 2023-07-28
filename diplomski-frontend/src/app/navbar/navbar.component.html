@@ -1,0 +1,19 @@
+<mat-toolbar class="custom-toolbar">
+  <!-- <span><mat-icon>eco</mat-icon>Blood transfusion center</span> -->
+
+  <div class = "spacer"></div>
+
+  <div *ngIf="!loginService.isUserLoggedIn(); else activeUser">
+      <a mat-button routerLink="registration">Registration</a>
+      <a mat-raised-button color="accent" routerLink="login">Log in</a>
+  </div>
+
+  <ng-template #activeUser>
+  <app-navbar-home ></app-navbar-home>
+  </ng-template>
+
+
+ </mat-toolbar>
+
+
+
