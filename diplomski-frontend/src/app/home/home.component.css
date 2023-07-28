@@ -1,6 +1,6 @@
-body {
-  background-color: #e8fcdb;
-  }
+  .container{
+    background-color: #F5F5F5;
+    }
 
   .jumbotron{
     background-image: url("https://eu-images.contentstack.com/v3/assets/bltdd43779342bd9107/blt6a6115280c9c50d7/639b4e2d5e6ee6428a5d7429/1024T1-1242-1540x800.jpg");
@@ -12,3 +12,9 @@ body {
     padding: 10px;
     text-align: center;
   }
+
+  html {
+    background-color: #000;
+    height: 100%;
+  }
+

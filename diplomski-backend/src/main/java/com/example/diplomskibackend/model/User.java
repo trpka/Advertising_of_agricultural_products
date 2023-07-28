@@ -33,10 +33,10 @@ public class User implements UserDetails {
     private String password;
     @Column
     private String email;
-    @Column
-    private String firstName;
-    @Column
-    private String lastName;
+//    @Column
+//    private String firstName;
+//    @Column
+//    private String lastName;
     @Column
     private String mobile;
     @Column
@@ -82,18 +82,18 @@ public class User implements UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+//    public String getFirstName() {
+//        return firstName;
+//    }
+//    public void setFirstName(String firstName) {
+//        this.firstName = firstName;
+//    }
+//    public String getLastName() {
+//        return lastName;
+//    }
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
 
     public String getMobile() {
         return mobile;
@@ -139,28 +139,28 @@ public class User implements UserDetails {
 
 
 
-    public User(Long id, String username, String password, String email, String firstName, String lastName,
+    public User(Long id, String username, String password, String email, /*String firstName, String lastName,*/
                 String mobile, boolean enabled, String role, List<Authority> authorities) {
         super();
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
         this.mobile = mobile;
         this.enabled = enabled;
         this.role = role;
         this.authorities = authorities;
     }
-    public User(String username, String password, String email, String firstName, String lastName,
+    public User(String username, String password, String email, /*String firstName, String lastName,*/
                 String mobile, boolean enabled, String role, List<Authority> authorities) {
         super();
         this.username = username;
         this.password = password;
         this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
         this.mobile = mobile;
         this.enabled = enabled;
         this.role = role;

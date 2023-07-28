@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="row">
+
+  <div class="col-sm-2" >
+    <div class="sticky">
+      <h3>Reklama:</h3>
+    <app-advertisement></app-advertisement>
+  </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="row ">
+      <div class="col-md-0 offset-md-0" >
+        <img src="assets/trailers/Sunflower.jpg" width="1250" height="400" >
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col">
+        <label>Oglasi za pojoprivrednu mehanizaciju</label>
+          <button class="btn btn-success" (click)="goToMechanization()">Mehanizacija</button>
+      </div>
+      <div class="example-button-container">
+        <button mat-fab color="warn" aria-label="Example icon button with a home icon">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+      <div class="col">
+        <label>Oglasi za pojoprivredne proizvode</label>
+          <button class="btn btn-success" (click)="goToProducts()">Mehanizacija</button>
+      </div>
+      <div class="col">
+        <label>Oglasi za pojoprivredne materijale</label>
+        <button class="btn btn-success" (click)="goToMaterials()">Mehanizacija</button>
+      </div>
+    </div>
+    <h2 align="center">Najnoviji oglasi: </h2>
+    <app-announcements-recent></app-announcements-recent>
+  </div>
+  <div class="col-sm-2">
+    <div class="sticky">
+      <h3>Reklama:</h3>
+    <app-advertisement></app-advertisement>
+  </div>
+  </div>
+</div>

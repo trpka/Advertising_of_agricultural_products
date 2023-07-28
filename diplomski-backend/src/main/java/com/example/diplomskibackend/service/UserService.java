@@ -39,7 +39,7 @@ public class UserService {
         List<UserDTO> usersDTO=new ArrayList<>();
         for (User u : users) {
             if(!(u.getRole().equalsIgnoreCase("SysAdmin") || u.getRole().equalsIgnoreCase("Admin"))) {
-                UserDTO dto=new UserDTO(u.getId(),u.getUsername(),u.getPassword(),u.getEmail(),u.getFirstName(),u.getLastName(), u.getMobile(), u.getRole());
+                UserDTO dto=new UserDTO(u.getId(),u.getUsername(),u.getPassword(),u.getEmail(),/*u.getFirstName(),u.getLastName(),*/ u.getMobile(), u.getRole());
                 usersDTO.add(dto);
             }
 
@@ -57,8 +57,8 @@ public class UserService {
         // treba voditi racuna da se koristi isi password encoder bean koji je postavljen u AUthenticationManager-u kako bi koristili isti algoritam
         u.setPassword(passwordEncoder.encode(userRequest.getPassword()));
 
-        u.setFirstName(userRequest.getFirstName());
-        u.setLastName(userRequest.getLastName());
+//        u.setFirstName(userRequest.getFirstName());
+//        u.setLastName(userRequest.getLastName());
 
         u.setEnabled(false);
         u.setEmail(userRequest.getEmail());
