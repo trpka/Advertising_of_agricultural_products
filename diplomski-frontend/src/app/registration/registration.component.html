@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="row" *ngIf="registrated">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8" style="margin-top: -20px;">
+    <div class="center-content">
+      <div class="bordered-box">
+        <h1 class="mb-4 text-center">Registrujte se</h1>
+        <form>
+          <mat-form-field class="wide-input">
+            <mat-label>Ime</mat-label>
+            <input matInput id="firstName1" name="firstName1" type="firstName1" [(ngModel)]="registeredUser.firstName1" placeholder="Ime">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Prezime</mat-label>
+            <input matInput id="lastName1" name="lastName1" type="lastName1" [(ngModel)]="registeredUser.lastName1" placeholder="Prezime">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Email</mat-label>
+            <input matInput id="email" name="email" type="email" [(ngModel)]="registeredUser.email" placeholder="Email">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Mobile</mat-label>
+            <input matInput id="mobile" name="mobile" type="mobile" [(ngModel)]="registeredUser.mobile" placeholder="Mobile">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Username</mat-label>
+            <input matInput id="username" name="username" type="username" [(ngModel)]="registeredUser.username" placeholder="Username">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Password</mat-label>
+            <input matInput id="password" name="password" type="password" [(ngModel)]="registeredUser.password" placeholder="Password">
+          </mat-form-field>
+          <br>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary" (click)="register()">
+              Registrujte se
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>
+<div class="alert alert-success" role="alert" *ngIf="!registrated">
+  <h1 class="alert-heading">Well done!</h1>
+  <h2>Aww yeah, you succeeded. You should go to your email account and check your message.</h2>
+  <hr>
+  <p class="mb-0">In message you will receive link for activation you account</p>
+</div>

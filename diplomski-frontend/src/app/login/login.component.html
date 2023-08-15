@@ -1,35 +1,31 @@
-<!-- Add this in the <head> section of your HTML -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<!-- Section: Design Block -->
-
-    <div class="container">
-
-
-
-
-          <div class="card center">
-
-              <form>
-                <h1>Ulogujte se </h1>
-                <div class="input">
-                  <input id="username" name="username" type="username" class="form-control center" placeholder="Korisničko ime"  [(ngModel)]="username"/>
-                </div>
-
-                <div class="input">
-                  <input id="password" name="password" type="password" class="form-control center" [(ngModel)]="password" placeholder="Lozinka"/>
-                </div>
-
-
-                <button type="submit" class="btn btn-primary center"   (click)="login()">
-                  Sign up
-                </button>
-              </form>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8" style="margin-top: -100px;">
+    <div class="center-content">
+      <div class="bordered-box"> <!-- Added bordered-box class -->
+        <h1 class="mb-4 text-center">Prijavite se</h1> <!-- Added mb-4 class for margin bottom -->
+        <form>
+          <mat-form-field class="wide-input">
+            <mat-label>Korisničko ime</mat-label>
+            <input matInput id="username" name="username" type="username" [(ngModel)]="username" placeholder="Korisničko ime">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Lozinka</mat-label>
+            <input matInput id="password" name="password" type="password" [(ngModel)]="password" placeholder="Lozinka">
+          </mat-form-field>
+          <br>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary" (click)="login()">
+              Prijavite se
+            </button>
           </div>
+        </form>
+      </div>
     </div>
-  <!-- </div> -->
-  <!-- Jumbotron -->
-<!-- Section: Design Block -->
-
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>

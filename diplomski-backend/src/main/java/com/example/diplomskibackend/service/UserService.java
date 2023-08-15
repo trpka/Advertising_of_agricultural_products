@@ -4,6 +4,8 @@ package com.example.diplomskibackend.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.diplomskibackend.dto.RegisteredUserDTO;
+import com.example.diplomskibackend.model.RegisteredUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,6 +26,12 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AuthorityService authorityService;
+
+    @Autowired
+    private RegisteredUserService registeredUserService;
 
 
     public User findByUsername(String username) throws UsernameNotFoundException {
@@ -49,26 +57,36 @@ public class UserService {
     }
 
 
-    public User save(UserDTO userRequest) {
+    public User save(RegisteredUserDTO regUserRequest) {
         User u = new User();
-        u.setUsername(userRequest.getUsername());
+        u.setUsername(regUserRequest.getUsername());
 
         // pre nego sto postavimo lozinku u atribut hesiramo je kako bi se u bazi nalazila hesirana lozinka
         // treba voditi racuna da se koristi isi password encoder bean koji je postavljen u AUthenticationManager-u kako bi koristili isti algoritam
-        u.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+        u.setPassword(passwordEncoder.encode(regUserRequest.getPassword()));
 
-//        u.setFirstName(userRequest.getFirstName());
-//        u.setLastName(userRequest.getLastName());
-
+        //postavljeno na true
         u.setEnabled(false);
-        u.setEmail(userRequest.getEmail());
+        u.setEmail(regUserRequest.getEmail());
 
-        u.setMobile(userRequest.getMobile());
-        u.setRole(userRequest.getRole());
+        u.setMobile(regUserRequest.getMobile());
+        u.setRole(regUserRequest.getRole());
 
         // u primeru se registruju samo obicni korisnici i u skladu sa tim im se i dodeljuje samo rola USER
         List<Authority> authorities=new ArrayList<>();
         //User newUser=new User();
+
+        RegisteredUser newRegisteredUser=new RegisteredUser();
+
+        if(u.getRole().equalsIgnoreCase("RegisteredUser")) {
+            authorities = authorityService.findByName("ROLE_REGISTERED_USER");
+            u.setAuthorities(authorities);
+            RegisteredUser registeredUser=new RegisteredUser(u.getUsername(),u.getPassword(),u.getEmail(),u.getMobile(),u.isEnabled(),u.getRole(),authorities,regUserRequest.getFirstName1(),regUserRequest.getLastName1());
+            newRegisteredUser=this.registeredUserService.save(registeredUser);
+            u.setId(newRegisteredUser.getId());
+        }
+
+
         System.out.println("id iz userService"+ u.getId());
         return u;
     }

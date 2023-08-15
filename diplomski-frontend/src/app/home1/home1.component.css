@@ -2,7 +2,13 @@
   margin: auto;
   width: 50%;
   padding: 10px;
+  height: 1910px;
+  background-color: #C1E1C1;
 }
+
+/* .col-sm-8 {
+  background-color:#ECFFDC
+} */
 
 h3{
   text-align: right;
@@ -14,3 +20,5 @@ h3{
     position:fixed;
     top:200px;
 }
+
+
