@@ -3,6 +3,7 @@ package com.example.diplomskibackend.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.diplomskibackend.dto.RegisteredUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -71,30 +72,16 @@ public class AuthenticationController {
 
     // Endpoint za registraciju novog korisnika
     @PostMapping("/signup")
-    public ResponseEntity<User> addUser(@RequestBody UserDTO userRequest, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<User> addUser(@RequestBody RegisteredUserDTO regUserRequest, UriComponentsBuilder ucBuilder) {
 
-        User existUser = this.userService.findByUsername(userRequest.getUsername());
+        User existUser = this.userService.findByUsername(regUserRequest.getUsername());
 
         if (existUser != null) {
-            throw new ResourceConflictException(userRequest.getId(), "Username already exists");
+            throw new ResourceConflictException(regUserRequest.getId(), "Username already exists");
         }
 
-        User user = this.userService.save(userRequest);
+        User user = this.userService.save(regUserRequest);
 
         return new ResponseEntity<>(user, HttpStatus.CREATED);
-    }/*
-	// Endpoint za registraciju novog korisnika
-	@PostMapping("/signup")
-	public ResponseEntity<User> addUser1(@RequestBody User userRequest, UriComponentsBuilder ucBuilder) {
-
-		User existUser = this.userService.findByUsername(userRequest.getUsername());
-
-		if (existUser != null) {
-			throw new ResourceConflictException(userRequest.getId(), "Username already exists");
-		}
-
-		User user = this.userService.save(userRequest);
-
-		return new ResponseEntity<>(user, HttpStatus.CREATED);
-	}*/
+    }
 }

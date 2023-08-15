@@ -1,6 +1,8 @@
 package com.example.diplomskibackend.service;
 
+import com.example.diplomskibackend.dto.AnnouncementDTO;
 import com.example.diplomskibackend.dto.ProductDTO;
+import com.example.diplomskibackend.model.Announcement;
 import com.example.diplomskibackend.model.Product;
 import com.example.diplomskibackend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,14 @@ public class ProductService {
     {
         Product newProduct=this.productRepository.save(product);
         return new ProductDTO(newProduct);
+    }
+
+    public Product save1(ProductDTO productDTO)
+    {
+        Product product = new Product();
+        product.setName(productDTO.getName());
+        product.setAdditional_description(productDTO.getAdditional_description());
+        return  this.productRepository.save(product);
     }
 
     public Product findById(Long id) {

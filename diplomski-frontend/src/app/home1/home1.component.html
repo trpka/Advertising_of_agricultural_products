@@ -10,28 +10,34 @@
   <div class="col-sm-8">
     <div class="row ">
       <div class="col-md-0 offset-md-0" >
-        <img src="assets/trailers/Sunflower.jpg" width="1250" height="400" >
+        <img src="assets/images/main.jpg" width="1252" height="450" >
       </div>
     </div>
+    <label>&nbsp;</label>
     <div class="row align-items-center">
       <div class="col">
-        <label>Oglasi za pojoprivrednu mehanizaciju</label>
-          <button class="btn btn-success" (click)="goToMechanization()">Mehanizacija</button>
-      </div>
-      <div class="example-button-container">
-        <button mat-fab color="warn" aria-label="Example icon button with a home icon">
-          <mat-icon>home</mat-icon>
-        </button>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <label>Oglasi za poljoprivrednu mehanizaciju</label>
+          <br>
+          <input type="image" src="/assets/images/masine.png" style="border: double;"  height="80" width="100" (click)="goToMechanization()">
+        </div>
       </div>
       <div class="col">
+        <div style="display: flex; flex-direction: column; align-items: center;">
         <label>Oglasi za pojoprivredne proizvode</label>
-          <button class="btn btn-success" (click)="goToProducts()">Mehanizacija</button>
+          <!-- <button class="btn btn-success" (click)="goToProducts()">Mehanizacija</button> -->
+          <input type="image" src="/assets/images/poljo_proizvodi.png" style="border: double;" height="80" width="100" (click)="goToProducts()"/>
+        </div>
       </div>
       <div class="col">
+        <div style="display: flex; flex-direction: column; align-items: center;">
         <label>Oglasi za pojoprivredne materijale</label>
-        <button class="btn btn-success" (click)="goToMaterials()">Mehanizacija</button>
+        <!-- <button class="btn btn-success" (click)="goToMaterials()">Mehanizacija</button> -->
+        <input type="image" src="/assets/images/materijali.png" style="border: double;" height="80" width="100" (click)="goToMaterials()"/>
+      </div>
       </div>
     </div>
+    <label>&nbsp;</label>
     <h2 align="center">Najnoviji oglasi: </h2>
     <app-announcements-recent></app-announcements-recent>
   </div>

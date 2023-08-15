@@ -11,8 +11,11 @@
   <div class="col-sm-8">
     <div class="row ">
       <div class="col-sm-0" >
-        <img src="assets/trailers/Sunflower.jpg" width="1250" height="400" >
+        <img src="assets/images/main.jpg" width="1252" height="450" >
       </div>
+    </div>
+    <div class="container">
+      <app-button-toggle></app-button-toggle>
     </div>
     <div class="row">
       <div class="col-sm-4">
@@ -29,14 +32,30 @@
             <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
           </mat-select>
         </mat-form-field>
-
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
+      <label>Sortiraj:&nbsp;&nbsp;</label>
+      <mat-form-field>
+        <mat-label>Sortiraj</mat-label>
+        <mat-select disableRipple>
+          <mat-option value="1">Cena(prvo najniža)</mat-option>
+          <mat-option value="2">Cena(prvo najviša)</mat-option>
+          <mat-option value="3">Datum</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+      <!-- <div class="col-sm-6">
         <button class="btn btn-success" (click)="getMechanizationSubcategories()">Trazi</button>
         One of three columns
       </div>
       <div class="col-sm-2">
         <button class="btn btn-success" (click)="sortAnnouncementsByPrice()">Sortiraj</button>
+        One of three columns
+      </div> -->
+      <div class="col-sm-12">
+        <button class="btn btn-success" (click)="applyFilter()">Filter</button>
         One of three columns
       </div>
     </div>
@@ -62,8 +81,14 @@
 
     </mat-card>
     </div>
+    <button class="btn btn-success" (click)="increase()">Sledeća strana</button>
   </div>
   <div class="col-sm-2">
+    <a [routerLink]="['/my-component']" [queryParams]="{ reset: true }">Idi na komponentu</a>
+    <p>Vrednost myVariable: {{ myVariable }}</p>
+
+    <button (click)="increase()" ></button>
+
     <div class="sticky">
       <h3>Reklama:</h3>
     <app-advertisement></app-advertisement>

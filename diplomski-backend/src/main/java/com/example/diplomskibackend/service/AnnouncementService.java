@@ -1,11 +1,15 @@
 package com.example.diplomskibackend.service;
 
 import com.example.diplomskibackend.dto.AnnouncementDTO;
+import com.example.diplomskibackend.dto.FilterDTO;
 import com.example.diplomskibackend.dto.ProductDTO;
 import com.example.diplomskibackend.model.Announcement;
 import com.example.diplomskibackend.model.Product;
+import com.example.diplomskibackend.model.RegisteredUser;
+import com.example.diplomskibackend.model.User;
 import com.example.diplomskibackend.repository.AnnouncementRepository;
 import com.example.diplomskibackend.repository.ProductRepository;
+import com.example.diplomskibackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +22,8 @@ public class AnnouncementService {
 
     @Autowired
     private AnnouncementRepository announcementRepository;
+    @Autowired
+    private RegisteredUserService registeredUserService;
 
     public Announcement findById(Long id) {
         Optional<Announcement> announcementOpt=this.announcementRepository.findById(id);
@@ -43,6 +49,17 @@ public class AnnouncementService {
         return announcementDTOS;
     }
 
+    public List<AnnouncementDTO>  findRecentAnnouncements() {
+        List<Announcement> announcements = this.announcementRepository.findByOrderByDateDesc();
+        List<Announcement> announcements1 = announcements.subList(0, 12);
+        List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
+        for(Announcement announcement: announcements1){
+            AnnouncementDTO announcementDTO = new AnnouncementDTO(announcement);
+            announcementDTOS.add(announcementDTO);
+        }
+        return announcementDTOS;
+    }
+
 
     public List<AnnouncementDTO> findAllMechanization() {
         List<Announcement> announcements = this.announcementRepository.findAll();
@@ -56,6 +73,40 @@ public class AnnouncementService {
         }
         return announcementDTOS;
     }
+
+    public List<AnnouncementDTO> findAllMechanization10(Long counter) {
+        int c = Math.toIntExact(counter);
+        List<Announcement> announcements = this.announcementRepository.findAll();
+        List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
+        for(Announcement announcement: announcements){
+            if(announcement.getCategory().equals("Mehanizacija")){
+                AnnouncementDTO announcementDTO = new AnnouncementDTO(announcement);
+                announcementDTOS.add(announcementDTO);
+            }
+
+        }
+
+        List<AnnouncementDTO> announcementDTOS1 = announcementDTOS.subList(0+c, 4+c);
+        return announcementDTOS1;
+    }
+
+
+//STARA FUNKCIJA ZA TRAZENJE PODKATEGORIJA
+//    public List<AnnouncementDTO> findMechanizationSubcategories(String array []){
+//        List<Announcement> announcements = this.announcementRepository.findAll();
+//        List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
+//        for(int i = 0;i < array.length;i++)
+//        {
+//            for(Announcement announcement: announcements){
+//                if(announcement.getSubcategory().equals(array[i])) {
+//                    AnnouncementDTO announcementDTO = new AnnouncementDTO(announcement);
+//                    announcementDTOS.add(announcementDTO);
+//                }
+//            }
+//        }
+//
+//        return announcementDTOS;
+//    }
 
     public List<AnnouncementDTO> findMechanizationSubcategories(String array []){
         List<Announcement> announcements = this.announcementRepository.findAll();
@@ -73,8 +124,8 @@ public class AnnouncementService {
         return announcementDTOS;
     }
 
-    public List<AnnouncementDTO> sortAnnouncementsByPrice( ){
-        List<Announcement> announcements = this.announcementRepository.findByOrderByPrice();
+    public List<AnnouncementDTO> sortAnnouncementsMechanizationByPriceDesc( ){
+        List<Announcement> announcements = this.announcementRepository.findByOrderByDateDesc();
         List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
         for(Announcement announcement: announcements){
             if(announcement.getCategory().equals("Mehanizacija")){
@@ -84,6 +135,54 @@ public class AnnouncementService {
 
         }
         return announcementDTOS;
+    }
+
+
+    public List<AnnouncementDTO> applyFilter(FilterDTO filterDTO){
+
+        List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
+        List<AnnouncementDTO> announcementDTOS1 = new ArrayList<>();
+        String sort = filterDTO.getSort();
+        if(sort.equals(null) || sort.equals("")){
+            announcementDTOS = this.findAllMechanization();
+        } else if (sort.equals("priceDesc")) {
+            announcementDTOS =this.sortAnnouncementsMechanizationByPriceDesc();
+        } else if (sort.equals("priceAsc")) {
+            //announcementDTOS =this.sortAnnouncementsMechanizationByPriceAsc();
+        }
+
+        if(filterDTO.getSubcategories().length == 0){
+            announcementDTOS1 = announcementDTOS;
+        }else{
+            for(int i = 0;i < filterDTO.getSubcategories().length;i++)
+            {
+                for(AnnouncementDTO a :announcementDTOS){
+                    if(a.getSubcategory().equals(filterDTO.getSubcategories()[i])) {
+                        announcementDTOS1.add(a);
+                    }
+                }
+            }
+
+        }
+
+        return announcementDTOS1;
+    }
+
+    public Announcement save(AnnouncementDTO announcementDTO)
+    {
+        RegisteredUser registeredUser = this.registeredUserService.findById(announcementDTO.getRegisteredUserId());
+        Announcement announcement = new Announcement();
+        announcement.setCategory(announcementDTO.getCategory());
+        announcement.setSubcategory(announcementDTO.getSubcategory());
+        announcement.setPrice(announcementDTO.getPrice());
+        announcement.setRegisteredUser(registeredUser);
+        //Product product = new Product();
+        Product product = new Product();
+        product.setName(announcementDTO.getProductDTO().getName());
+        product.setId(announcementDTO.getProductDTO().getId());
+        product.setRegisteredUser(registeredUser);
+        announcement.setProduct(product);
+        return  this.announcementRepository.save(announcement);
     }
 
 

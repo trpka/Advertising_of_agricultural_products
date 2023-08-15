@@ -116,6 +116,9 @@ public class AnnouncementDTO {
         this.productDTO = productDTO;
     }
 
+    public AnnouncementDTO() {
+    }
+
     public AnnouncementDTO(Announcement announcement) {
         this.id = announcement.getId();
         this.date = announcement.getDate();

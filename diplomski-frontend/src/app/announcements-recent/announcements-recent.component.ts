@@ -22,7 +22,7 @@ export class AnnouncementsRecentComponent implements OnInit {
 
   recentAnnouncements()
   {
-    this.announcementService.getAllAnnouncements()
+    this.announcementService.getRecentAnnouncements()
     .subscribe(res => {this.announcements = res;
       for(var a of this.announcements){
         this.productService.getOne(a.productDTO.id)

@@ -50,6 +50,9 @@ public class ProductDTO {
         this.name = name;
     }
 
+    public ProductDTO() {
+    }
+
     public ProductDTO(Product product) {
         this.id = product.getId();
         this.picture = product.getPicture();

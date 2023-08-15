@@ -11,7 +11,8 @@ import java.util.List;
 public interface AnnouncementRepository extends JpaRepository<Announcement, Long> {
 
      List<Announcement> findByOrderByPrice();
-
+     List<Announcement> findByOrderByDateDesc();
+     List<Announcement> findByOrderByDateAsc();
 
 }
 

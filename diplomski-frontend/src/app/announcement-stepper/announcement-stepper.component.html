@@ -1,0 +1,126 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="row">
+
+  <div class="col-sm-2" >
+    <!-- <div class="sticky">
+      <h3>Reklama:</h3>
+    <app-advertisement></app-advertisement>
+  </div> -->
+  </div>
+  <div class="col-sm-8">
+
+    <button mat-raised-button (click)="isEditable = !isEditable">
+      {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+    </button>
+
+    <mat-stepper class="center" linear #stepper>
+      <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Izaberi kategorije</ng-template>
+          <mat-form-field>
+            <mat-label>Šta se oglašava?</mat-label>
+            <input matInput [(ngModel)]="name"  formControlName="firstCtrl" placeholder="Traktor, Prikolica"   required>
+          </mat-form-field>
+          <div>
+            &nbsp;
+          </div>
+
+          <mat-form-field>
+            <mat-label>Izaberi kategoriju</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option>None</mat-option>
+              <mat-option value="Mehanizacija">Mehanizacija</mat-option>
+              <mat-option value="Poljoprivredni proizvodi">Poljoprivredni proizvodi</mat-option>
+              <mat-option value="Pojoprivredni materijali">Pojoprivredni materijali</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div>
+            &nbsp;
+          </div>
+
+          <mat-form-field>
+            <mat-label>Izaberi potkategoriju</mat-label>
+            <mat-select [ngModelOptions]="{standalone: true}"  [(ngModel)]="selectedOption">
+              <mat-option  *ngFor="let option of getOptions()" [value]="option"  >
+                {{ option }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div>
+            <button mat-button matStepperNext>Dalje</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Unos oglasa</ng-template>
+          <mat-form-field>
+            <mat-label>Naslov</mat-label>
+            <input matInput [(ngModel)]="title"  formControlName="secondCtrl" placeholder="Polovna prikolica, Sveže paprike" required>
+          </mat-form-field>
+          <div>
+            &nbsp;
+          </div>
+
+
+          <!-- <mat-form-field class="example-full-width">
+            <mat-label>Tekst oglasa</mat-label>
+            <textarea matInput  [(ngModel)]="textareaValue" placeholder="Primer. Prikolica je garažirana i očuvana, nema nikakvih oštećenja .." ></textarea>
+            </mat-form-field> -->
+
+            <form [formGroup]="forma">
+              <mat-form-field class="example-full-width">
+                <mat-label>Tekst oglasa</mat-label>
+                <textarea matInput formControlName="textareaCtrl" placeholder="Primer. Prikolica je garažirana i očuvana, nema nikakvih oštećenja .."></textarea>
+              </mat-form-field>
+            </form>
+
+
+            <div>
+              &nbsp;
+            </div>
+
+            <mat-form-field>
+              <mat-label>Cena(RSD)</mat-label>
+              <input matInput [(ngModel)]="price" formControlName="secondCtrl" placeholder="40000">
+            </mat-form-field>
+
+            <div>
+              &nbsp;
+            </div>
+
+            <input id="image" type="file" (change)="onFileChanged($event)">
+            <button id="upload_button" class="btn btn-success" (click)="onUpload()">Dodaj</button>
+
+            <div>
+              &nbsp;
+            </div>
+
+            <button id="upload_button" class="btn btn-success" (click)="save()">Sacuvaj</button>
+
+          <div>
+            <button mat-button matStepperPrevious>Nazad</button>
+            <button mat-button matStepperNext>Dalje</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+  <div class="col-sm-2">
+    <!-- <div class="sticky">
+      <h3>Reklama:</h3>
+    <app-advertisement></app-advertisement>
+  </div> -->
+  </div>
+</div>
+

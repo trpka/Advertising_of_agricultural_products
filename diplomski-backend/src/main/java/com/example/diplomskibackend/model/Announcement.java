@@ -6,7 +6,9 @@ import net.minidev.json.annotate.JsonIgnore;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Announcement {
@@ -29,7 +31,9 @@ public class Announcement {
     private String city;
     @Column
     private String mobileNumber;
-
+    @Column
+    @ElementCollection(targetClass=String.class)
+    private Set<String> pictures=new HashSet<>();
     @ManyToOne
     private RegisteredUser registeredUser;
 
@@ -40,7 +44,7 @@ public class Announcement {
 
     }
 
-    public Announcement(Long id, LocalDateTime date, String title, String category, String subcategory, Float price, Integer quantity, String city, String mobileNumber, RegisteredUser registeredUser) {
+    public Announcement(Long id, LocalDateTime date, String title, String category, String subcategory, Float price, Integer quantity, String city, String mobileNumber, Set<String> pictures, RegisteredUser registeredUser, Product product) {
         this.id = id;
         this.date = date;
         this.title = title;
@@ -50,7 +54,9 @@ public class Announcement {
         this.quantity = quantity;
         this.city = city;
         this.mobileNumber = mobileNumber;
+        this.pictures = pictures;
         this.registeredUser = registeredUser;
+        this.product = product;
     }
 
     public Long getId() {
@@ -136,8 +142,15 @@ public class Announcement {
     public Product getProduct() {
         return product;
     }
-
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Set<String> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Set<String> pictures) {
+        this.pictures = pictures;
     }
 }
