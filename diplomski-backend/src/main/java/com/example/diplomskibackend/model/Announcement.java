@@ -36,15 +36,16 @@ public class Announcement {
     private Set<String> pictures=new HashSet<>();
     @ManyToOne
     private RegisteredUser registeredUser;
-
     @ManyToOne
     private Product product;
+    @ManyToOne
+    private Company company;
 
     public Announcement(){
 
     }
 
-    public Announcement(Long id, LocalDateTime date, String title, String category, String subcategory, Float price, Integer quantity, String city, String mobileNumber, Set<String> pictures, RegisteredUser registeredUser, Product product) {
+    public Announcement(Long id, LocalDateTime date, String title, String category, String subcategory, Float price, Integer quantity, String city, String mobileNumber, Set<String> pictures, RegisteredUser registeredUser, Product product, Company company) {
         this.id = id;
         this.date = date;
         this.title = title;
@@ -57,6 +58,7 @@ public class Announcement {
         this.pictures = pictures;
         this.registeredUser = registeredUser;
         this.product = product;
+        this.company = company;
     }
 
     public Long getId() {
@@ -152,5 +154,13 @@ public class Announcement {
 
     public void setPictures(Set<String> pictures) {
         this.pictures = pictures;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }

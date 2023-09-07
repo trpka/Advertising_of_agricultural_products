@@ -23,16 +23,21 @@ public class Product {
     @JsonIgnore
     private RegisteredUser registeredUser;
 
+    @ManyToOne
+    @JsonIgnore
+    private Company company;
+
     public Product(){
 
     }
 
-    public Product(Long id, String picture, String additional_description, RegisteredUser registeredUser, String name) {
+    public Product(Long id, String picture, String name, String additional_description, RegisteredUser registeredUser, Company company) {
         this.id = id;
         this.picture = picture;
+        this.name = name;
         this.additional_description = additional_description;
         this.registeredUser = registeredUser;
-        this.name = name;
+        this.company = company;
     }
 
     public Long getId() {
@@ -73,5 +78,13 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }

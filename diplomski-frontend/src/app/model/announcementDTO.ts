@@ -2,6 +2,7 @@ import { ProductDTO } from "./productDTO";
 
 interface AnnouncementDTOInterface{
   id:number;
+  date:Date;
   title: string ;
   category: string ;
   subcategory: string;
@@ -12,9 +13,11 @@ interface AnnouncementDTOInterface{
   registeredUserId: number;
   //productId: number;
   productDTO: ProductDTO;
+  companyId: number;
 }
 export class AnnouncementDTO implements AnnouncementDTOInterface{
   id:number;
+  date:Date;
   title: string ;
   category: string ;
   subcategory: string;
@@ -25,8 +28,10 @@ export class AnnouncementDTO implements AnnouncementDTOInterface{
   registeredUserId: number;
   //productId: number;
   productDTO: ProductDTO;
+  companyId: number;
   constructor(obj:AnnouncementDTOInterface){
       this.id=obj.id;
+      this.date=obj.date;
       this.title=obj.title;
       this.category=obj.category;
       this.subcategory=obj.subcategory;
@@ -37,5 +42,6 @@ export class AnnouncementDTO implements AnnouncementDTOInterface{
       this.registeredUserId = obj.registeredUserId;
       //this.productId = obj.productId;
       this.productDTO = obj.productDTO;
+      this.companyId = obj.companyId;
   }
 }

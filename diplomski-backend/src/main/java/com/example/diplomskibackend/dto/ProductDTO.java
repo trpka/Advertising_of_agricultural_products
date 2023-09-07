@@ -9,6 +9,7 @@ public class ProductDTO {
     private String additional_description;
     private String name;
     private Long registeredUserId;
+    private Long companyId;
 
     public Long getId() {
         return id;
@@ -50,6 +51,14 @@ public class ProductDTO {
         this.name = name;
     }
 
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
+
     public ProductDTO() {
     }
 
@@ -57,7 +66,12 @@ public class ProductDTO {
         this.id = product.getId();
         this.picture = product.getPicture();
         this.additional_description = product.getAdditional_description();
-        this.registeredUserId = product.getRegisteredUser().getId();
+        if(product.getRegisteredUser()!=null){
+            this.registeredUserId = product.getRegisteredUser().getId();
+        } else if (product.getCompany()!=null) {
+            this.companyId = product.getCompany().getId();
+        }
+
         this.name  = product.getName();
     }
 }

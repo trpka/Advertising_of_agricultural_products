@@ -1,3 +1,4 @@
+import { CounterService } from './../service/counter.service';
 import { AdvertisementService } from '../service/advertisement.service';
 import { Advertisement } from './../model/advertisement';
 import { AnnouncementService } from './../service/announcement.service';
@@ -12,10 +13,10 @@ import { Router } from '@angular/router';
 export class Home1Component implements OnInit {
 
   advertisement: Advertisement;
-  constructor(private router: Router, private advertisementService:AdvertisementService) { }
+  constructor(private router: Router, private advertisementService:AdvertisementService, private counterService:CounterService) { }
 
   ngOnInit(): void {
-
+    console.log(this.counterService.getCount())
   }
 
   loadAdvertisement()
@@ -25,6 +26,7 @@ export class Home1Component implements OnInit {
   }
 
   goToMechanization(){
+    //this.counterService.increment();
     this.router.navigate(['mechanization-announcements']);
   }
 

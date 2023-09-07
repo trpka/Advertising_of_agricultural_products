@@ -12,6 +12,7 @@ public class AdvertisementService {
 
     @Autowired
     private AdvertisementRepository advertisementRepository;
+    //
 
     public Advertisement findById(Long id) {
         Optional<Advertisement> advertisementOpt=this.advertisementRepository.findById(id);

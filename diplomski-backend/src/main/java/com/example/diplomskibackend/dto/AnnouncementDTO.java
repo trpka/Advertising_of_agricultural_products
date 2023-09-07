@@ -1,6 +1,7 @@
 package com.example.diplomskibackend.dto;
 
 import com.example.diplomskibackend.model.Announcement;
+import com.example.diplomskibackend.model.Company;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +28,7 @@ public class AnnouncementDTO {
     private Long registeredUserId;
 
     private ProductDTO productDTO;
+    private Long companyId;
 
     public Long getId() {
         return id;
@@ -116,6 +118,14 @@ public class AnnouncementDTO {
         this.productDTO = productDTO;
     }
 
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
+
     public AnnouncementDTO() {
     }
 
@@ -129,8 +139,16 @@ public class AnnouncementDTO {
         this.quantity = announcement.getQuantity();
         this.city = announcement.getCity();
         this.mobileNumber = announcement.getMobileNumber();
-        this.registeredUserId = announcement.getRegisteredUser().getId();
+        if(announcement.getRegisteredUser()!=null)
+        {
+            this.registeredUserId = announcement.getRegisteredUser().getId();
+
+        }else if (announcement.getCompany()!=null) {
+            this.companyId = announcement.getCompany().getId();
+        }
         this.productDTO=new ProductDTO(announcement.getProduct());
+
+
 
     }
 }
