@@ -42,6 +42,7 @@ export class AnnouncementStepperComponent implements OnInit {
     this.announcementDTO=new AnnouncementDTO(
       {
           id:0,
+          date:new Date(),
           title: "",
           category: "",
           subcategory: "",
@@ -50,12 +51,14 @@ export class AnnouncementStepperComponent implements OnInit {
           city : "",
           mobileNumber : "",
           registeredUserId : 0,
+          companyId:0,
           productDTO : new ProductDTO({
             id:0,
             picture: "",
             additional_description: "",
             name: "",
-            registeredUserId: 4
+            registeredUserId: 4,
+            companyId: 4
             }),
         })
   }
@@ -101,6 +104,7 @@ export class AnnouncementStepperComponent implements OnInit {
   save(){
     this.announcementDTO.productDTO.name = this.name;
     this.announcementDTO.category = this.selected;
+    this.announcementDTO.date = new Date();
     this.announcementDTO.subcategory = this.selectedOption;
     this.announcementDTO.productDTO.additional_description = this.forma.controls['textareaCtrl'].value;
     this.announcementDTO.price = Number(this.price);

@@ -79,14 +79,14 @@ public class AnnouncementService {
         List<Announcement> announcements = this.announcementRepository.findAll();
         List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
         for(Announcement announcement: announcements){
-            if(announcement.getCategory().equals("Mehanizacija")){
+            if((announcement.getRegisteredUser()!=null) && (announcement.getCategory().equals("Mehanizacija"))){
                 AnnouncementDTO announcementDTO = new AnnouncementDTO(announcement);
                 announcementDTOS.add(announcementDTO);
             }
 
         }
 
-        List<AnnouncementDTO> announcementDTOS1 = announcementDTOS.subList(0+c, 4+c);
+        List<AnnouncementDTO> announcementDTOS1 = announcementDTOS.subList(0+c, 2+c);
         return announcementDTOS1;
     }
 

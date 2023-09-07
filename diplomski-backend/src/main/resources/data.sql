@@ -8,11 +8,13 @@ insert into user (id,role, username, password, email, mobile,enabled,last_passwo
 insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (3,'RegisteredUser','aca', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'aca@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
 insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (4,'RegisteredUser','milica', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'milica@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
 insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (5,'RegisteredUser','dejan', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'dejan@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
-
+insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (6,'Company','agrar', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'agrar@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
 
 insert into user_authority (user_id,authority_id) values (1,1);
 insert into user_authority (user_id,authority_id) values (2,2);
 insert into user_authority (user_id,authority_id) values (3,2);
+insert into user_authority (user_id,authority_id) values (4,2);
+insert into user_authority (user_id,authority_id) values (5,2);
 
 insert into registered_user(id, first_name1, last_name1)
 values (2, 'Milos', 'Milic');
@@ -25,6 +27,9 @@ values (4, 'Milica', 'Jovanovic');
 
 insert into registered_user(id, first_name1, last_name1)
 values (5, 'Dejan', 'Ilic');
+
+insert into company(id, name, reg_num_of_company)
+values (6, 'Agrar', '8542243320');
 
 
 insert into product(id, name, additional_description,picture,registered_user_id)
@@ -71,6 +76,12 @@ values (14,'Elevator', 'Elevator nema je odličan. Radi na trofaznu struju, neda
 
 insert into product(id, name, additional_description,picture,registered_user_id)
 values (15,'Motokultivator', 'Skoro kao nov, nije puno korišćen. Obrađivana je sa njim samo bašta.', '/assets/mechanization/motokultivator.png', 5);
+
+insert into product(id, name, additional_description,picture,company_id)
+values (16,'Traktor', 'Nov traktor, proizveden 2023 godine, proizveden u Nemačkoj. Od opreme ima navigaciju, klimu i radio.', '/assets/mechanization/new_holland.jpeg', 6);
+
+insert into product(id, name, additional_description,picture,company_id)
+values (17,'Sejalica', 'Nova četvororedna sejalica proizvrdena u Turskoj.', '/assets/mechanization/sejalica4.png', 6);
 
 
 
@@ -119,6 +130,12 @@ values(14, '2023-08-02 22:00:00', 'Prodaje se elevator', 'Mehanizacija', 'Mašin
 
 insert into announcement(id, date, title, category, subcategory, price, quantity, city, mobile_number,  product_id, registered_user_id)
 values(15, '2023-07-27 18:00:00', 'Prodaja motokultivatora', 'Mehanizacija', 'Mašine i alati', 120000, 1, 'Sombor', '0669832267', 15, 5);
+
+insert into announcement(id, date, title, category, subcategory, price, quantity, city, mobile_number,  product_id, company_id)
+values(16, '2023-06-11 18:00:00', 'Prodaja traktora', 'Mehanizacija', 'Traktori', 7500000, 1, 'Kragujevac', '065782261', 16, 6);
+
+insert into announcement(id, date, title, category, subcategory, price, quantity, city, mobile_number,  product_id, company_id)
+values(17, '2023-06-01 18:00:00', 'Prodaja sejalice', 'Mehanizacija', 'Priključne mašine', 1200000, 1, 'Apatin', '0635629832', 17, 6);
 
 insert into registered_user_announcements(registered_user_id, announcements_id)
 values(2, 1);

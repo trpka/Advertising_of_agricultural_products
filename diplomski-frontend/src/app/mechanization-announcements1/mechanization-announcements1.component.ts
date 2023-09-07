@@ -43,7 +43,7 @@ export class MechanizationAnnouncements1Component implements OnInit {
   }
 
   increase(){
-    this.myVariable = this.myVariable + 4;
+    this.myVariable = this.myVariable + 2;
     this.getAllMechanizationAnnouncements();
     window.scrollTo({ top: 500, behavior: 'smooth' });
   }

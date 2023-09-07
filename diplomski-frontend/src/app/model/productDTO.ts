@@ -4,6 +4,7 @@ interface ProductDTOInterface{
   additional_description: string ;
   name: string ;
   registeredUserId: number;
+  companyId: number;
 
 }
 export class ProductDTO implements ProductDTOInterface{
@@ -12,6 +13,8 @@ export class ProductDTO implements ProductDTOInterface{
   additional_description: string ;
   name: string ;
   registeredUserId: number;
+  companyId: number;
+
 
   constructor(obj:ProductDTOInterface){
       this.id=obj.id;
@@ -19,5 +22,6 @@ export class ProductDTO implements ProductDTOInterface{
       this.additional_description=obj.additional_description;
       this.name = obj.name;
       this.registeredUserId=obj.registeredUserId;
+      this.companyId=obj.companyId;
   }
 }

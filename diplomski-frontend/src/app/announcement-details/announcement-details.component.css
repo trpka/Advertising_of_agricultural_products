@@ -2,8 +2,9 @@
   margin: auto;
   width: 50%;
   padding: 10px;
+  height: 900px;
+  background-color: #C1E1C1;
 }
-
 h3{
   text-align: right;
 }
@@ -30,8 +31,7 @@ mat-card img{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  height: 400px;
+  height: 450px;
   width: 750px;
-  width: 50%;
-  height: 50%;
+
 }
