@@ -8,8 +8,9 @@
   </div> -->
   </div>
   <div class="col-sm-8">
+    <!-- <div>&nbsp;</div> -->
 
-    <button mat-raised-button (click)="isEditable = !isEditable">
+    <button mat-raised-button (click)="isEditable = !isEditable" style="margin-bottom: 50px;">
       {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
     </button>
 
@@ -19,7 +20,7 @@
           <ng-template matStepLabel>Izaberi kategorije</ng-template>
           <mat-form-field>
             <mat-label>Šta se oglašava?</mat-label>
-            <input matInput [(ngModel)]="name"  formControlName="firstCtrl" placeholder="Traktor, Prikolica"   required>
+            <input matInput [(ngModel)]="this.announcementDTO.productDTO.name"  formControlName="firstCtrl" placeholder="Traktor, Prikolica"   required>
           </mat-form-field>
           <div>
             &nbsp;
@@ -58,7 +59,7 @@
           <ng-template matStepLabel>Unos oglasa</ng-template>
           <mat-form-field>
             <mat-label>Naslov</mat-label>
-            <input matInput [(ngModel)]="title"  formControlName="secondCtrl" placeholder="Polovna prikolica, Sveže paprike" required>
+            <input matInput [(ngModel)]="this.announcementDTO.title"  formControlName="secondCtrl" placeholder="Polovna prikolica, Sveže paprike" required>
           </mat-form-field>
           <div>
             &nbsp;
@@ -85,6 +86,46 @@
             <mat-form-field>
               <mat-label>Cena(RSD)</mat-label>
               <input matInput [(ngModel)]="price" formControlName="secondCtrl" placeholder="40000">
+            </mat-form-field>
+
+            <div>
+              &nbsp;
+            </div>
+
+            <mat-form-field>
+              <mat-label>Izaberi grad</mat-label>
+              <mat-select [(value)]="selectedCity">
+                <mat-option>None</mat-option>
+                <mat-option value="Beograd">Beograd</mat-option>
+                <mat-option value="Bor">Bor</mat-option>
+                <mat-option value="Čačak">Čačak</mat-option>
+                <mat-option value="Jagodina">Jagodina</mat-option>
+                <mat-option value="Kikinda">Kikinda</mat-option>
+                <mat-option value="Kragujevac">Kragujevac</mat-option>
+                <mat-option value="Kraljevo">Kraljevo</mat-option>
+                <mat-option value="Kruševac">Kruševac</mat-option>
+                <mat-option value="Leskovac">Leskovac</mat-option>
+                <mat-option value="Loznica">Loznica</mat-option>
+                <mat-option value="Niš">Niš</mat-option>
+                <mat-option value="Novi Pazar">Novi Pazar</mat-option>
+                <mat-option value="Novi Sad">Novi Sad</mat-option>
+                <mat-option value="Pančevo">Pančevo</mat-option>
+                <mat-option value="Pirot">Pirot</mat-option>
+                <mat-option value="Požarevac">Požarevac</mat-option>
+                <mat-option value="Priština">Priština</mat-option>
+                <mat-option value="Prokuplje">Prokuplje</mat-option>
+                <mat-option value="Smederevo">Smederevo</mat-option>
+                <mat-option value="Sombor">Sombor</mat-option>
+                <mat-option value="Sremska Mitrovica">Sremska Mitrovica</mat-option>
+                <mat-option value="Subotica">Subotica</mat-option>
+                <mat-option value="Šabac">Šabac</mat-option>
+                <mat-option value="Užice">Užice</mat-option>
+                <mat-option value="Valjevo">Valjevo</mat-option>
+                <mat-option value="Vranje">Vranje</mat-option>
+                <mat-option value="Vršac">Vršac</mat-option>
+                <mat-option value="Zaječar">Zaječar</mat-option>
+                <mat-option value="Zrenjanin">Zrenjanin</mat-option>
+              </mat-select>
             </mat-form-field>
 
             <div>

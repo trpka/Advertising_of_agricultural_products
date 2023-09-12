@@ -16,9 +16,17 @@ h3{
     top:200px;
 }
 
+.sticky1
+{
+    margin: auto;
+    margin-left: 13px;
+    position:fixed;
+    top:200px;
+}
+
 
 .example-card {
-  max-width: 1250px;
+  max-width: 1270px;
   height: 900px;
 }
 

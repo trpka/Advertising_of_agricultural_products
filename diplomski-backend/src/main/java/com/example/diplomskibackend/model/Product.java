@@ -40,6 +40,14 @@ public class Product {
         this.company = company;
     }
 
+    public Product(String picture, String name, String additional_description, RegisteredUser registeredUser, Company company) {
+        this.picture = picture;
+        this.name = name;
+        this.additional_description = additional_description;
+        this.registeredUser = registeredUser;
+        this.company = company;
+    }
+
     public Long getId() {
         return id;
     }

@@ -8,6 +8,8 @@ import { AnnouncementStepperComponent } from './announcement-stepper/announcemen
 import { ProfileRegisteredUserComponent } from './profile-registered-user/profile-registered-user.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ConfirmRegistrationRegisteredUserComponent } from './confirm-registration-registered-user/confirm-registration-registered-user.component';
+import { CustomerSupportComponent } from './customer-support/customer-support.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   {path: '', component:Home1Component},
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path: 'announcement-details/:id', component:AnnouncementDetailsComponent},
   {path: 'profile-registered-user', component:ProfileRegisteredUserComponent},
   {path: 'confirm-registration/:id', component:  ConfirmRegistrationRegisteredUserComponent},
-  {path: 'publication-announcement', component:AnnouncementStepperComponent}
+  {path: 'publication-announcement', component:AnnouncementStepperComponent},
+  {path: 'customer-support', component:CustomerSupportComponent},
+  {path: 'chat', component:ChatComponent}
 
 
 ];

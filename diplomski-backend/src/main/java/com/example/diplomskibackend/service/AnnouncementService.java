@@ -11,6 +11,8 @@ import com.example.diplomskibackend.repository.AnnouncementRepository;
 import com.example.diplomskibackend.repository.ProductRepository;
 import com.example.diplomskibackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ public class AnnouncementService {
 
     @Autowired
     private AnnouncementRepository announcementRepository;
+    @Autowired
+    private ProductRepository productRepository;
     @Autowired
     private RegisteredUserService registeredUserService;
 
@@ -124,7 +128,31 @@ public class AnnouncementService {
         return announcementDTOS;
     }
 
-    public List<AnnouncementDTO> sortAnnouncementsMechanizationByPriceDesc( ){
+    public List<AnnouncementDTO> sortAnnouncementsMechanizationByPriceDesc(){
+        List<Announcement> announcements = this.announcementRepository.findByCategoryOrderByPriceDesc("Mehanizacija");
+        List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
+        for(Announcement announcement: announcements){
+                AnnouncementDTO announcementDTO = new AnnouncementDTO(announcement);
+                announcementDTOS.add(announcementDTO);
+
+        }
+        return announcementDTOS;
+    }
+
+    public List<AnnouncementDTO> sortAnnouncementsMechanizationByPriceAsc( ){
+        List<Announcement> announcements = this.announcementRepository.findByOrderByPriceAsc();
+        List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
+        for(Announcement announcement: announcements){
+            if(announcement.getCategory().equals("Mehanizacija")){
+                AnnouncementDTO announcementDTO = new AnnouncementDTO(announcement);
+                announcementDTOS.add(announcementDTO);
+            }
+
+        }
+        return announcementDTOS;
+    }
+
+    public List<AnnouncementDTO> sortAnnouncementsMechanizationByDate( ){
         List<Announcement> announcements = this.announcementRepository.findByOrderByDateDesc();
         List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
         for(Announcement announcement: announcements){
@@ -148,7 +176,10 @@ public class AnnouncementService {
         } else if (sort.equals("priceDesc")) {
             announcementDTOS =this.sortAnnouncementsMechanizationByPriceDesc();
         } else if (sort.equals("priceAsc")) {
-            //announcementDTOS =this.sortAnnouncementsMechanizationByPriceAsc();
+            announcementDTOS =this.sortAnnouncementsMechanizationByPriceAsc();
+        }
+        else{
+            announcementDTOS =this.sortAnnouncementsMechanizationByDate();
         }
 
         if(filterDTO.getSubcategories().length == 0){
@@ -162,27 +193,65 @@ public class AnnouncementService {
                     }
                 }
             }
-
         }
 
-        return announcementDTOS1;
+        List<AnnouncementDTO> announcementDTOS2 = new ArrayList<>();
+        if(filterDTO.getCity() == null || filterDTO.getCity() == ""){
+            announcementDTOS2 = announcementDTOS1;
+        }else{
+            for(AnnouncementDTO a : announcementDTOS1){
+                if(a.getCity().equals(filterDTO.getCity()))
+                {
+                    announcementDTOS2.add(a);
+                }
+            }
+        }
+
+        return announcementDTOS2;
     }
 
     public Announcement save(AnnouncementDTO announcementDTO)
     {
         RegisteredUser registeredUser = this.registeredUserService.findById(announcementDTO.getRegisteredUserId());
+
+        Product product = new Product();
+        product.setName(announcementDTO.getProductDTO().getName());
+        product.setAdditional_description(announcementDTO.getProductDTO().getAdditional_description());
+        product.setPicture(announcementDTO.getProductDTO().getPicture());
+        //product.setId(announcementDTO.getProductDTO().getId());
+        product.setRegisteredUser(registeredUser);
+        this.productRepository.save(product);
+
         Announcement announcement = new Announcement();
         announcement.setCategory(announcementDTO.getCategory());
         announcement.setSubcategory(announcementDTO.getSubcategory());
         announcement.setPrice(announcementDTO.getPrice());
+        announcement.setTitle(announcementDTO.getTitle());
+        announcement.setDate(announcementDTO.getDate());
         announcement.setRegisteredUser(registeredUser);
-        //Product product = new Product();
-        Product product = new Product();
-        product.setName(announcementDTO.getProductDTO().getName());
-        product.setId(announcementDTO.getProductDTO().getId());
-        product.setRegisteredUser(registeredUser);
+        announcement.setMobileNumber(registeredUser.getMobile());
+        announcement.setCity(announcementDTO.getCity());
         announcement.setProduct(product);
+
+
+
         return  this.announcementRepository.save(announcement);
+    }
+
+    public Page<Announcement> findAllMechanizationPage(Pageable page) {
+        String category = "Mehanizacija";
+        Page<Announcement> announcements = this.announcementRepository.findByCategoryAndRegisteredUserIsNotNull(category, page);
+
+        return announcements;
+    }
+
+    public List<AnnouncementDTO> convert(List<Announcement> announcements){
+        List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
+        for(Announcement announcement: announcements){
+                AnnouncementDTO announcementDTO = new AnnouncementDTO(announcement);
+                announcementDTOS.add(announcementDTO);
+            }
+            return announcementDTOS;
     }
 
 

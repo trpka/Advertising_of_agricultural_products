@@ -14,7 +14,6 @@ import {MatInputModule} from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { AnnouncementsRecentComponent } from './announcements-recent/announcements-recent.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
@@ -29,12 +28,14 @@ import { AnnouncementStepperComponent } from './announcement-stepper/announcemen
 import { ProfileRegisteredUserComponent } from './profile-registered-user/profile-registered-user.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ConfirmRegistrationRegisteredUserComponent } from './confirm-registration-registered-user/confirm-registration-registered-user.component';
+import { CustomerSupportComponent } from './customer-support/customer-support.component';
+import { ChatComponent } from './chat/chat.component';
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     AnnouncementsRecentComponent,
     LoginComponent,
     NavbarComponent,
@@ -47,7 +48,10 @@ import { ConfirmRegistrationRegisteredUserComponent } from './confirm-registrati
     AnnouncementStepperComponent,
     ProfileRegisteredUserComponent,
     RegistrationComponent,
-    ConfirmRegistrationRegisteredUserComponent
+    ConfirmRegistrationRegisteredUserComponent,
+    CustomerSupportComponent,
+    ChatComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

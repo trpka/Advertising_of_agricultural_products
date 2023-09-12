@@ -16,9 +16,17 @@ h3{
 
 .sticky
 {
-  margin: auto;
+    margin: auto;
     position:fixed;
     top:200px;
 }
 
+
+.sticky1
+{
+    margin: auto;
+    margin-left: 13px;
+    position:fixed;
+    top:200px;
+}
 

@@ -1,16 +1,15 @@
 package com.example.diplomskibackend.controller;
 
 
-import com.example.diplomskibackend.dto.AnnouncementDTO;
-import com.example.diplomskibackend.dto.FilterDTO;
-import com.example.diplomskibackend.dto.ProductDTO;
-import com.example.diplomskibackend.dto.RegisteredUserDTO;
+import com.example.diplomskibackend.dto.*;
 import com.example.diplomskibackend.model.Announcement;
 import com.example.diplomskibackend.model.Product;
 import com.example.diplomskibackend.model.RegisteredUser;
 import com.example.diplomskibackend.service.AnnouncementService;
 import com.example.diplomskibackend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -110,6 +109,14 @@ public class AnnouncementController {
         return new ResponseEntity<>(announcementDTO1, HttpStatus.CREATED);
     }
 
+    @RequestMapping(value="api/announcements/mech", params= {"page","size"},method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<AnnouncementPageDTO> findAll(Pageable pageable){
+        Page<Announcement> mechanizationAnnouncements = this.announcementService.findAllMechanizationPage(pageable);
+        //Page<Item> items=itemService.findAll(pageable);
+        AnnouncementPageDTO announcementPageDTO =new AnnouncementPageDTO(this.announcementService.convert(mechanizationAnnouncements.getContent()), mechanizationAnnouncements.isLast());
+        return new ResponseEntity<>(announcementPageDTO,HttpStatus.OK);
+    }
 
 
 }

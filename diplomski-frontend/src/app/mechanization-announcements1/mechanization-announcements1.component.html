@@ -3,15 +3,21 @@
 <div class="row">
 
   <div class="col-sm-2" >
-    <div class="sticky">
+    <div class="gore" >
+ 
+    </div>
+    <div class="sticky1">
       <h3>Reklama:</h3>
     <app-advertisement></app-advertisement>
+  </div>
+  <div class="dole">
+ 
   </div>
   </div>
   <div class="col-sm-8">
     <div class="row ">
       <div class="col-sm-0" >
-        <img src="assets/images/main.jpg" width="1252" height="450" >
+        <img src="assets/images/main.jpg" width="1289" height="450" >
       </div>
     </div>
     <div class="container">
@@ -37,14 +43,53 @@
       <label>Sortiraj:&nbsp;&nbsp;</label>
       <mat-form-field>
         <mat-label>Sortiraj</mat-label>
-        <mat-select disableRipple>
-          <mat-option value="1">Cena(prvo najniža)</mat-option>
-          <mat-option value="2">Cena(prvo najviša)</mat-option>
-          <mat-option value="3">Datum</mat-option>
+        <mat-select disableRipple  [(value)]="selectedSort">
+          <mat-option value="priceDesc">Cena(prvo najniža)</mat-option>
+          <mat-option value="priceAsc">Cena(prvo najviša)</mat-option>
+          <mat-option value="date">Datum</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-
+    <div class="col-sm-4">
+    <label>Izaberite grad:&nbsp;&nbsp;</label>
+    <mat-form-field>
+      <mat-label>Grad</mat-label>
+      <mat-select [(value)]="selectedCity">
+        <mat-option>None</mat-option>
+        <mat-option value="Beograd">Beograd</mat-option>
+        <mat-option value="Bor">Bor</mat-option>
+        <mat-option value="Čačak">Čačak</mat-option>
+        <mat-option value="Jagodina">Jagodina</mat-option>
+        <mat-option value="Kikinda">Kikinda</mat-option>
+        <mat-option value="Kragujevac">Kragujevac</mat-option>
+        <mat-option value="Kraljevo">Kraljevo</mat-option>
+        <mat-option value="Kruševac">Kruševac</mat-option>
+        <mat-option value="Leskovac">Leskovac</mat-option>
+        <mat-option value="Loznica">Loznica</mat-option>
+        <mat-option value="Niš">Niš</mat-option>
+        <mat-option value="Novi Pazar">Novi Pazar</mat-option>
+        <mat-option value="Novi Sad">Novi Sad</mat-option>
+        <mat-option value="Pančevo">Pančevo</mat-option>
+        <mat-option value="Pirot">Pirot</mat-option>
+        <mat-option value="Požarevac">Požarevac</mat-option>
+        <mat-option value="Priština">Priština</mat-option>
+        <mat-option value="Prokuplje">Prokuplje</mat-option>
+        <mat-option value="Smederevo">Smederevo</mat-option>
+        <mat-option value="Sombor">Sombor</mat-option>
+        <mat-option value="Sremska Mitrovica">Sremska Mitrovica</mat-option>
+        <mat-option value="Subotica">Subotica</mat-option>
+        <mat-option value="Šabac">Šabac</mat-option>
+        <mat-option value="Užice">Užice</mat-option>
+        <mat-option value="Valjevo">Valjevo</mat-option>
+        <mat-option value="Vranje">Vranje</mat-option>
+        <mat-option value="Vršac">Vršac</mat-option>
+        <mat-option value="Zaječar">Zaječar</mat-option>
+        <mat-option value="Zrenjanin">Zrenjanin</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <button class="btn btn-success" (click)="applyFilter()">Filtriraj</button>
+    </div>
 
       <!-- <div class="col-sm-6">
         <button class="btn btn-success" (click)="getMechanizationSubcategories()">Trazi</button>
@@ -54,10 +99,6 @@
         <button class="btn btn-success" (click)="sortAnnouncementsByPrice()">Sortiraj</button>
         One of three columns
       </div> -->
-      <div class="col-sm-12">
-        <button class="btn btn-success" (click)="applyFilter()">Filter</button>
-        One of three columns
-      </div>
     </div>
     <div class="card-wrapper" >
       <mat-card  id="center" class="example-card" *ngFor="let a of announcements" >
@@ -81,14 +122,19 @@
 
     </mat-card>
     </div>
-    <button class="btn btn-success" (click)="increase()">Sledeća strana</button>
+
+    <div class="col-md" id="size" style="margin-left: 425px">
+      <button class="btn" (click)="previousPage()" [disabled]="page == 0"> << Prethodna strana</button>
+      <select [(ngModel)]="size" (change)="changePageSize()"> 
+          <option value="5">5</option>
+          <option value="10">10</option>
+      </select>
+      <button class="btn" (click)="nextPage()" [disabled]="last">Sledeća strana >> </button>
+      <br/>
+  </div>
+  
   </div>
   <div class="col-sm-2">
-    <a [routerLink]="['/my-component']" [queryParams]="{ reset: true }">Idi na komponentu</a>
-    <p>Vrednost myVariable: {{ myVariable }}</p>
-
-    <button (click)="increase()" ></button>
-
     <div class="sticky">
       <h3>Reklama:</h3>
     <app-advertisement></app-advertisement>

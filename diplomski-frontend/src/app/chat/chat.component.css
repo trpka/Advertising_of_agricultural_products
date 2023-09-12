@@ -1,0 +1,17 @@
+.col-sm-2 {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    height: 874px;
+    background-color: #C1E1C1;
+  }
+  
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  

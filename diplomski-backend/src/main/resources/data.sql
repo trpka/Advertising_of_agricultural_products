@@ -164,3 +164,4 @@ values (2,4);
 
 insert into advertisement(id, title, text,price,date, image)
 values (1,'Akcija, 30% popusta', 'Najbolje gume za traktore', 700, '1983-07-12 21:30:55.888','/assets/tires/tires.png');
+

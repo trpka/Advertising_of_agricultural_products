@@ -3,6 +3,7 @@ import { HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AnnouncementDTO } from '../model/announcementDTO';
 import { FilterDTO } from '../model/filterDTO';
+import { AnnouncementPage } from '../model/announcement-page';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,9 @@ export class AnnouncementService {
 
   url = "http://localhost:8081/api/announcements";
   url1 = "http://localhost:8081/api/announcement";
+  public currentPage:number;
+  public currentSize:number;
+  public isDetailPage: boolean = false;
 
   constructor(private http:HttpClient) { }
 
@@ -55,4 +59,12 @@ export class AnnouncementService {
    save(announcementDTO:AnnouncementDTO):Observable<AnnouncementDTO>{
     return this.http.post<AnnouncementDTO>(this.url1 + '-product',announcementDTO);
   }
+
+  getAnnouncementsPaged(page:number,size:number): Observable<AnnouncementPage> {
+    const params = new HttpParams() 
+      .set('page', page)
+      .set('size', size);
+
+    return this.http.get<AnnouncementPage>(this.url + "/mech", { params });
+  } 
 }

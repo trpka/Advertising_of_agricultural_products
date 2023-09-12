@@ -22,9 +22,19 @@ public class RegisteredUser extends User{
     @OneToMany(cascade = CascadeType.ALL)
     private List<Product> products;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CustomerSupport> customerSupports;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Message> sentMessages;//nije dodato u konstruktor
+
+    @OneToMany(cascade = CascadeType.ALL)//isto nije
+    private List<Message> receivedMessages;
+
+
     public RegisteredUser(String username, String password, String email, /*String firstName, String lastName,*/
                           String mobile, boolean enabled,String role, List<Authority> authorities,
-                          String firstName1, String lastName1, List<Announcement> announcements, List<Product> products) {
+                          String firstName1, String lastName1, List<Announcement> announcements, List<Product> products  /*List<CustomerSupport> customerSupports*/) {
         super();
         setUsername(username);
         setPassword(password);
@@ -39,6 +49,7 @@ public class RegisteredUser extends User{
         this.lastName1 = lastName1;
         this.announcements = announcements;
         this.products = products;
+        //this.customerSupports = customerSupports;
     }
 
     /*public RegisteredUser(Long id, String f, String l) {
@@ -51,7 +62,7 @@ public class RegisteredUser extends User{
 
     }
 
-    public RegisteredUser(String username, String password, String email, String mobile, boolean enabled, String role, List<Authority> authorities, String firstName1, String lastName1) {
+    public RegisteredUser(String username, String password, String email, String mobile, boolean enabled, String role, List<Authority> authorities, String firstName1, String lastName1 /*List<CustomerSupport> customerSupports*/) {
         super();
         setUsername(username);
         setPassword(password);
@@ -64,6 +75,7 @@ public class RegisteredUser extends User{
         setAuthorities(authorities);
         this.firstName1 = firstName1;
         this.lastName1 = lastName1;
+        //this.customerSupports = customerSupports;
     }
 
 
@@ -99,7 +111,27 @@ public class RegisteredUser extends User{
         this.products = products;
     }
 
+    public List<CustomerSupport> getCustomerSupports() {
+        return customerSupports;
+    }
 
+    public void setCustomerSupports(List<CustomerSupport> customerSupports) {
+        this.customerSupports = customerSupports;
+    }
 
+    public List<Message> getSentMessages() {
+        return sentMessages;
+    }
 
+    public void setSentMessages(List<Message> sentMessages) {
+        this.sentMessages = sentMessages;
+    }
+
+    public List<Message> getReceivedMessages() {
+        return receivedMessages;
+    }
+
+    public void setReceivedMessages(List<Message> receivedMessages) {
+        this.receivedMessages = receivedMessages;
+    }
 }

@@ -21,10 +21,12 @@ export class AnnouncementStepperComponent implements OnInit {
   isEditable = false;
 
   selected = 'option2';
+  selectedCity: string= 'opt';
   selectedFile: File;
   selectedPictures:string='';
   fullSelectedPictures:string='';
   announcementDTO : AnnouncementDTO;
+  filePath : string = '';
 
 
   name: string = '';
@@ -88,28 +90,31 @@ export class AnnouncementStepperComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
   onUpload() {
-    console.log(this.selectedFile);
     if(this.selectedPictures==''){
       this.selectedPictures=this.selectedFile.name;
-      var path_picture="/assets/tractors/"+this.selectedFile.name;
+      var path_picture="/assets/mechanization/"+this.selectedFile.name;
       this.fullSelectedPictures=path_picture;
+      this.filePath = path_picture.toString();
     }else{
       this.selectedPictures=this.selectedPictures+","+this.selectedFile.name;
-      var path_picture="/assets/tractors/"+this.selectedFile.name;
+      var path_picture="/assets/mechanization/"+this.selectedFile.name;
       this.fullSelectedPictures=this.fullSelectedPictures+','+ path_picture;
     }
     this.fullSelectedPictures
   }
 
   save(){
-    this.announcementDTO.productDTO.name = this.name;
+    
     this.announcementDTO.category = this.selected;
     this.announcementDTO.date = new Date();
     this.announcementDTO.subcategory = this.selectedOption;
-    this.announcementDTO.productDTO.additional_description = this.forma.controls['textareaCtrl'].value;
     this.announcementDTO.price = Number(this.price);
-    this.announcementDTO.registeredUserId = 4;
+    this.announcementDTO.registeredUserId = Number(sessionStorage.getItem('id'));
+    this.announcementDTO.city = this.selectedCity;
+   
     this.announcementDTO.productDTO.id = 4;
+    this.announcementDTO.productDTO.additional_description = this.forma.controls['textareaCtrl'].value;
+    this.announcementDTO.productDTO.picture = this.filePath;
     //this.announcementDTO.productDTO.registeredUserId = 4;
     this.announcementService.save(this.announcementDTO)
     .subscribe()

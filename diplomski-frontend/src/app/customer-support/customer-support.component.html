@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8" style="margin-top: -100px;">
+    <div class="center-content">
+      <div class="bordered-box"> <!-- Added bordered-box class -->
+        <h1 class="mb-4 text-center">Postavite pitanje</h1>
+        <h3 style="margin-left: 8px;">Trudimo se da Vam odgovorimo na pitanje u što kraćem roku</h3>
+        <form [formGroup]="forma">
+            <mat-form-field class="example-full-width">
+              <mat-label>Tekst pitanja</mat-label>
+              <textarea matInput formControlName="textareaCtrl" placeholder="Poštovani, objavio sam oglas ali ga i dalje ne vidim"></textarea>
+            </mat-form-field>
+          </form>
+          <button class="btn btn-success" (click)="save()">Pošalji</button>
+      </div>
+    </div>
+    
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>
+
