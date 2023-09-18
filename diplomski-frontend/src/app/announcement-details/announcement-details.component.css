@@ -1,11 +1,17 @@
 .col-sm-2 {
+  top: 64px;
   margin: auto;
   width: 50%;
   padding: 10px;
-  height: 900px;
+  height: 874px;
   background-color: #C1E1C1;
 }
-h3{
+
+.col-sm-8 {
+  top: 64px;
+}
+
+h4{
   text-align: right;
 }
 
@@ -26,8 +32,9 @@ h3{
 
 
 .example-card {
+  top: 10px;
   max-width: 1270px;
-  height: 900px;
+  height: 852px;
 }
 
 .example-header-image {

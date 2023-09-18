@@ -13,7 +13,10 @@ import { Router } from '@angular/router';
 export class Home1Component implements OnInit {
 
   advertisement: Advertisement;
-  constructor(private router: Router, private advertisementService:AdvertisementService, private counterService:CounterService) { }
+  shoppingBasketIsActive : boolean;
+  constructor(private router: Router, private advertisementService:AdvertisementService, private counterService:CounterService) { 
+    this.shoppingBasketIsActive = true;
+  }
 
   ngOnInit(): void {
     console.log(this.counterService.getCount())
@@ -31,7 +34,7 @@ export class Home1Component implements OnInit {
   }
 
   goToProducts(){
-
+    this.shoppingBasketIsActive = false;
   }
 
   goToMaterials(){

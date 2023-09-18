@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="row">
+
+  <div class="col-sm-2" >
+   
+  </div>
+  <div class="col-sm-8">
+
+    <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+        {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+      </button>
+      <mat-horizontal-stepper  class="center" [linear]="isLinear" #stepper>
+        
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Popunite zahtev za reklamiranje</ng-template>
+            <form [formGroup]="dateForm" (ngSubmit)="save()">
+            <mat-form-field>
+              <mat-label>Naslov reklame</mat-label>
+              <input matInput [(ngModel)]="title" placeholder="Povoljne priključne mašine" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <div>
+              &nbsp;
+            </div>
+
+            <form [formGroup]="forma">
+              <mat-form-field class="example-full-width">
+                <mat-label>Tekst reklame</mat-label>
+                <textarea matInput formControlName="textareaCtrl" placeholder="Primer. Naše priključne mašine se prodaju na prostoru cele Srbije od 2009. godine.."></textarea>
+              </mat-form-field>
+            </form>
+
+      
+            <mat-form-field>
+              <mat-label>Izaberite datum početka reklamiranja</mat-label>
+              <input matInput  [matDatepicker]="picker"  formControlName="selectedDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+             </form>
+            <div>
+              &nbsp;
+            </div>
+
+       
+            <mat-form-field>
+              <mat-label>Dužina tranjanja reklamiranja(u nedeljama)</mat-label>
+              <input matInput [(ngModel)]="duration" placeholder="2" formControlName="firstCtrl" required>
+            </mat-form-field>
+
+            <div>
+              &nbsp;
+            </div>
+
+            <input id="image" type="file" (change)="onFileChanged($event)">
+            <button id="upload_button" class="btn btn-success" (click)="onUpload()">Dodaj</button>
+
+            <div>
+              &nbsp;
+            </div>
+            <button id="save_button" class="btn btn-success" (click)="save()">Sačuvaj</button>
+       
+
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out your address</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Address" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </form>
+        </mat-step>
+        <!-- <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          You are now done.
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step> -->
+      </mat-horizontal-stepper>
+  </div>
+  <div class="col-sm-2">
+    
+  </div>
+</div>
+

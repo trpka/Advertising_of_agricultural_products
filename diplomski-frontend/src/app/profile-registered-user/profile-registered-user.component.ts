@@ -12,6 +12,8 @@ export class ProfileRegisteredUserComponent implements OnInit {
 
   id:number;
   registeredUser: RegisteredUser;
+  enableEditPage:boolean= false;
+  enableProfilePage:boolean=true;
   constructor(private registeredUserService:RegisteredUserService, private router: Router) {
 
     this.registeredUser=new RegisteredUser(
@@ -33,6 +35,7 @@ export class ProfileRegisteredUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.findRegisteredUser()
+    this. backToProfileInfo()
   }
 
   findRegisteredUser(){
@@ -42,5 +45,20 @@ export class ProfileRegisteredUserComponent implements OnInit {
     .subscribe(res=>this.registeredUser=res)
   }
 
+  go_to_edit_profile(){
+    this.enableEditPage = true;
+    this.enableProfilePage = false;
+  }
 
+  to_to_change_password(){
+
+  }
+
+  backToProfileInfo(){
+    this.enableProfilePage = true;
+  }
+
+  editProfile(){
+    
+  }
 }

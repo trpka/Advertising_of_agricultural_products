@@ -1,5 +1,7 @@
 package com.example.diplomskibackend.model;
 
+import org.apache.el.lang.ELArithmetic;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -19,19 +21,24 @@ public class Advertisement {
     private String image;
     @Column
     private LocalDateTime date;
+    @Column
+    private Long duration;
+    @Column
+    private Boolean enable;
     @ManyToOne
     private Company company;
 
     public Advertisement() {
     }
 
-    public Advertisement(Long id, String title, String text, Float price, String image, LocalDateTime date, Company company) {
-        this.id = id;
+    public Advertisement(String title, String text, Float price, String image, LocalDateTime date,Long duration, Boolean enable,  Company company) {
         this.title = title;
         this.text = text;
         this.price = price;
         this.image = image;
         this.date = date;
+        this.duration = duration;
+        this.enable = enable;
         this.company = company;
     }
 
@@ -89,5 +96,21 @@ public class Advertisement {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Long duration) {
+        this.duration = duration;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 }

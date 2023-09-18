@@ -23,7 +23,7 @@
   </div>
 </div> -->
 
-
+<!-- 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -47,7 +47,98 @@
   </div>
   <div class="col-sm-2">
   </div>
+</div> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8">
+<div class="center rounded bg-white mt-5 mb-5"  *ngIf="enableProfilePage" >
+  <div class="row" >
+    <div class="col-md-4 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+          width="300px"
+          src="assets/images/man.jpg"><span
+          class="font-weight-bold"></span><span
+          class="text-black-50"></span><span> </span>
+      </div>
+    </div>
+    <div class="col-md-7 border-right">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Profil informacije:</h4>
+          <button class="btn btn-secondary" style="margin: 5px;width: 150px;" (click)="go_to_edit_profile()">Izmeni profil</button>
+          <button class="btn btn-secondary" style="margin: 5px;width: 150px;" (click)="to_to_change_password()">Izmeni lozinku</button>
+          <!-- <button style="margin: 5px;" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="go_to_edit_profile()">
+            <mat-icon class="icon-display">mode_edit</mat-icon>
+          </button>
+          <button  style="margin: 5px;" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="to_to_change_password()">
+            <mat-icon class="icon-display">key</mat-icon>
+          </button> -->
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6"><label class="labels">Ime</label>
+            <p>{{registeredUser.firstName1}}</p>
+          </div>
+          <div class="col-md-6"><label class="labels">Prezime</label>
+            <p>{{registeredUser.lastName1}}</p>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12"><label class="labels">Korisničko ime</label>
+            <p>{{registeredUser.username}}</p>
+          </div>
+          <div class="col-md-12"><label class="labels">Email</label>
+            <p>{{registeredUser.email}}</p>
+          </div>
+          <div class="col-md-12"><label class="labels">Broj telefona</label>
+            <p>{{registeredUser.mobile}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="center rounded bg-white mt-5 mb-5"  *ngIf="enableEditPage" >
+  <div class="row" >
+    <div class="col-md-4 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+          width="300px"
+          src="assets/images/man.jpg"><span
+          class="font-weight-bold"></span><span
+          class="text-black-50"></span><span> </span>
+      </div>
+    </div>
+    <div class="col-md-7 border-right">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Izmeni informacije sa profila:</h4>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6"><label class="labels">Ime</label>
+            <input style="width: 340px;" name="firstName" id="firstName" [(ngModel)]="registeredUser.firstName1">
+          </div>
+          <div class="col-md-6"><label class="labels">Prezime</label>
+            <input style="width: 340px;" name="lastName" id="lastName" [(ngModel)]="registeredUser.lastName1">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12"><label class="labels">Korisničko ime</label>
+            <input style="width: 700px;" name="username" id="username" [(ngModel)]="registeredUser.username" disabled="true;">
+          </div>
+          <div class="col-md-12"><label class="labels">Email</label>
+            <input style="width: 700px; background-color: white;" name="email" id="email" [(ngModel)]="registeredUser.email" >
+          </div>
+          <div class="col-md-12"><label class="labels">Broj telefona</label>
+            <input style="width: 700px;" name="mobile" id="mobile" [(ngModel)]="registeredUser.mobile">
+          </div>
+          <button id="center" style="margin-top: 10px; width: 200px; height: 50px;" mat-raised-button color="primary" (click)="editProfile()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button mat-stroked-button color="primary" (click)="backToProfileInfo()"><mat-icon class="icon-display">keyboard_return</mat-icon></button>
 </div>
-
-
+</div>
+<div class="col-sm-2">
+</div>
 

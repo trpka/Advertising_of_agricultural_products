@@ -25,6 +25,8 @@ public class AnnouncementDTO {
 
     private String mobileNumber;
 
+    private Boolean enable;
+
     private Long registeredUserId;
 
     private ProductDTO productDTO;
@@ -126,6 +128,14 @@ public class AnnouncementDTO {
         this.companyId = companyId;
     }
 
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
+    }
+
     public AnnouncementDTO() {
     }
 
@@ -139,6 +149,7 @@ public class AnnouncementDTO {
         this.quantity = announcement.getQuantity();
         this.city = announcement.getCity();
         this.mobileNumber = announcement.getMobileNumber();
+        this.enable = announcement.getEnable();
         if(announcement.getRegisteredUser()!=null)
         {
             this.registeredUserId = announcement.getRegisteredUser().getId();

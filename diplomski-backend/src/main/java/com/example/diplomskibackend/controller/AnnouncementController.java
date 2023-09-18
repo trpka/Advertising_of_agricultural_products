@@ -58,6 +58,15 @@ public class AnnouncementController {
         return new ResponseEntity<>(terms, HttpStatus.OK);
     }
 
+    @RequestMapping(value="api/announcements-requests",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<AnnouncementDTO>> findAllRequest()
+    {
+        List<Announcement> announcements= this.announcementService.findAllRequest();
+        List<AnnouncementDTO> announcements1 = this.announcementService.convert(announcements);
+        return new ResponseEntity<>(announcements1, HttpStatus.OK);
+    }
+
     //Metoda koja vraca sve oglase vezane za mehanizaciju
     @RequestMapping(value="api/announcements/mechanization",method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
@@ -116,6 +125,15 @@ public class AnnouncementController {
         //Page<Item> items=itemService.findAll(pageable);
         AnnouncementPageDTO announcementPageDTO =new AnnouncementPageDTO(this.announcementService.convert(mechanizationAnnouncements.getContent()), mechanizationAnnouncements.isLast());
         return new ResponseEntity<>(announcementPageDTO,HttpStatus.OK);
+    }
+
+    @RequestMapping(value="api/announcements/registered-user", method = RequestMethod.GET,
+            params = "registeredUserId",
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<List<AnnouncementDTO>>  findAllAnnouncementsOfASingleRegisteredUser(@RequestParam Long registeredUserId){
+        List<Announcement> announcements= this.announcementService.findAllAnnouncementsOfASingleRegisteredUser(registeredUserId);
+        List<AnnouncementDTO> announcementDTOS = this.announcementService.convert(announcements);
+        return new ResponseEntity<>(announcementDTOS,HttpStatus.OK);
     }
 
 

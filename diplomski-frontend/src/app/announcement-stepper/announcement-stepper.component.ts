@@ -52,6 +52,7 @@ export class AnnouncementStepperComponent implements OnInit {
           quantity : 0,
           city : "",
           mobileNumber : "",
+          enable:false,
           registeredUserId : 0,
           companyId:0,
           productDTO : new ProductDTO({

@@ -5,7 +5,9 @@
 
 
 .custom-toolbar {
-  background-color: #b3b3cc; /* Replace with your desired color */
-  color: #ffffff; /* Replace with your desired text color */
+  position: fixed;
+  background-color: #b3b3cc; 
+  color: #ffffff;
   width: 100%;
+  z-index: 1;
 }
