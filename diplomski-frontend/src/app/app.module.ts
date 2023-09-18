@@ -11,6 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +34,10 @@ import { ConfirmRegistrationRegisteredUserComponent } from './confirm-registrati
 import { CustomerSupportComponent } from './customer-support/customer-support.component';
 import { ChatComponent } from './chat/chat.component';
 import { MessageComponent } from './message/message.component';
+import { ShoppingBasketComponent } from './shopping-basket/shopping-basket.component';
+import { AdvertisingRequestComponent } from './advertising-request/advertising-request.component';
+import { RequestsForPostingAnnouncementsComponent } from './requests-for-posting-announcements/requests-for-posting-announcements.component';
+import { MyAnnouncementsComponent } from './my-announcements/my-announcements.component';
 
 
 @NgModule({
@@ -51,7 +58,11 @@ import { MessageComponent } from './message/message.component';
     ConfirmRegistrationRegisteredUserComponent,
     CustomerSupportComponent,
     ChatComponent,
-    MessageComponent
+    MessageComponent,
+    ShoppingBasketComponent,
+    AdvertisingRequestComponent,
+    RequestsForPostingAnnouncementsComponent,
+    MyAnnouncementsComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +79,10 @@ import { MessageComponent } from './message/message.component';
     MatButtonModule,
     MatButtonToggleModule,
     MatStepperModule,
-    MatInputModule
+    MatInputModule, 
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

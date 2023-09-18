@@ -10,6 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class AdvertisementComponent implements OnInit {
 
   advertisement:Advertisement;
+  advertisements: Advertisement[];
+  length:number;
+  randNum:number;
 
   constructor(private advertisementService:AdvertisementService) {
     this.advertisement=new Advertisement(
@@ -19,17 +22,34 @@ export class AdvertisementComponent implements OnInit {
         text : "",
         price : 0,
         image : "",
-        date : new Date()
+        date : new Date(),
+        duration:0, 
+        enable: false,
+        companyId: 0
       });
   }
 
   ngOnInit(): void {
-    this.loadAdvertisement()
+    this.advertisementService.getAll()
+    .subscribe(res => {this.advertisements = res;
+    
+    this.length = this.advertisements.length;
+    this.randNum = this.randomIntFromInterval(1,this.length);
+
+    this.loadAdvertisement(this.randNum);
+    console.log("radim")
+    })
+   
   }
 
-  loadAdvertisement()
+  randomIntFromInterval(min:number,max:number) { 
+    
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
+  loadAdvertisement(num:number)
   {
-    this.advertisementService.getOne(1)
+    this.advertisementService.getOne(num)
     .subscribe(res => this.advertisement = res)
   }
 

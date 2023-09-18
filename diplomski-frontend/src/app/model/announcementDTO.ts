@@ -10,6 +10,7 @@ interface AnnouncementDTOInterface{
   quantity: number;
   city:string;
   mobileNumber:string;
+  enable:boolean;
   registeredUserId: number;
   //productId: number;
   productDTO: ProductDTO;
@@ -25,6 +26,7 @@ export class AnnouncementDTO implements AnnouncementDTOInterface{
   quantity: number;
   city:string;
   mobileNumber:string;
+  enable:boolean;
   registeredUserId: number;
   //productId: number;
   productDTO: ProductDTO;
@@ -39,6 +41,7 @@ export class AnnouncementDTO implements AnnouncementDTOInterface{
       this.quantity=obj.quantity;
       this.city = obj.city;
       this.mobileNumber=obj.mobileNumber;
+      this.enable=obj.enable;
       this.registeredUserId = obj.registeredUserId;
       //this.productId = obj.productId;
       this.productDTO = obj.productDTO;

@@ -1,5 +1,4 @@
-<mat-toolbar class="custom-toolbar">
-    <!-- <span><mat-icon>eco</mat-icon>Blood transfusion center</span>-->
+<!-- <mat-toolbar class="custom-toolbar">
      
      <div class = "spacer"></div>
     
@@ -7,10 +6,69 @@
      <a mat-button routerLink="">Početna</a>
      <a mat-button routerLink="profile-registered-user">Profil</a>
      <a mat-raised-button color="white" routerLink="publication-announcement">Dodaj oglas</a>
+     &nbsp; &nbsp;
+     
+     <div class="shopping-basket">
+        <p style="font-size: 16px">Korpa</p>
+        <i class="fa fa-shopping-basket"></i>
+        <span class="badge">2</span>
+    </div>
 
 
     
-    </mat-toolbar>
+    </mat-toolbar> -->
 
+    <mat-toolbar class="custom-toolbar"  *ngIf="registeredUserService.isRegisteredUserLoggedIn()">
+        <div class="spacer"></div>
+
+        <a mat-button routerLink="">Početna</a>
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="profile-registered-user">Profil</button>
+          <button mat-menu-item routerLink="my-announcements">Moji oglasi</button>
+          <button mat-menu-item routerLink="advertisement-request">Zahteve za reklamiranje</button>
+          <button mat-menu-item routerLink="customer-support">Korisnička podrška</button>
+        </mat-menu>
+              
+        <div class="shopping-basket">
+          <a mat-button routerLink="shopping-cart">
+            Korpa&nbsp;
+            <i class="fa fa-shopping-basket fa-lg"></i>
+            <span class="badge large-badge">{{ numberOfAnnouncementsInBasket}}</span>
+            
+          </a>
+        </div>
+        <a mat-raised-button color="white" routerLink="publication-announcement">Dodaj oglas</a>
+        <a mat-button (click)="logOut()">Odjavite se</a>
+      </mat-toolbar>
+
+      <mat-toolbar class="custom-toolbar"  *ngIf="adminService.isAdminLoggedIn()">
+        <div class="spacer"></div>
+
+        <button mat-button [matMenuTriggerFor]="menu">MenuAdmin</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="profile-registered-user">Profil</button>
+          <button mat-menu-item routerLink="requests-for-posting-announcements">Zahtevi za oglašavanje</button>
+        </mat-menu>
+              
+        <a mat-button routerLink="">Početna</a>
+        <a mat-raised-button color="white" routerLink="publication-announcement">Dodaj oglas</a>
+       
+        <a mat-button (click)="logOut()">Odjavite se</a>
+      </mat-toolbar>
+
+      <mat-toolbar class="custom-toolbar" *ngIf="companyService.isCompanyLoggedIn()">
+        <div class="spacer"></div>
+
+        <button mat-button [matMenuTriggerFor]="menu">MenuCompany</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="profile-registered-user">Profil</button>
+        </mat-menu>
+              
+        <a mat-button routerLink="">Početna</a>
+        <a mat-raised-button color="white" routerLink="publication-announcement">Dodaj oglas</a>
+       
+        <a mat-button (click)="logOut()">Odjavite se</a>
+      </mat-toolbar>
       
     

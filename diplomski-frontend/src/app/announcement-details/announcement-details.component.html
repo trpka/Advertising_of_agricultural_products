@@ -4,7 +4,7 @@
 
   <div class="col-sm-2" >
     <div class="sticky1">
-      <h3>Reklama:</h3>
+      <h4>Reklama:</h4>
     <app-advertisement></app-advertisement>
   </div>
   </div>
@@ -29,13 +29,15 @@
     <mat-card-content>
       <h2>Cena: {{announcement.price}}</h2>
     </mat-card-content>
+
+    <button class="btn btn-success" *ngIf="loginService.isUserLoggedIn()" (click)="addIntoBasket()">Dodaj u korpu</button>
     </mat-card>
 
 
   </div>
   <div class="col-sm-2">
     <div class="sticky">
-      <h3>Reklama:</h3>
+      <h4>Reklama:</h4>
     <app-advertisement></app-advertisement>
   </div>
   </div>

@@ -18,6 +18,7 @@ mat-card img{
 }
 
 .col-sm-2 {
+  top: 30px;
   /* margin: auto;
   width: 50%;
   padding: 10px;
@@ -25,6 +26,9 @@ mat-card img{
   background-color: #C1E1C1;
 }
 
+.col-sm-8 {
+  top: 30px;
+ }
 
 .gore {
   position: absolute;
@@ -38,7 +42,7 @@ mat-card img{
 
 
 
-h3{
+h4{
   text-align: right;
 }
 
@@ -46,7 +50,7 @@ h3{
 {
     margin: auto;
     position:fixed;
-    top:300px;
+    top:200px;
 }
 
 .sticky1
@@ -54,7 +58,7 @@ h3{
     margin: auto;
     margin-left: 3px;
     position:fixed;
-    top:300px;
+    top:200px;
 }
 
 .container  {

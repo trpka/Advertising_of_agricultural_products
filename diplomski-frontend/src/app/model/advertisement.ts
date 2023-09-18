@@ -5,7 +5,9 @@ interface AdvertisementInterface{
   price: number ;
   image: string;
   date: Date;
-  //company : Company;
+  duration: number;
+  enable:boolean;
+  companyId : number;
 
 }
 export class Advertisement implements AdvertisementInterface{
@@ -15,6 +17,9 @@ export class Advertisement implements AdvertisementInterface{
   price: number ;
   image: string;
   date: Date;
+  duration: number;
+  enable:boolean;
+  companyId : number;
 
   constructor(obj:AdvertisementInterface){
       this.id=obj.id;
@@ -23,5 +28,8 @@ export class Advertisement implements AdvertisementInterface{
       this.price = obj.price;
       this.image=obj.image;
       this.date=obj.date;
+      this.duration=obj.duration;
+      this.enable=obj.enable;
+      this.companyId=obj.companyId;
   }
 }

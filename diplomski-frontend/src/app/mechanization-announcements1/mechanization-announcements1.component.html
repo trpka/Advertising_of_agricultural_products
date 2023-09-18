@@ -7,7 +7,7 @@
  
     </div>
     <div class="sticky1">
-      <h3>Reklama:</h3>
+      <h4>Reklama:</h4>
     <app-advertisement></app-advertisement>
   </div>
   <div class="dole">
@@ -39,7 +39,7 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-3">
       <label>Sortiraj:&nbsp;&nbsp;</label>
       <mat-form-field>
         <mat-label>Sortiraj</mat-label>
@@ -50,7 +50,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-5">
     <label>Izaberite grad:&nbsp;&nbsp;</label>
     <mat-form-field>
       <mat-label>Grad</mat-label>
@@ -88,7 +88,7 @@
       </mat-select>
     </mat-form-field>
     <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-    <button class="btn btn-success" (click)="applyFilter()">Filtriraj</button>
+    <button class="btn btn-secondary" style="width: 150px;"(click)="applyFilter()">Filtriraj</button>
     </div>
 
       <!-- <div class="col-sm-6">
@@ -124,19 +124,19 @@
     </div>
 
     <div class="col-md" id="size" style="margin-left: 425px">
-      <button class="btn" (click)="previousPage()" [disabled]="page == 0"> << Prethodna strana</button>
-      <select [(ngModel)]="size" (change)="changePageSize()"> 
+      <button class="btn btn-secondary" style="width: 170px;" (click)="previousPage()" [disabled]="page == 0"><< Prethodna strana</button>
+      <select [(ngModel)]="size" (change)="changePageSize()" style="color: black;"> 
           <option value="5">5</option>
           <option value="10">10</option>
       </select>
-      <button class="btn" (click)="nextPage()" [disabled]="last">Sledeća strana >> </button>
+      <button class="btn btn-secondary" style="width: 170px;" (click)="nextPage()" [disabled]="last">Sledeća strana >></button>
       <br/>
   </div>
   
   </div>
   <div class="col-sm-2">
     <div class="sticky">
-      <h3>Reklama:</h3>
+      <h4>Reklama:</h4>
     <app-advertisement></app-advertisement>
   </div>
   </div>

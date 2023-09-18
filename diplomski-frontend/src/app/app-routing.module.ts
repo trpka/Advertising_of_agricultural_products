@@ -10,6 +10,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ConfirmRegistrationRegisteredUserComponent } from './confirm-registration-registered-user/confirm-registration-registered-user.component';
 import { CustomerSupportComponent } from './customer-support/customer-support.component';
 import { ChatComponent } from './chat/chat.component';
+import { ShoppingBasketComponent } from './shopping-basket/shopping-basket.component';
+import { AdvertisingRequestComponent } from './advertising-request/advertising-request.component';
+import { RequestsForPostingAnnouncementsComponent } from './requests-for-posting-announcements/requests-for-posting-announcements.component';
+import { MyAnnouncementsComponent } from './my-announcements/my-announcements.component';
 
 const routes: Routes = [
   {path: '', component:Home1Component},
@@ -21,7 +25,12 @@ const routes: Routes = [
   {path: 'confirm-registration/:id', component:  ConfirmRegistrationRegisteredUserComponent},
   {path: 'publication-announcement', component:AnnouncementStepperComponent},
   {path: 'customer-support', component:CustomerSupportComponent},
-  {path: 'chat', component:ChatComponent}
+  {path: 'chat', component:ChatComponent},
+  {path: 'shopping-basket', component:ShoppingBasketComponent},
+  {path: 'advertisement-request', component:AdvertisingRequestComponent},
+  {path: 'requests-for-posting-announcements', component:RequestsForPostingAnnouncementsComponent},
+  {path: 'my-announcements', component:MyAnnouncementsComponent}
+  
 
 
 ];

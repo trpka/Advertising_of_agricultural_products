@@ -254,5 +254,29 @@ public class AnnouncementService {
             return announcementDTOS;
     }
 
+    public List<Announcement> findAllRequest(){
+        List<Announcement> announcements = this.announcementRepository.findAll();
+        List<Announcement> foundedAnnouncements = new ArrayList<>();
+        for(Announcement announcement:announcements){
+            if(announcement.getEnable().equals(false)){
+                foundedAnnouncements.add(announcement);
+            }
+        }
+        return foundedAnnouncements;
+    }
 
+    public List<Announcement> findAllAnnouncementsOfASingleRegisteredUser(Long registeredUserId){
+        List<Announcement> announcements = this.announcementRepository.findAll();
+        List<Announcement> foundedAnnouncements = new ArrayList<>();
+
+        for(Announcement announcement: announcements){
+            if(announcement.getRegisteredUser() != null){
+                if(announcement.getRegisteredUser().getId().equals(registeredUserId)){
+                    foundedAnnouncements.add(announcement);
+                }
+            }
+
+        }
+        return foundedAnnouncements;
+    }
 }

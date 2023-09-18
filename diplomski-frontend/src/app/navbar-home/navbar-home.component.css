@@ -1,12 +1,45 @@
-.spacer{
+/* .spacer{
     flex: 1 1 auto;
   }
   
   
   
   .custom-toolbar {
-    background-color: #b3b3cc; /* Replace with your desired color */
-    color: #ffffff; /* Replace with your desired text color */
+    background-color: #b3b3cc; 
+    color: #ffffff; 
     width: 100%;
+  } */
+  
+  .spacer {
+    flex: 1;
+  }
+  
+  .custom-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #b3b3cc;
+    color: #ffffff;
+    width: 100%;
+  }
+  
+  .shopping-basket {
+    display: flex;
+    align-items: center;
+  }
+  
+  .shopping-basket a {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .shopping-basket i {
+    margin-right: 5px; /* Adjust the margin as needed */
+  }
+
+  .large-badge {
+    font-size: 15px; /* Adjust the font size as needed */
   }
   

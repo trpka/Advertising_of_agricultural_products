@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<div class="row">
+<div class="row" *ngIf="shoppingBasketIsActive">
 
-  <div class="col-sm-2" >
+  <div class="col-sm-2">
     <div class="sticky1">
-      <h3>Reklama:</h3>
+      <h4>Reklama:</h4>
     <app-advertisement></app-advertisement>
   </div>
   </div>
@@ -43,8 +43,50 @@
   </div>
   <div class="col-sm-2">
     <div class="sticky">
-      <h3>Reklama:</h3>
+      <h4>Reklama:</h4>
     <app-advertisement></app-advertisement>
   </div>
   </div>
 </div>
+
+
+<div class="row" *ngIf="!shoppingBasketIsActive">
+  <div class="col-sm-8">
+    <div class="row ">
+      <div class="col-md-0 offset-md-0" >
+        <img src="assets/images/main.jpg" width="1289" height="450" >
+      </div>
+    </div>
+    <label>&nbsp;</label>
+    <div class="row align-items-center">
+      <div class="col">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <label>Oglasi za poljoprivrednu mehanizaciju</label>
+          <br>
+          <input type="image" src="/assets/images/masine.png" style="border: double;"  height="80" width="100" (click)="goToMechanization()">
+        </div>
+      </div>
+      <div class="col">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+        <label>Oglasi za pojoprivredne proizvode</label>
+
+          <input type="image" src="/assets/images/poljo_proizvodi.png" style="border: double;" height="80" width="100" (click)="goToProducts()"/>
+        </div>
+      </div>
+      <div class="col">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+        <label>Oglasi za pojoprivredne materijale</label>
+
+        <input type="image" src="/assets/images/materijali.png" style="border: double;" height="80" width="100" (click)="goToMaterials()"/>
+      </div>
+      </div>
+    </div>
+    <label>&nbsp;</label>
+    <h2 align="center">Najnoviji oglasi: </h2>
+    <app-announcements-recent></app-announcements-recent>
+  </div>
+  
+  <div class="col-sm-4">
+   <app-shopping-basket></app-shopping-basket>
+  </div>
+</div> 

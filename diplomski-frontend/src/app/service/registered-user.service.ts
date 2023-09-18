@@ -24,4 +24,11 @@ export class RegisteredUserService {
     return this.http.get<RegisteredUser>(`${this.url1}/${id}`);
   }
 
+  isRegisteredUserLoggedIn(){
+    let role = sessionStorage.getItem("role");
+    if(role == "RegisteredUser"){
+      return true;
+    }
+    return false;
+  }
 }

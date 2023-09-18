@@ -1,0 +1,38 @@
+.center {
+  text-align: center;
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 18px;
+}
+
+mat-form-field{
+  font-size: 14px; /* Adjust the font size as per your preference */
+  padding: 6px 10px; /* Adjust padding to increase/decrease input size */
+  width: 35%;
+
+}
+
+
+.col-sm-2 {
+  top: 64px;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  height: 874px;
+  background-color: #C1E1C1;
+}
+
+.col-sm-8 {
+  top: 64px;
+  margin: auto;
+  margin-top: 30px;
+  width: 50%;
+  padding: 10px;
+  /* height: 874px;
+  background-color: #C1E1C1; */
+}

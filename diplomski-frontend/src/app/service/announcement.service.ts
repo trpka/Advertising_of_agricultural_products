@@ -29,6 +29,11 @@ export class AnnouncementService {
     return this.http.get<AnnouncementDTO[]>(this.url);
   }
 
+  getAllRequests():Observable<AnnouncementDTO[]>
+  {
+    return this.http.get<AnnouncementDTO[]>(this.url + "-requests");
+  }
+
   getRecentAnnouncements():Observable<AnnouncementDTO[]>
   {
     return this.http.get<AnnouncementDTO[]>(this.url  + "-recent");
@@ -67,4 +72,9 @@ export class AnnouncementService {
 
     return this.http.get<AnnouncementPage>(this.url + "/mech", { params });
   } 
+
+  getAllAnnouncementsOfASingleRegisteredUser(registeredUserId:number):Observable<AnnouncementDTO[]>{
+    const params:HttpParams=new HttpParams().append('registeredUserId',registeredUserId);
+    return this.http.get<AnnouncementDTO[]>(this.url + "/registered-user",{params});
+  }
 }
