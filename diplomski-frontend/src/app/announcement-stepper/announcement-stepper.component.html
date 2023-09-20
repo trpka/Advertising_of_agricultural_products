@@ -7,17 +7,17 @@
   <div class="col-sm-8">
     <!-- <div>&nbsp;</div> -->
 
-    <button mat-raised-button (click)="isEditable = !isEditable" style="margin-bottom: 50px;">
+    <!-- <button mat-raised-button (click)="isEditable = !isEditable" style="margin-bottom: 50px;">
       {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
-    </button>
+    </button> -->
 
     <mat-stepper class="center" linear #stepper>
-      <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <mat-step [stepControl]="firstFormGroup" >
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Izaberi kategorije</ng-template>
           <mat-form-field>
             <mat-label>Šta se oglašava?</mat-label>
-            <input matInput [(ngModel)]="this.announcementDTO.productDTO.name"  formControlName="firstCtrl" placeholder="Traktor, Prikolica"   required>
+            <input matInput [(ngModel)]="this.announcementDTO.productDTO.name"  formControlName="firstCtrl" placeholder="Traktor, Prikolica"   >
           </mat-form-field>
           <div>
             &nbsp;
@@ -51,12 +51,12 @@
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+      <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>Unos oglasa</ng-template>
           <mat-form-field>
             <mat-label>Naslov</mat-label>
-            <input matInput [(ngModel)]="this.announcementDTO.title"  formControlName="secondCtrl" placeholder="Polovna prikolica, Sveže paprike" required>
+            <input matInput [(ngModel)]="this.announcementDTO.title"  formControlName="secondCtrl" placeholder="Polovna prikolica, Sveže paprike" >
           </mat-form-field>
           <div>
             &nbsp;
@@ -130,17 +130,20 @@
             </div>
 
             <input id="image" type="file" (change)="onFileChanged($event)">
-            <button id="upload_button" class="btn btn-success" (click)="onUpload()">Dodaj</button>
+            <button id="upload_button"class="btn btn-secondary"  style="width: 150px;" (click)="onUpload()">Dodaj sliku</button>
 
             <div>
               &nbsp;
             </div>
 
-            <button id="upload_button" class="btn btn-success" (click)="save()">Sacuvaj</button>
+            <button id="upload_button"class="btn btn-secondary"  style="width: 150px;" (click)="save()">Objavi oglas</button>
+
+            <div>
+              &nbsp;
+            </div>
 
           <div>
             <button mat-button matStepperPrevious>Nazad</button>
-            <button mat-button matStepperNext>Dalje</button>
           </div>
         </form>
       </mat-step>

@@ -55,13 +55,16 @@ public class AnnouncementService {
 
     public List<AnnouncementDTO>  findRecentAnnouncements() {
         List<Announcement> announcements = this.announcementRepository.findByOrderByDateDesc();
-        List<Announcement> announcements1 = announcements.subList(0, 12);
+
         List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
-        for(Announcement announcement: announcements1){
-            AnnouncementDTO announcementDTO = new AnnouncementDTO(announcement);
-            announcementDTOS.add(announcementDTO);
+        for(Announcement announcement: announcements){
+            if(announcement.getEnable() == true){
+                AnnouncementDTO announcementDTO = new AnnouncementDTO(announcement);
+                announcementDTOS.add(announcementDTO);
+            }
         }
-        return announcementDTOS;
+        List<AnnouncementDTO> announcementDTOS1 = announcementDTOS.subList(0, 12);
+        return announcementDTOS1;
     }
 
 
@@ -231,6 +234,7 @@ public class AnnouncementService {
         announcement.setRegisteredUser(registeredUser);
         announcement.setMobileNumber(registeredUser.getMobile());
         announcement.setCity(announcementDTO.getCity());
+        announcement.setEnable(announcementDTO.getEnable());
         announcement.setProduct(product);
 
 
@@ -272,7 +276,9 @@ public class AnnouncementService {
         for(Announcement announcement: announcements){
             if(announcement.getRegisteredUser() != null){
                 if(announcement.getRegisteredUser().getId().equals(registeredUserId)){
-                    foundedAnnouncements.add(announcement);
+                    if(announcement.getEnable() == true){
+                        foundedAnnouncements.add(announcement);
+                    }
                 }
             }
 

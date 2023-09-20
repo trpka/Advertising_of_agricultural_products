@@ -4,8 +4,10 @@ package com.example.diplomskibackend.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.diplomskibackend.dto.CompanyAddressDTO;
 import com.example.diplomskibackend.dto.RegisteredUserDTO;
-import com.example.diplomskibackend.model.RegisteredUser;
+import com.example.diplomskibackend.model.*;
+import com.example.diplomskibackend.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,8 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.diplomskibackend.dto.UserDTO;
-import com.example.diplomskibackend.model.Authority;
-import com.example.diplomskibackend.model.User;
 import com.example.diplomskibackend.repository.UserRepository;
 
 
@@ -25,6 +25,9 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
+    private AddressRepository addressRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -32,6 +35,9 @@ public class UserService {
 
     @Autowired
     private RegisteredUserService registeredUserService;
+
+    @Autowired
+    private CompanyService companyService;
 
 
     public User findByUsername(String username) throws UsernameNotFoundException {
@@ -89,6 +95,37 @@ public class UserService {
 
         System.out.println("id iz userService"+ u.getId());
         return u;
+    }
+
+    public User signUpCompany(CompanyAddressDTO companyAddressDTO){
+
+        Address address = new Address();
+
+        address.setCity(companyAddressDTO.getAddress().getCity());
+        address.setStreet(companyAddressDTO.getAddress().getStreet());
+        address.setZipCode(companyAddressDTO.getAddress().getZipCode());
+        address.setCountry("Serbia");
+        this.addressRepository.save(address);
+
+        User user = new User();
+        user.setUsername(companyAddressDTO.getCompanyDTO().getUsername());
+        user.setPassword(passwordEncoder.encode(companyAddressDTO.getCompanyDTO().getPassword()));
+        user.setEnabled(false);
+        user.setEmail(companyAddressDTO.getCompanyDTO().getEmail());
+        user.setMobile(companyAddressDTO.getCompanyDTO().getMobile());
+        user.setRole(companyAddressDTO.getCompanyDTO().getRole());
+        List<Authority> authorities=new ArrayList<>();
+
+        Company newCompany = new Company();
+
+        if(user.getRole().equalsIgnoreCase("Company")) {
+            authorities = authorityService.findByName("ROLE_COMPANY");
+            user.setAuthorities(authorities);
+            Company company=new Company(user.getUsername(),user.getPassword(),user.getEmail(),user.getMobile(),user.isEnabled(),user.getRole(),authorities,companyAddressDTO.getCompanyDTO().getName(),companyAddressDTO.getCompanyDTO().getRegNumOfCompany(),address);
+            newCompany=this.companyService.save(company);
+            user.setId(newCompany.getId());
+        }
+        return user;
     }
 
 }

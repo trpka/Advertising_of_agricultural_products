@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 import { RegisteredUser } from './../model/registeredUser';
 import { Component, OnInit } from '@angular/core';
@@ -11,8 +12,11 @@ export class RegistrationComponent implements OnInit {
 
   registeredUser: RegisteredUser;
   registrated = true;
+  password1:string;
+  password2:string;
+  passwordsAreNotEqual:boolean=false;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,  private router: Router) {
     this.registeredUser = new RegisteredUser({
       id:0,
       username: "",
@@ -34,10 +38,23 @@ export class RegistrationComponent implements OnInit {
 
   register(){
 
-    this.registeredUser.role = 'RegisteredUser';
-    this.userService.sendEmail(this.registeredUser)
-    .subscribe();
-    this.registrated = false;
+    if(this.password1 !== this.password2)
+    {
+      this.passwordsAreNotEqual = true;
+    }
+    else
+    {
+      this.registeredUser.role = 'RegisteredUser';
+      this.registeredUser.password = this.password1;
+      this.userService.sendEmail(this.registeredUser)
+      .subscribe();
+      this.registrated = false;
+    }
+    
+  }
+
+  registerCompany(){
+    this.router.navigate(['registration-company']);
   }
 
 }

@@ -30,3 +30,14 @@ mat-form-field{
   padding: 75px;
   border-radius: 10px;
 }
+
+
+label {
+	color: #ff0000;
+	/* margin-left: 400px; */
+}
+
+.dugme{
+  margin-top: 200px;
+  margin-left: 70px;
+}

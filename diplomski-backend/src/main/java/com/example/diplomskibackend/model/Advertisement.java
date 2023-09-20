@@ -20,9 +20,9 @@ public class Advertisement {
     @Column
     private String image;
     @Column
-    private LocalDateTime date;
+    private LocalDateTime startDate;
     @Column
-    private Long duration;
+    private LocalDateTime endDate;
     @Column
     private Boolean enable;
     @ManyToOne
@@ -31,16 +31,18 @@ public class Advertisement {
     public Advertisement() {
     }
 
-    public Advertisement(String title, String text, Float price, String image, LocalDateTime date,Long duration, Boolean enable,  Company company) {
+    public Advertisement(String title, String text, Float price, String image, LocalDateTime startDate,  LocalDateTime endDate, Boolean enable,  Company company) {
         this.title = title;
         this.text = text;
         this.price = price;
         this.image = image;
-        this.date = date;
-        this.duration = duration;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.enable = enable;
         this.company = company;
     }
+
+
 
     public Long getId() {
         return id;
@@ -74,12 +76,20 @@ public class Advertisement {
         this.price = price;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getStartDate() {
+        return startDate;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
     }
 
     public Company getCompany() {
@@ -96,14 +106,6 @@ public class Advertisement {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Long getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Long duration) {
-        this.duration = duration;
     }
 
     public Boolean getEnable() {

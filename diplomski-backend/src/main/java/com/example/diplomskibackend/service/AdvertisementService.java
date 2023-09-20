@@ -43,10 +43,10 @@ public class AdvertisementService {
         Company company = this.companyService.findById(advertisementDTO.getCompanyId());
 
         Advertisement advertisement = new Advertisement();
-        advertisement.setDuration(advertisementDTO.getDuration());
+        advertisement.setEndDate(advertisementDTO.getEndDate());
         advertisement.setEnable(advertisementDTO.getEnable());
         advertisement.setCompany(company);
-        advertisement.setDate(advertisementDTO.getDate());
+        advertisement.setStartDate(advertisementDTO.getStartDate());
         advertisement.setPrice(advertisementDTO.getPrice());
         advertisement.setTitle(advertisementDTO.getTitle());
         advertisement.setImage(advertisementDTO.getImage());

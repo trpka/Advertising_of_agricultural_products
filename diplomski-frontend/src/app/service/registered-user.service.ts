@@ -11,6 +11,9 @@ export class RegisteredUserService {
   url = "http://localhost:8081/api/registered-user";
   url1 = "http://localhost:8081/api/confirm-registration-register-user";
 
+  private enableProfilePage:boolean;
+  private enableEditPage:boolean=false;
+  private enableEditPassword:boolean=false;
   constructor( private http: HttpClient) {
 
   }
@@ -30,5 +33,33 @@ export class RegisteredUserService {
       return true;
     }
     return false;
+  }
+
+  updateRegisteredUser(regUser: RegisteredUser): Observable<RegisteredUser> {
+    return this.http.put<RegisteredUser>(this.url + '/update' ,regUser)
+  }
+
+  public getEnableProfilePage():boolean{
+    return this.enableProfilePage;
+  }
+
+  public setEnableProfilePage(val: boolean):void{
+    this.enableProfilePage = val;
+  }
+
+  public getEnableEditPage():boolean{
+    return this.enableEditPage;
+  }
+
+  public setEnableEditPage(val: boolean):void{
+    this.enableEditPage = val;
+  }
+
+  public getEnableEditPassword():boolean{
+    return this.enableEditPassword;
+  }
+
+  public setEnableEditPassword(val: boolean):void{
+    this.enableEditPassword = val;
   }
 }

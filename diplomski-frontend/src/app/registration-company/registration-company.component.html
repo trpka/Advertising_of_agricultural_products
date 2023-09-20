@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="row" *ngIf="registrated">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8" style="margin-top: -20px;">
+    <div class="center-content">
+      <div class="bordered-box">
+        <h1 class="mb-4 text-center">Registracija firme</h1>
+        <form>
+          <mat-form-field class="wide-input">
+            <mat-label>Naziv</mat-label>
+            <input matInput id="firstName1" name="firstName1" type="firstName1" [(ngModel)]="companyDTO.name" placeholder="Ime">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Matični broj firme</mat-label>
+            <input matInput id="lastName1" name="lastName1" type="lastName1" [(ngModel)]="companyDTO.regNumOfCompany" placeholder="Prezime">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Email</mat-label>
+            <input matInput id="email" name="email" type="email" [(ngModel)]="companyDTO.email" placeholder="Email">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Broj telefona</mat-label>
+            <input matInput id="mobile" name="mobile" type="mobile" [(ngModel)]="companyDTO.mobile" placeholder="Broj telefona">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Korisničko ima</mat-label>
+            <input matInput id="username" name="username" type="username" [(ngModel)]="companyDTO.username" placeholder="Korisničko ima">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Grad</mat-label>
+            <input matInput id="city" name="city" type="city" [(ngModel)]="address.city" placeholder="Grad">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Ulica</mat-label>
+            <input matInput id="street" name="street" type="street" [(ngModel)]="address.street" placeholder="Ulica">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Poštanski broj</mat-label>
+            <input matInput id="zipCode" name="zipCode" type="zipCode" [(ngModel)]="address.zipCode" placeholder="Poštanski broj">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Lozinka</mat-label>
+            <input matInput id="password" name="password" type="password" [(ngModel)]="password1" placeholder="Lozinka">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Potvrdite lozinku</mat-label>
+            <input matInput id="password2" name="password2" type="password" [(ngModel)]="password2" placeholder="Lozinka">
+          </mat-form-field>
+          <br>
+          <label *ngIf="passwordsAreNotEqual">&nbsp; Lozinke nisu iste. Pokušajte ponovo.</label>
+         
+          <div class="text-center">
+            <button type="submit" class="btn btn-secondary" style="width: 150px;" (click)="register()">
+              Registrujte se
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>

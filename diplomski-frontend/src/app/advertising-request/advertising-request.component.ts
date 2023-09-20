@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AnnouncementDTO } from '../model/announcementDTO';
 import { AdvertisementService } from '../service/advertisement.service';
 import { Advertisement } from '../model/advertisement';
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpAdvertisingRequestSentComponent } from '../pop-up-advertising-request-sent/pop-up-advertising-request-sent.component';
+
 
 @Component({
   selector: 'app-advertising-request',
@@ -13,7 +15,7 @@ import { Advertisement } from '../model/advertisement';
 export class AdvertisingRequestComponent implements OnInit {
 
   selectedFile: File;
-  isLinear = false;
+  isLinear:boolean = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   forma: FormGroup;
@@ -21,19 +23,30 @@ export class AdvertisingRequestComponent implements OnInit {
   fullSelectedPictures:string='';
   filePath : string = '';
   advertisement: Advertisement;
-  title: string;
-  duration: string;
+  title: string = "";
   dateForm: FormGroup;
+  dateForm1: FormGroup;
+  pricePerDay:number= 500;
+  totalPrice:number = 0;
+  numOfDays:number = 0;
 
  
   
-  constructor(private _formBuilder: FormBuilder,  private http: HttpClient, private advertisementService:AdvertisementService) {
+  constructor(private _formBuilder: FormBuilder,  private http: HttpClient, private advertisementService:AdvertisementService,private dialogRef: MatDialog) {
     this.dateForm = new FormGroup({
       selectedDate: new FormControl(),
     });
     this.dateForm = this._formBuilder.group({
       selectedDate: [null], // Define selectedDate control
       firstCtrl: [null, Validators.required], // Define firstCtrl control
+    });
+
+    this.dateForm1 = new FormGroup({
+      selectedDate: new FormControl(),
+    });
+    this.dateForm1 = this._formBuilder.group({
+      selectedDate: [null],
+      firstCtrl: [null, Validators.required], 
     });
     this.advertisement=new Advertisement(
       {
@@ -42,8 +55,8 @@ export class AdvertisingRequestComponent implements OnInit {
           text: "",
           price : 0,
           image: "",
-          date:new Date(),
-          duration:0,
+          startDate: new Date(),
+          endDate:new Date(),
           enable:false,
           companyId:0
         });
@@ -69,32 +82,36 @@ export class AdvertisingRequestComponent implements OnInit {
   onUpload() {
     if(this.selectedPictures==''){
       this.selectedPictures=this.selectedFile.name;
-      var path_picture="/assets/"+this.selectedFile.name;
+      var path_picture="/assets/advertisement/"+this.selectedFile.name;
       this.fullSelectedPictures=path_picture;
       this.filePath = path_picture.toString();
     }else{
       this.selectedPictures=this.selectedPictures+","+this.selectedFile.name;
-      var path_picture="/assets/"+this.selectedFile.name;
+      var path_picture="/assets/advertisement/"+this.selectedFile.name;
       this.fullSelectedPictures=this.fullSelectedPictures+','+ path_picture;
     }
     this.fullSelectedPictures
   }
 
+  calculatePrice(){
+     var Difference_In_Time = this.dateForm.get('selectedDate')?.value - this.dateForm1.get('selectedDate')?.value;
+     this.numOfDays = Difference_In_Time / (1000 * 3600 * 24)*(-1);
+     this.totalPrice = this.pricePerDay *   this.numOfDays;
+  }
+ 
 
   save(){
-   // const formValue = this.dateForm.value;
-   // console.log('Selected Date:', formValue.selectedDate);
     this.advertisement.companyId = 6;
-    this.advertisement.price = 400;
-    this.advertisement.date = this.dateForm.value.selectedDate;
+    this.advertisement.price =  this.totalPrice;
+    this.advertisement.startDate = this.dateForm.value.selectedDate;
+    this.advertisement.endDate = this.dateForm1.value.selectedDate;
     this.advertisement.image = this.filePath;
     this.advertisement.enable = false;
     this.advertisement.text = this.forma.controls['textareaCtrl'].value;
     this.advertisement.title = this.title;
-    this.advertisement.duration = Number(this.duration);
-    
     this.advertisementService.save(this.advertisement)
     .subscribe()
+    this.dialogRef.open(PopUpAdvertisingRequestSentComponent);
   }
 
 }

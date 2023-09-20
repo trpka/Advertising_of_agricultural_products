@@ -44,7 +44,7 @@ public class EmailService {
         mail.setTo(user.getEmail());
         mail.setFrom(env.getProperty("spring.mail.username"));
         mail.setSubject("Potvrdi svoju registarciju");
-        mail.setText("Pozdrav " + user.getUsername() +",\n Klikni te na naredni kod kako biste aktivirali svoj nalog"+"\n http://localhost:4200/confirm-registration/"+user.getId()+ "\n\nhvala što želiš da postaneš naš član");
+        mail.setText("Pozdrav " + user.getUsername() +",\n Kliknite na naredni kod kako biste aktivirali svoj nalog"+"\n http://localhost:4200/confirm-registration/"+user.getId()+ "\n\nHvala što želiš da postaneš naš član");
         javaMailSender.send(mail);
 
         System.out.println("Email poslat!");

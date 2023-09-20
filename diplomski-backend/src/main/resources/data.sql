@@ -16,6 +16,9 @@ insert into user_authority (user_id,authority_id) values (3,2);
 insert into user_authority (user_id,authority_id) values (4,2);
 insert into user_authority (user_id,authority_id) values (5,2);
 
+insert into admin(id, first_name, last_name)
+values (1, 'Jova', 'Jovic');
+
 insert into registered_user(id, first_name1, last_name1)
 values (2, 'Milos', 'Milic');
 
@@ -28,8 +31,12 @@ values (4, 'Milica', 'Jovanovic');
 insert into registered_user(id, first_name1, last_name1)
 values (5, 'Dejan', 'Ilic');
 
-insert into company(id, name, reg_num_of_company)
-values (6, 'Agrar', '8542243320');
+insert into address(id, city, country,street, zip_code)
+values (1, 'Novi Sad', 'Srbija', 'Miše Dimitrijevića 10','21000');
+
+
+insert into company(id, name, reg_num_of_company, address_id)
+values (6, 'Agrar', '8542243320', 1);
 
 
 insert into product(id, name, additional_description,picture,registered_user_id)
@@ -166,16 +173,16 @@ values (3,3);
 insert into registered_user_products(registered_user_id, products_id)
 values (2,4);
 
-insert into advertisement(id, title, text,price,date,duration, enable, image, company_id)
-values (1,'Akcija, 30% popusta', 'Savladajte sve vremenske uslove s našim gumama koje pružaju izvanredno prianjanje i kontrolu.Gume koje štede gorivo. Najbolje gume za traktore', 700, '2023-09-13 21:30:55.888', 10, true, '/assets/advertisement/continental-tires.jpg', 6);
-insert into advertisement(id, title, text,price,date,duration, enable, image, company_id)
-values (2,'Pravo vreme za kupovinu', 'Subvencije na priključne mašine, posetite nas i uverite se u vrhunski kvalitet poljoprivredne mehanizacije i traktora', 800, '2023-09-14 21:30:55.888', 8, true, '/assets/advertisement/subvencije-prikljucne-masine.jpg', 6);
-insert into advertisement(id, title, text,price,date,duration, enable, image, company_id)
-values (3,'Popusti na kupovinu taktora i mehanizacije', 'Velika akcija, opremite se za budućnost poljoprivrede s našim traktorima i mehanizacijom, sada dostupnim po najpovoljnijim cenama ikada!', 800, '2023-09-15 21:30:55.888', 7, true, '/assets/advertisement/tactor-puma.jpg', 6);
-insert into advertisement(id, title, text,price,date,duration, enable, image, company_id)
-values (4,'Zamena staro za novo', 'Kod nas imate mogućnost zamene starog za novo. Pilika koja se ne odbija. Čekamo Vas.', 800, '2023-09-10 21:30:55.888', 11, true, '/assets/advertisement/Staro-novo.jpg', 6);
-insert into advertisement(id, title, text,price,date,duration, enable, image, company_id)
-values (5,'Vrhunski kvalitet', 'Savršen alat za svakog poljoprivrednika - naš plug nudi izvanrednu izdržljivost i dugotrajnost.Nema više muka pri pripremi zemlje - uz naš plug, to će biti zadovoljstvo!', 800, '2023-09-10 21:30:55.888', 11, true, '/assets/advertisement/plug1.jpg', 6);
+insert into advertisement(id, title, text,price,start_date, end_date, enable, image, company_id)
+values (1,'Akcija, 30% popusta', 'Savladajte sve vremenske uslove s našim gumama koje pružaju izvanredno prianjanje i kontrolu.Gume koje štede gorivo. Najbolje gume za traktore', 700, '2023-09-13 21:30:55.888', '2023-11-30 21:30:55.888', true, '/assets/advertisement/continental-tires.jpg', 6);
+insert into advertisement(id, title, text,price,start_date, end_date, enable, image, company_id)
+values (2,'Pravo vreme za kupovinu', 'Subvencije na priključne mašine, posetite nas i uverite se u vrhunski kvalitet poljoprivredne mehanizacije i traktora', 800, '2023-09-14 21:30:55.888', '2023-12-10 21:30:55.888', true, '/assets/advertisement/subvencije-prikljucne-masine.jpg', 6);
+insert into advertisement(id, title, text,price,start_date, end_date, enable, image, company_id)
+values (3,'Popusti na kupovinu taktora i mehanizacije', 'Velika akcija, opremite se za budućnost poljoprivrede s našim traktorima i mehanizacijom, sada dostupnim po najpovoljnijim cenama ikada!', 800, '2023-09-15 21:30:55.888', '2023-11-29 21:30:55.888', true, '/assets/advertisement/tactor-puma.jpg', 6);
+insert into advertisement(id, title, text,price,start_date, end_date, enable, image, company_id)
+values (4,'Zamena staro za novo', 'Kod nas imate mogućnost zamene starog za novo. Pilika koja se ne odbija. Čekamo Vas.', 800, '2023-09-10 21:30:55.888', '2024-01-08 21:30:55.888', true, '/assets/advertisement/Staro-novo.jpg', 6);
+insert into advertisement(id, title, text,price,start_date, end_date, enable, image, company_id)
+values (5,'Vrhunski kvalitet', 'Savršen alat za svakog poljoprivrednika - naš plug nudi izvanrednu izdržljivost i dugotrajnost.Nema više muka pri pripremi zemlje - uz naš plug, to će biti zadovoljstvo!', 800, '2023-09-10 21:30:55.888', '2024-01-01 21:30:55.888', true, '/assets/advertisement/plug1.jpg', 6);
 
 
 

@@ -27,9 +27,9 @@ public class AdvertisementController {
     @RequestMapping(value="api/advertisement/{id}",method = RequestMethod.GET,produces=
             MediaType.APPLICATION_JSON_VALUE)
     //@PreAuthorize("hasRole('OWNER')")
-    public ResponseEntity<Advertisement> getById(@PathVariable Long id){
+    public ResponseEntity<AdvertisementDTO> getById(@PathVariable Long id){
         Advertisement advertisement =this.advertisementService.findById(id);
-        return new ResponseEntity<>(advertisement, HttpStatus.OK);
+        return new ResponseEntity<>(new AdvertisementDTO(advertisement), HttpStatus.OK);
     }
 
     @RequestMapping(value="api/advertisement/save",method = RequestMethod.POST,

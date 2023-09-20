@@ -1,11 +1,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <div class="row" *ngIf="registrated">
   <div class="col-sm-2">
+    <div class="dugme">
+    </div>
   </div>
   <div class="col-sm-8" style="margin-top: -20px;">
     <div class="center-content">
       <div class="bordered-box">
-        <h1 class="mb-4 text-center">Registrujte se</h1>
+        <h1 class="mb-4 text-center">Registracija korisnika</h1>
         <form>
           <mat-form-field class="wide-input">
             <mat-label>Ime</mat-label>
@@ -23,24 +25,35 @@
           </mat-form-field>
           <br>
           <mat-form-field class="wide-input">
-            <mat-label>Mobile</mat-label>
-            <input matInput id="mobile" name="mobile" type="mobile" [(ngModel)]="registeredUser.mobile" placeholder="Mobile">
+            <mat-label>Broj telefona</mat-label>
+            <input matInput id="mobile" name="mobile" type="mobile" [(ngModel)]="registeredUser.mobile" placeholder="Broj telefona">
           </mat-form-field>
           <br>
           <mat-form-field class="wide-input">
-            <mat-label>Username</mat-label>
-            <input matInput id="username" name="username" type="username" [(ngModel)]="registeredUser.username" placeholder="Username">
+            <mat-label>Korisničko ime</mat-label>
+            <input matInput id="username" name="username" type="username" [(ngModel)]="registeredUser.username" placeholder="Korisničko ime">
           </mat-form-field>
           <br>
           <mat-form-field class="wide-input">
-            <mat-label>Password</mat-label>
-            <input matInput id="password" name="password" type="password" [(ngModel)]="registeredUser.password" placeholder="Password">
+            <mat-label>Lozinka</mat-label>
+            <input matInput id="password" name="password" type="password" [(ngModel)]="password1" placeholder="Lozinka">
           </mat-form-field>
           <br>
+          <mat-form-field class="wide-input">
+            <mat-label>Potvrdite lozinku</mat-label>
+            <input matInput id="password2" name="password2" type="password" [(ngModel)]="password2" placeholder="Lozinka">
+          </mat-form-field>
+          <br>
+          <label *ngIf="passwordsAreNotEqual">&nbsp; Lozinke nisu iste. Pokušajte ponovo.</label>
+         
           <div class="text-center">
-            <button type="submit" class="btn btn-primary" (click)="register()">
+            <button type="submit" class="btn btn-secondary" style="width: 190px;" (click)="register()">
               Registrujte se
             </button>
+          </div>
+          &nbsp;
+          <div class="text-center">
+            <button type="submit" class="btn btn-link" style="width: 190px;color: gray;" (click)="registerCompany()">Registracija kompanije</button>
           </div>
         </form>
       </div>
@@ -49,9 +62,21 @@
   <div class="col-sm-2">
   </div>
 </div>
-<div class="alert alert-success" role="alert" *ngIf="!registrated">
-  <h1 class="alert-heading">Well done!</h1>
-  <h2>Aww yeah, you succeeded. You should go to your email account and check your message.</h2>
-  <hr>
-  <p class="mb-0">In message you will receive link for activation you account</p>
+<div  *ngIf="!registrated">
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8" style="margin-top: -100px;">
+    <div class="center-content">
+      <div class="bordered-box">
+        <h1 class="mb-4 text-center">Odlično!</h1>
+        <h1 class="mb-4 text-center">Sada je potrebno da pristupite svom email nalogu i da proverite vaše poruke.</h1>
+        <h1 class="mb-4 text-center">U poruci ste dobili link za aktivaciju naloga.</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+ 
+</div>
 </div>
