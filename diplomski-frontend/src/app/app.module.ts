@@ -14,6 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,11 @@ import { ShoppingBasketComponent } from './shopping-basket/shopping-basket.compo
 import { AdvertisingRequestComponent } from './advertising-request/advertising-request.component';
 import { RequestsForPostingAnnouncementsComponent } from './requests-for-posting-announcements/requests-for-posting-announcements.component';
 import { MyAnnouncementsComponent } from './my-announcements/my-announcements.component';
+import { ProfileCompanyComponent } from './profile-company/profile-company.component';
+import { PopUpProfileChangeSuccessfulComponent } from './pop-up-profile-change-successful/pop-up-profile-change-successful.component';
+import { PopUpPasswordChangeSuccessfulComponent } from './pop-up-password-change-successful/pop-up-password-change-successful.component';
+import { PopUpAdvertisingRequestSentComponent } from './pop-up-advertising-request-sent/pop-up-advertising-request-sent.component';
+import { RegistrationCompanyComponent } from './registration-company/registration-company.component';
 
 
 @NgModule({
@@ -62,7 +68,12 @@ import { MyAnnouncementsComponent } from './my-announcements/my-announcements.co
     ShoppingBasketComponent,
     AdvertisingRequestComponent,
     RequestsForPostingAnnouncementsComponent,
-    MyAnnouncementsComponent
+    MyAnnouncementsComponent,
+    ProfileCompanyComponent,
+    PopUpProfileChangeSuccessfulComponent,
+    PopUpPasswordChangeSuccessfulComponent,
+    PopUpAdvertisingRequestSentComponent,
+    RegistrationCompanyComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +93,8 @@ import { MyAnnouncementsComponent } from './my-announcements/my-announcements.co
     MatInputModule, 
     MatDatepickerModule,
     MatNativeDateModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

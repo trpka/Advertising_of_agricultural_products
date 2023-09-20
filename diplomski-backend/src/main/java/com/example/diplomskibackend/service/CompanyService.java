@@ -2,6 +2,7 @@ package com.example.diplomskibackend.service;
 
 import com.example.diplomskibackend.model.Company;
 import com.example.diplomskibackend.model.Product;
+import com.example.diplomskibackend.model.RegisteredUser;
 import com.example.diplomskibackend.repository.CompanyRepository;
 import com.example.diplomskibackend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,9 @@ public class CompanyService {
             return null;
         }
         return companyOpt.get();
+    }
+
+    public Company save(Company company) {
+        return this.companyRepository.save(company);
     }
 }

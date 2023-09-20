@@ -22,12 +22,6 @@ export class Home1Component implements OnInit {
     console.log(this.counterService.getCount())
   }
 
-  loadAdvertisement()
-  {
-    this.advertisementService.getOne(1)
-    .subscribe(res => this.advertisement = res)
-  }
-
   goToMechanization(){
     //this.counterService.increment();
     this.router.navigate(['mechanization-announcements']);

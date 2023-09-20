@@ -13,10 +13,10 @@ import { AnnouncementService } from '../service/announcement.service';
 export class AnnouncementStepperComponent implements OnInit {
 
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    firstCtrl: ['', Validators.nullValidator],
   });
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    secondCtrl: ['', Validators.nullValidator],
   });
   isEditable = false;
 
@@ -112,10 +112,12 @@ export class AnnouncementStepperComponent implements OnInit {
     this.announcementDTO.price = Number(this.price);
     this.announcementDTO.registeredUserId = Number(sessionStorage.getItem('id'));
     this.announcementDTO.city = this.selectedCity;
+    this.announcementDTO.enable = false;
    
     this.announcementDTO.productDTO.id = 4;
     this.announcementDTO.productDTO.additional_description = this.forma.controls['textareaCtrl'].value;
     this.announcementDTO.productDTO.picture = this.filePath;
+  
     //this.announcementDTO.productDTO.registeredUserId = 4;
     this.announcementService.save(this.announcementDTO)
     .subscribe()

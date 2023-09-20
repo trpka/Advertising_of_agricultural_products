@@ -12,8 +12,8 @@ public class AdvertisementDTO {
     private String text;
     private Float price;
     private String image;
-    private LocalDateTime date;
-    private Long duration;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private Boolean enable;
     private Long companyId;
 
@@ -26,19 +26,19 @@ public class AdvertisementDTO {
         this.text = advertisement.getText();
         this.price = advertisement.getPrice();
         this.image = advertisement.getImage();
-        this.date = advertisement.getDate();
-        this.duration = advertisement.getDuration();
+        this.startDate = advertisement.getStartDate();
+        this.endDate = advertisement.getEndDate();
         this.enable = advertisement.getEnable();
         this.companyId = advertisement.getCompany().getId();
     }
 
-    public AdvertisementDTO(String title, String text, Float price, String image, LocalDateTime date, Long duration, Boolean enable, Long companyId) {
+    public AdvertisementDTO(String title, String text, Float price, String image, LocalDateTime startDate, LocalDateTime endDate, Boolean enable, Long companyId) {
         this.title = title;
         this.text = text;
         this.price = price;
         this.image = image;
-        this.date = date;
-        this.duration = duration;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.enable = enable;
         this.companyId = companyId;
     }
@@ -83,20 +83,20 @@ public class AdvertisementDTO {
         this.image = image;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getStartDate() {
+        return startDate;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
     }
 
-    public Long getDuration() {
-        return duration;
+    public LocalDateTime getEndDate() {
+        return endDate;
     }
 
-    public void setDuration(Long duration) {
-        this.duration = duration;
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
     }
 
     public Boolean getEnable() {

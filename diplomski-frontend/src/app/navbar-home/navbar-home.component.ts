@@ -41,4 +41,19 @@ export class NavbarHomeComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  goToProfile(){
+    this.registeredUserService.setEnableProfilePage(true)
+    this.registeredUserService.setEnableEditPage(false)
+    this.registeredUserService.setEnableEditPassword(false)
+    this.router.navigate(['profile-registered-user']);
+    
+  }
+
+  goToProfileCompany(){
+    this.companyService.setEnableProfilePageCompany(true)
+    this.registeredUserService.setEnableProfilePage(false)
+    this.registeredUserService.setEnableEditPage(false)
+    this.registeredUserService.setEnableEditPassword(false)
+    this.router.navigate(['profile-company']);
+  }
 }

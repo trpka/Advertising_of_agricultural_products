@@ -14,6 +14,8 @@ import { ShoppingBasketComponent } from './shopping-basket/shopping-basket.compo
 import { AdvertisingRequestComponent } from './advertising-request/advertising-request.component';
 import { RequestsForPostingAnnouncementsComponent } from './requests-for-posting-announcements/requests-for-posting-announcements.component';
 import { MyAnnouncementsComponent } from './my-announcements/my-announcements.component';
+import { ProfileCompanyComponent } from './profile-company/profile-company.component';
+import { RegistrationCompanyComponent } from './registration-company/registration-company.component';
 
 const routes: Routes = [
   {path: '', component:Home1Component},
@@ -29,7 +31,10 @@ const routes: Routes = [
   {path: 'shopping-basket', component:ShoppingBasketComponent},
   {path: 'advertisement-request', component:AdvertisingRequestComponent},
   {path: 'requests-for-posting-announcements', component:RequestsForPostingAnnouncementsComponent},
-  {path: 'my-announcements', component:MyAnnouncementsComponent}
+  {path: 'my-announcements', component:MyAnnouncementsComponent},
+  {path: 'profile-company', component:ProfileCompanyComponent},
+  {path: 'registration-company', component:RegistrationCompanyComponent}
+  
   
 
 

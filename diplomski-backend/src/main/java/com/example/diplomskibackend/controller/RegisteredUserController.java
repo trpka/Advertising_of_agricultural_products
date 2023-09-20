@@ -33,4 +33,14 @@ public class RegisteredUserController {
         this.registeredUserService.save(this.registeredUserService.activateById(id));
 
     }
+
+    @RequestMapping(value="api/registered-user/update",method = RequestMethod.PUT,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    //@PreAuthorize("hasRole('CLIENT')")
+    public ResponseEntity<RegisteredUserDTO> update(@RequestBody RegisteredUserDTO registeredUser){
+
+        RegisteredUser registeredUser1=this.registeredUserService.update(registeredUser);
+
+        return new ResponseEntity<>(new RegisteredUserDTO(registeredUser1),HttpStatus.OK);
+    }
 }

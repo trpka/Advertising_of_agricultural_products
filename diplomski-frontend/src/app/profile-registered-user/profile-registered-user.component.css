@@ -68,13 +68,14 @@ label {
 #center1{
   margin: auto;
   width: 100%;
-  padding: 10px;
+ padding: 10px; 
 }
+
 #center {
 
   margin: auto;
-  padding: 10px;
-  width: 1200px;
+  /*padding: 10px;
+  width: 1200px;*/
 
 }
 input{
@@ -92,5 +93,14 @@ input{
 }
 .error{
   color: red;
+}
+
+.abc{
+  margin-top: 118px;
+}
+
+.abcd{
+  margin-top: 40px;
+  margin-left: 280px;
 }
 

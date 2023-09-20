@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8">
+    <div class="center rounded bg-white mt-5 mb-5"  >
+        <div class="row" >
+          <div class="col-md-4 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+              <div class="frame1"><img class="rounded-circle mt-5"
+                width="300px"
+                src="assets/images/man.jpg"></div>
+              <span
+                class="font-weight-bold"></span><span
+                class="text-black-50"></span><span> </span>
+            </div>
+          </div>
+          <div class="col-md-7 border-right">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Profil informacije kompanije:</h4>
+                <button class="btn btn-secondary" style="margin: 5px;width: 150px;" (click)="go_to_edit_profile()" >Izmeni profil</button>
+                <button class="btn btn-secondary" style="margin: 5px;width: 150px;" (click)="go_to_change_password()">Izmeni lozinku</button>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-6"  style="width: 368px;"><label class="labels">Država</label>
+                  <p>{{address.country}}</p>
+                </div>
+                <div class="col-md-6"  style="width: 368px;"><label class="labels">Grad</label>
+                  <p>{{address.city}}</p>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-6"  style="width: 368px;"><label class="labels">Ulica</label>
+                  <p>{{address.street}}</p>
+                </div>
+                <div class="col-md-6" style="width: 368px;"><label class="labels">Poštanski broj</label>
+                  <p>{{address.zipCode}}</p>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12" ><label class="labels">Naziv</label>
+                  <p>{{company.name}}</p>
+                </div>
+                <div class="col-md-12"><label class="labels">Matični broj firme</label>
+                  <p>{{company.regNumOfCompany}}</p>
+                </div>
+                <div class="col-md-12"><label class="labels">Korisničko ime</label>
+                  <p>{{company.username}}</p>
+                </div>
+                <div class="col-md-12"><label class="labels">Email</label>
+                  <p>{{company.email}}</p>
+                </div>
+                <div class="col-md-12"><label class="labels">Broj telefona</label>
+                  <p>{{company.mobile}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>
+

@@ -7,8 +7,8 @@ interface AdminInterface{
     enabled:boolean;
     role:string;
     authorities: [] ;
-    firstName: string ;
-    lastName: string ;
+    firstName1: string ;
+    lastName1: string ;
     announcements: [];
     products:[];
   
@@ -22,8 +22,8 @@ interface AdminInterface{
     enabled:boolean;
     role:string;
     authorities: [] ;
-    firstName: string ;
-    lastName: string ;
+    firstName1: string ;
+    lastName1: string ;
     announcements: [];
     products:[];
     constructor(obj:AdminInterface){
@@ -35,8 +35,8 @@ interface AdminInterface{
         this.enabled=obj.enabled;
         this.role=obj.role;
         this.authorities=obj.authorities;
-        this.firstName=obj.firstName;
-        this.lastName=obj.lastName;
+        this.firstName1=obj.firstName1;
+        this.lastName1=obj.lastName1;
         this.announcements=obj.announcements;
         this.products=obj.products;
     }
