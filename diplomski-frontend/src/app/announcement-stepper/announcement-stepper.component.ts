@@ -58,6 +58,7 @@ export class AnnouncementStepperComponent implements OnInit {
           productDTO : new ProductDTO({
             id:0,
             picture: "",
+            pictures:[],
             additional_description: "",
             name: "",
             registeredUserId: 4,
@@ -117,6 +118,7 @@ export class AnnouncementStepperComponent implements OnInit {
     this.announcementDTO.productDTO.id = 4;
     this.announcementDTO.productDTO.additional_description = this.forma.controls['textareaCtrl'].value;
     this.announcementDTO.productDTO.picture = this.filePath;
+    this.announcementDTO.productDTO.pictures = this.fullSelectedPictures.split(",");
   
     //this.announcementDTO.productDTO.registeredUserId = 4;
     this.announcementService.save(this.announcementDTO)

@@ -16,6 +16,8 @@ import { RequestsForPostingAnnouncementsComponent } from './requests-for-posting
 import { MyAnnouncementsComponent } from './my-announcements/my-announcements.component';
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
 import { RegistrationCompanyComponent } from './registration-company/registration-company.component';
+import { CompanyProfileActivationRequirementsComponent } from './company-profile-activation-requirements/company-profile-activation-requirements.component';
+import { CompanyRequestDetailsComponent } from './company-request-details/company-request-details.component';
 
 const routes: Routes = [
   {path: '', component:Home1Component},
@@ -33,10 +35,10 @@ const routes: Routes = [
   {path: 'requests-for-posting-announcements', component:RequestsForPostingAnnouncementsComponent},
   {path: 'my-announcements', component:MyAnnouncementsComponent},
   {path: 'profile-company', component:ProfileCompanyComponent},
-  {path: 'registration-company', component:RegistrationCompanyComponent}
+  {path: 'registration-company', component:RegistrationCompanyComponent},
+  {path: 'company-profile-activation-requirements', component:CompanyProfileActivationRequirementsComponent},
+  {path: 'company-request-details/:id', component:CompanyRequestDetailsComponent}
   
-  
-
 
 ];
 

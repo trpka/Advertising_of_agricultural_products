@@ -9,12 +9,12 @@
         <form>
           <mat-form-field class="wide-input">
             <mat-label>Naziv</mat-label>
-            <input matInput id="firstName1" name="firstName1" type="firstName1" [(ngModel)]="companyDTO.name" placeholder="Ime">
+            <input matInput id="firstName1" name="firstName1" type="firstName1" [(ngModel)]="companyDTO.name" placeholder="Naziv">
           </mat-form-field>
           <br>
           <mat-form-field class="wide-input">
             <mat-label>Matični broj firme</mat-label>
-            <input matInput id="lastName1" name="lastName1" type="lastName1" [(ngModel)]="companyDTO.regNumOfCompany" placeholder="Prezime">
+            <input matInput id="lastName1" name="lastName1" type="lastName1" [(ngModel)]="companyDTO.regNumOfCompany" placeholder="Matični broj firme">
           </mat-form-field>
           <br>
           <mat-form-field class="wide-input">
@@ -70,4 +70,22 @@
   </div>
   <div class="col-sm-2">
   </div>
+</div>
+<div  *ngIf="!registrated">
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8" style="margin-top: -100px;">
+    <div class="center-content">
+      <div class="bordered-box">
+        <h1 class="mb-4 text-center">Odlično!</h1>
+        <h1 class="mb-4 text-center">Uspešno ste obavili kreiranje nalog za firmu. Vaš nalog se proverava. </h1>
+        <h1 class="mb-4 text-center">Najklasnije za 24 sata ćete dobiti poruku na mail da li je vaš nalog odobren.</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+ 
+</div>
 </div>

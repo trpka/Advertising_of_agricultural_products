@@ -1,6 +1,7 @@
 package com.example.diplomskibackend.service;
 
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,6 +111,7 @@ public class UserService {
         User user = new User();
         user.setUsername(companyAddressDTO.getCompanyDTO().getUsername());
         user.setPassword(passwordEncoder.encode(companyAddressDTO.getCompanyDTO().getPassword()));
+        user.setLastPasswordResetDate(new Timestamp(System.currentTimeMillis()));
         user.setEnabled(false);
         user.setEmail(companyAddressDTO.getCompanyDTO().getEmail());
         user.setMobile(companyAddressDTO.getCompanyDTO().getMobile());

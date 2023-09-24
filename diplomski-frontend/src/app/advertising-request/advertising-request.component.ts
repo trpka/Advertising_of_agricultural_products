@@ -101,7 +101,7 @@ export class AdvertisingRequestComponent implements OnInit {
  
 
   save(){
-    this.advertisement.companyId = 6;
+    this.advertisement.companyId = Number(sessionStorage.getItem('id'));
     this.advertisement.price =  this.totalPrice;
     this.advertisement.startDate = this.dateForm.value.selectedDate;
     this.advertisement.endDate = this.dateForm1.value.selectedDate;

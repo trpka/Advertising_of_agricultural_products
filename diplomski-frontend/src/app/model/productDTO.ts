@@ -1,6 +1,7 @@
 interface ProductDTOInterface{
   id:number;
   picture: string ;
+  pictures:string[];
   additional_description: string ;
   name: string ;
   registeredUserId: number;
@@ -10,6 +11,7 @@ interface ProductDTOInterface{
 export class ProductDTO implements ProductDTOInterface{
   id:number;
   picture: string ;
+  pictures:string[];
   additional_description: string ;
   name: string ;
   registeredUserId: number;
@@ -19,6 +21,7 @@ export class ProductDTO implements ProductDTOInterface{
   constructor(obj:ProductDTOInterface){
       this.id=obj.id;
       this.picture=obj.picture;
+      this.pictures=obj.pictures;
       this.additional_description=obj.additional_description;
       this.name = obj.name;
       this.registeredUserId=obj.registeredUserId;

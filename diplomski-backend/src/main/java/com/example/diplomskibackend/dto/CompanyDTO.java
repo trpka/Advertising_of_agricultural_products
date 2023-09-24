@@ -33,6 +33,7 @@ public class CompanyDTO {
     }
 
     public CompanyDTO(Company company){
+        this.id = company.getId();
         this.username = company.getUsername();
         this.password = company.getPassword();
         this.email = company.getEmail();

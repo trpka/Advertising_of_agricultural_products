@@ -33,9 +33,6 @@ public class Announcement {
     private String mobileNumber;
     @Column
     private Boolean enable;
-    @Column
-    @ElementCollection(targetClass=String.class)
-    private Set<String> pictures=new HashSet<>();
     @ManyToOne
     private RegisteredUser registeredUser;
     @ManyToOne
@@ -47,7 +44,7 @@ public class Announcement {
 
     }
 
-    public Announcement(Long id, LocalDateTime date, String title, String category, String subcategory, Float price, Integer quantity, String city, String mobileNumber, Boolean enable,  Set<String> pictures, RegisteredUser registeredUser, Product product, Company company) {
+    public Announcement(Long id, LocalDateTime date, String title, String category, String subcategory, Float price, Integer quantity, String city, String mobileNumber, Boolean enable, RegisteredUser registeredUser, Product product, Company company) {
         this.id = id;
         this.date = date;
         this.title = title;
@@ -58,7 +55,6 @@ public class Announcement {
         this.city = city;
         this.mobileNumber = mobileNumber;
         this.enable = enable;
-        this.pictures = pictures;
         this.registeredUser = registeredUser;
         this.product = product;
         this.company = company;
@@ -149,14 +145,6 @@ public class Announcement {
     }
     public void setProduct(Product product) {
         this.product = product;
-    }
-
-    public Set<String> getPictures() {
-        return pictures;
-    }
-
-    public void setPictures(Set<String> pictures) {
-        this.pictures = pictures;
     }
 
     public Company getCompany() {

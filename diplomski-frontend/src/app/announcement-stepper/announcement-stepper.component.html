@@ -130,8 +130,24 @@
             </div>
 
             <input id="image" type="file" (change)="onFileChanged($event)">
-            <button id="upload_button"class="btn btn-secondary"  style="width: 150px;" (click)="onUpload()">Dodaj sliku</button>
+            <label>Dodajte glavnu sliku :  &nbsp; &nbsp;&nbsp; &nbsp; </label>
+            <button id="upload_button"class="btn btn-secondary"  style="width: 150px;" (click)="onUpload()">Potvrdi</button>
 
+            <div>
+              &nbsp;
+            </div>
+
+            <input id="image" type="file" (change)="onFileChanged($event)">
+            <label>Dodajte dodatne slike :  &nbsp; &nbsp;</label>
+            <button id="upload_button"class="btn btn-secondary"  style="width: 150px;" (click)="onUpload()">Potvrdi</button>
+            <div>
+              &nbsp;
+            </div>
+            <div>
+              <textarea style="width: 300px;height: 100px;">
+                {{selectedPictures}}
+              </textarea>
+            </div>
             <div>
               &nbsp;
             </div>

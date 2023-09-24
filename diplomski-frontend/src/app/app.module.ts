@@ -44,6 +44,11 @@ import { PopUpProfileChangeSuccessfulComponent } from './pop-up-profile-change-s
 import { PopUpPasswordChangeSuccessfulComponent } from './pop-up-password-change-successful/pop-up-password-change-successful.component';
 import { PopUpAdvertisingRequestSentComponent } from './pop-up-advertising-request-sent/pop-up-advertising-request-sent.component';
 import { RegistrationCompanyComponent } from './registration-company/registration-company.component';
+import { CompanyProfileActivationRequirementsComponent } from './company-profile-activation-requirements/company-profile-activation-requirements.component';
+import { ImagesViewComponent } from './images-view/images-view.component';
+import { CompanyRequestDetailsComponent } from './company-request-details/company-request-details.component';
+import { PopUpActivateCompanyRequestComponent } from './pop-up-activate-company-request/pop-up-activate-company-request.component';
+
 
 
 @NgModule({
@@ -73,7 +78,11 @@ import { RegistrationCompanyComponent } from './registration-company/registratio
     PopUpProfileChangeSuccessfulComponent,
     PopUpPasswordChangeSuccessfulComponent,
     PopUpAdvertisingRequestSentComponent,
-    RegistrationCompanyComponent
+    RegistrationCompanyComponent,
+    CompanyProfileActivationRequirementsComponent,
+    ImagesViewComponent,
+    CompanyRequestDetailsComponent,
+    PopUpActivateCompanyRequestComponent
   ],
   imports: [
     BrowserModule,

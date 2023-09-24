@@ -26,7 +26,6 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="goToProfile()">Profil</button>
           <button mat-menu-item routerLink="my-announcements">Moji oglasi</button>
-          <button mat-menu-item routerLink="advertisement-request">Zahteve za reklamiranje</button>
           <button mat-menu-item routerLink="customer-support">Korisnička podrška</button>
         </mat-menu>
               
@@ -49,6 +48,8 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="profile-registered-user">Profil</button>
           <button mat-menu-item routerLink="requests-for-posting-announcements">Zahtevi za oglašavanje</button>
+          <button mat-menu-item routerLink="company-profile-activation-requirements">Zahtevi za aktivaciju profila kompanije</button>
+         
         </mat-menu>
               
         <a mat-button routerLink="">Početna</a>
@@ -61,6 +62,7 @@
         <button mat-button [matMenuTriggerFor]="menu">MenuCompany</button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="profile-company">Profil</button>
+          <button mat-menu-item routerLink="advertisement-request">Zahteve za reklamiranje</button>
         </mat-menu>
               
         <a mat-button routerLink="">Početna</a>
