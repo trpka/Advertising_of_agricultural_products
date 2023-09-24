@@ -3,12 +3,13 @@ insert into authority(id,name) values (2,'ROLE_REGISTERED_USER');
 insert into authority(id,name) values (3,'ROLE_COMPANY');
 
 
-insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (1,'Admin','truman', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra' ,'isamarkomarkovic99@gmail.com', '305-555-0163',true,'1983-07-12 21:30:55.888');
-insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (2,'RegisteredUser','raymond', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'isamarkomarkovic99@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
-insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (3,'RegisteredUser','aca', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'aca@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
-insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (4,'RegisteredUser','milica', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'milica@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
-insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (5,'RegisteredUser','dejan', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'dejan@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
-insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (6,'Company','agrar', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'agrar@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
+insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (1,'Admin','truman', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra' ,'isaisic587@gmail.com', '305-555-0163',true,'1983-07-12 21:30:55.888');
+insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (2,'RegisteredUser','raymond', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'isaisic587+2@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
+insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (3,'RegisteredUser','aca', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'isaisic587+3@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
+insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (4,'RegisteredUser','milica', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'isaisic587+4@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
+insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (5,'RegisteredUser','dejan', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'isaisic587+5@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
+insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (6,'Company','agrar', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'isaisic587+6@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
+insert into user (id,role, username, password, email, mobile,enabled,last_password_reset_date) values (7,'Company','agrar1', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'isaisic587+7@gmail.com', '305-555-07201',false,'1983-07-12 21:30:55.888');
 
 insert into user_authority (user_id,authority_id) values (1,1);
 insert into user_authority (user_id,authority_id) values (2,2);
@@ -37,6 +38,9 @@ values (1, 'Novi Sad', 'Srbija', 'Miše Dimitrijevića 10','21000');
 
 insert into company(id, name, reg_num_of_company, address_id)
 values (6, 'Agrar', '8542243320', 1);
+
+insert into company(id, name, reg_num_of_company, address_id)
+values (7, 'Agrar1', '8542243320', 1);
 
 
 insert into product(id, name, additional_description,picture,registered_user_id)
@@ -92,6 +96,66 @@ values (17,'Sejalica', 'Nova četvororedna sejalica proizvrdena u Turskoj.', '/a
 
 insert into product(id, name, additional_description,picture,company_id)
 values (18,'Sejalica', 'Nova četvororedna sejalica proizvrdena u Turskoj.', '/assets/mechanization/sejalica4.png', 6);
+
+
+insert into product_pictures(product_id, pictures)
+values (1, '/assets/mechanization/trailer.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (2, '/assets/mechanization/rasipac.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (3, '/assets/products/wheat.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (4, '/assets/products/tomatoes.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (5, '/assets/mechanization/john_deer.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (6, '/assets/mechanization/kombajn.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (7, '/assets/mechanization/prikolica.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (8, '/assets/mechanization/setvospremac1.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (9,'/assets/mechanization/prskalica.jpeg');
+
+insert into product_pictures(product_id, pictures)
+values (10, '/assets/mechanization/armatrak.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (11,'/assets/mechanization/drljaca.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (12, '/assets/mechanization/sejalica.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (13, '/assets/mechanization/setvospremac.jpeg');
+
+insert into product_pictures(product_id, pictures)
+values (14, '/assets/mechanization/elevator.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (14, '/assets/mechanization/elevator1.jpg');
+
+insert into product_pictures(product_id, pictures)
+values (15, '/assets/mechanization/motokultivator.png');
+
+insert into product_pictures(product_id, pictures)
+values (16, '/assets/mechanization/new_holland.jpeg');
+
+insert into product_pictures(product_id, pictures)
+values (17, '/assets/mechanization/sejalica4.png');
+
+insert into product_pictures(product_id, pictures)
+values (18, '/assets/mechanization/sejalica4.png');
+
+
 
 
 insert into announcement(id, date, title, category, subcategory, price, quantity, city, mobile_number, enable, product_id, registered_user_id)

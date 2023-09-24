@@ -6,6 +6,8 @@ import { ProductDTO } from '../model/productDTO';
 import { ShoppingBasketService } from '../service/shopping-basket.service';
 import { NavbarHomeComponent } from '../navbar-home/navbar-home.component';
 import { AuthenticationService } from '../service/authentication.service';
+import { RegisteredUserService } from '../service/registered-user.service';
+import { parse, format } from 'date-fns';
 
 @Component({
   selector: 'app-announcement-details',
@@ -16,8 +18,16 @@ export class AnnouncementDetailsComponent implements OnInit {
 
   id:number;
   announcement:AnnouncementDTO;
+  date:string;
+  year:string;
+  month:string;
+  day:string;
 
-  constructor(private announcementService:AnnouncementService, private route: ActivatedRoute, private shoppingBasketService: ShoppingBasketService, public loginService: AuthenticationService) {
+  constructor(private announcementService:AnnouncementService, 
+              private route: ActivatedRoute, 
+              private shoppingBasketService: ShoppingBasketService, 
+              public loginService: AuthenticationService,
+              public registeredUserService: RegisteredUserService) {
     this.announcement=new AnnouncementDTO(
       {
         id : 0,
@@ -36,6 +46,7 @@ export class AnnouncementDetailsComponent implements OnInit {
           id : 0,
           picture : "",
           additional_description : "",
+          pictures:[],
           name : "",
           registeredUserId : 0,
           companyId:0
@@ -51,7 +62,13 @@ export class AnnouncementDetailsComponent implements OnInit {
   {
     this.id = this.route.snapshot.params['id'];
     this.announcementService.getOne(this.id)
-    .subscribe(res => this.announcement = res)
+    .subscribe(res => {this.announcement = res;
+      this.date = String(this.announcement.date);
+      const [yearStr, monthStr, dayStr] = this.date.split(',');
+      this.year = String(parseInt(yearStr, 10));
+      this.month = String(parseInt(monthStr, 10));
+      this.day = String(parseInt(dayStr, 10));
+    })
   }
 
   addIntoBasket(){

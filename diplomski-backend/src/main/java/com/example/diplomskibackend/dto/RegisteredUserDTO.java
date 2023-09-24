@@ -1,6 +1,7 @@
 package com.example.diplomskibackend.dto;
 
 import com.example.diplomskibackend.model.Announcement;
+import com.example.diplomskibackend.model.Company;
 import com.example.diplomskibackend.model.Product;
 import com.example.diplomskibackend.model.RegisteredUser;
 
@@ -49,6 +50,18 @@ public class RegisteredUserDTO {
         this.role = registeredUser.getRole();
         this.firstName1 = registeredUser.getFirstName1();
         this.lastName1 = registeredUser.getLastName1();
+//        this.announcements = registeredUser.getAnnouncements();
+//        this.products = registeredUser.getProducts();
+    }
+    public RegisteredUserDTO(Company company) {
+
+        this.id = company.getId();
+        this.username = company.getUsername();
+        this.password = company.getPassword();
+        this.email = company.getEmail();
+        this.mobile =company.getMobile();
+        this.role = company.getRole();
+        this.firstName1 = company.getName();
 //        this.announcements = registeredUser.getAnnouncements();
 //        this.products = registeredUser.getProducts();
     }

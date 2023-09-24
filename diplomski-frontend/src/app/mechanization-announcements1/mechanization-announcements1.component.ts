@@ -119,19 +119,19 @@ export class MechanizationAnnouncements1Component implements OnInit {
    nextPage(){
     this.page++;
     this.announcementService.currentPage = this.page;
-    window.scrollTo({ top: 500, behavior: 'smooth' });
+    window.scrollTo({ top: 450, behavior: 'smooth' });
     this.getMechanizationAnnouncements();
   }
   previousPage(){
     this.page--;
     this.announcementService.currentPage = this.page;
-    window.scrollTo({ top: 500, behavior: 'smooth' });
+    window.scrollTo({ top: 450, behavior: 'smooth' });
     this.getMechanizationAnnouncements();
   }
   changePageSize(){
     this.page=0;
     this.announcementService.currentPage = this.page;
-    window.scrollTo({ top: 500, behavior: 'smooth' });
+    window.scrollTo({ top: 450, behavior: 'smooth' });
     this.getMechanizationAnnouncements();
   }
 

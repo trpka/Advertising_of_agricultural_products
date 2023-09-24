@@ -4,7 +4,9 @@ package com.example.diplomskibackend.model;
 import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -18,6 +20,9 @@ public class Product {
     private String name;
     @Column
     private String additional_description;
+    @Column
+    @ElementCollection(targetClass=String.class)
+    private Set<String> pictures=new HashSet<>();
 
     @ManyToOne
     @JsonIgnore
@@ -36,6 +41,15 @@ public class Product {
         this.picture = picture;
         this.name = name;
         this.additional_description = additional_description;
+        this.registeredUser = registeredUser;
+        this.company = company;
+    }
+
+    public Product(String picture, String name, String additional_description, Set<String> pictures, RegisteredUser registeredUser, Company company) {
+        this.picture = picture;
+        this.name = name;
+        this.additional_description = additional_description;
+        this.pictures = pictures;
         this.registeredUser = registeredUser;
         this.company = company;
     }
@@ -70,6 +84,14 @@ public class Product {
 
     public void setAdditional_description(String additional_description) {
         this.additional_description = additional_description;
+    }
+
+    public Set<String> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Set<String> pictures) {
+        this.pictures = pictures;
     }
 
     public RegisteredUser getRegisteredUser() {

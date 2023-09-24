@@ -221,6 +221,7 @@ public class AnnouncementService {
         product.setName(announcementDTO.getProductDTO().getName());
         product.setAdditional_description(announcementDTO.getProductDTO().getAdditional_description());
         product.setPicture(announcementDTO.getProductDTO().getPicture());
+        product.setPictures(announcementDTO.getProductDTO().getPictures());
         //product.setId(announcementDTO.getProductDTO().getId());
         product.setRegisteredUser(registeredUser);
         this.productRepository.save(product);

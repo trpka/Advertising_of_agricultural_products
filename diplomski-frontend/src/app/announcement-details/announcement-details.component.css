@@ -7,12 +7,20 @@
   background-color: #C1E1C1;
 }
 
+.image-list{
+  margin-left: 250px;
+}
+
 .col-sm-8 {
   top: 64px;
 }
 
 h4{
   text-align: right;
+}
+
+h1{
+  text-align: center;
 }
 
 .sticky
@@ -38,7 +46,8 @@ h4{
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  margin-top: 50px;
+  background-image: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSOBROPBmsUQgRJtmTYkthb0vTuzxkEg_HDUikgFAV7WODqVIqS');
   background-size: cover;
 }
 
