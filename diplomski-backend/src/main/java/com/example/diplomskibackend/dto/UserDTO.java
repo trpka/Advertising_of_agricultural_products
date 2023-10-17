@@ -1,25 +1,26 @@
 package com.example.diplomskibackend.dto;
 
+import com.example.diplomskibackend.model.Authority;
 import com.example.diplomskibackend.model.User;
+
+import java.util.List;
 
 public class UserDTO {
     private Long id;
     private String username;
     private String password;
     private String email;
-//    private String firstName;
-//    private String lastName;
     private String mobile;
+    private Boolean enabled;
     private String role;
-    public UserDTO(Long id, String username, String password, String email, /*String firstName, String lastName,*/
-                   String mobile, String role) {
+
+    public UserDTO(Long id, String username, String password, String email, String mobile, Boolean enabled, String role) {
         super();
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
+        this.enabled = enabled;
         this.mobile = mobile;
         this.role = role;
     }
@@ -48,18 +49,7 @@ public class UserDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-//    public String getFirstName() {
-//        return firstName;
-//    }
-//    public void setFirstName(String firstName) {
-//        this.firstName = firstName;
-//    }
-//    public String getLastName() {
-//        return lastName;
-//    }
-//    public void setLastName(String lastName) {
-//        this.lastName = lastName;
-//    }
+
     public String getMobile() {
         return mobile;
     }
@@ -79,9 +69,8 @@ public class UserDTO {
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.email = user.getEmail();
-//        this.firstName = user.getFirstName();
-//        this.lastName = user.getLastName();
         this.mobile = user.getMobile();
+        this.enabled = user.isEnabled();
         this.id=user.getId();
         this.role=user.getRole();
 

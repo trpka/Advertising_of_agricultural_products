@@ -22,9 +22,14 @@
   }
   
   .col-sm-2 {
+    top: 30px;
     background-color: #C1E1C1;
   }
   
+
+  .col-sm-8 {
+    top: 30px;
+  }
   
   .gore {
     position: absolute;

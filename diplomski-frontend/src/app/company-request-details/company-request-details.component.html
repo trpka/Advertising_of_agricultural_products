@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<div class="row">
+<div class="row"  *ngIf="hideFields">
   <div class="col-sm-2">
   </div>
   <div class="col-sm-8">
@@ -69,4 +69,24 @@
   <div class="col-sm-2">
   </div>
 </div>
+
+<div   *ngIf="hideFields1">
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8" style="margin-top: -100px;">
+      <div class="center-content">
+        <div class="bordered-box">
+          <h1 class="mb-4 text-center">Uspešno ste deaktivirali zahtev za registraciju firme!</h1>
+          <h1 class="mb-4 text-center">Sačekajte! Trenutno se šalje mail. Bićete preusmereni na stranicu sa trenutno aktivnim zahtevima firmi.</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+    </div>
+  </div>
+</div>
+
+
+
 

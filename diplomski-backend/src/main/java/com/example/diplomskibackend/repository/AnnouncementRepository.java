@@ -15,8 +15,17 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, Long
      List<Announcement> findByCategoryOrderByPriceDesc(String category);
      List<Announcement> findByOrderByPriceAsc();
      List<Announcement> findByOrderByDateDesc();
-     Page<Announcement> findByCategory(String category, Pageable pageable);
-     Page<Announcement> findByCategoryAndRegisteredUserIsNotNull(String category,Pageable pageable);
+     Page<Announcement> findByCategoryAndEnableAndRegisteredUserIsNotNull(String category,Boolean enable,Pageable pageable);
+     Page<Announcement> findByCategoryAndEnableAndCompanyIsNotNull(String category,Boolean enable, Pageable pageable);
+     Page<Announcement> findByEnable(Boolean enable, Pageable pageable);
+     List<Announcement> findByIdInOrderByPriceDesc(List<Long> ids);
+     List<Announcement> findByIdInOrderByPriceAsc(List<Long> ids);
+     List<Announcement> findByIdInOrderByDate(List<Long> ids);
+     Page<Announcement> findByRegisteredUserIdAndEnable(Long id, Boolean enable, Pageable pageable);
+
+     Page<Announcement> findByIdInOrderByPriceDesc(List<Long> ids,Pageable pageable);
+     Page<Announcement> findByIdInOrderByPriceAsc(List<Long> ids,Pageable pageable);
+     Page<Announcement> findByIdInOrderByDate(List<Long> ids,Pageable pageable);
 
 }
 

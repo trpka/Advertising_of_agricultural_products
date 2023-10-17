@@ -23,7 +23,16 @@
             &nbsp;
           </div>
 
-          <mat-form-field>
+          <mat-form-field *ngIf="isRegisteredUserLogged">
+            <mat-label>Izaberi kategoriju</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option>None</mat-option>
+              <mat-option value="Mehanizacija">Mehanizacija</mat-option>
+              <mat-option value="Poljoprivredni proizvodi">Poljoprivredni proizvodi</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="isCompanyLogged">
             <mat-label>Izaberi kategoriju</mat-label>
             <mat-select [(value)]="selected">
               <mat-option>None</mat-option>

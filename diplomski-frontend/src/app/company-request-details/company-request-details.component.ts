@@ -6,6 +6,7 @@ import { CompanyService } from '../service/company.service';
 import { AddressService } from '../service/address.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpActivateCompanyRequestComponent } from '../pop-up-activate-company-request/pop-up-activate-company-request.component';
+import { PopUpDeactivateCompanyRequestComponent } from '../pop-up-deactivate-company-request/pop-up-deactivate-company-request.component';
 
 @Component({
   selector: 'app-company-request-details',
@@ -16,6 +17,8 @@ export class CompanyRequestDetailsComponent implements OnInit {
   company:Company;
   id:number;
   address: Address;
+  hideFields: boolean = true;
+  hideFields1: boolean = false;
   constructor(
     private route: ActivatedRoute,
     public companyService:CompanyService,
@@ -67,9 +70,11 @@ export class CompanyRequestDetailsComponent implements OnInit {
   }
 
   openDialog1() {
-    const dialogRef = this.dialogRef.open(PopUpActivateCompanyRequestComponent);
+    const dialogRef = this.dialogRef.open(PopUpDeactivateCompanyRequestComponent);
     dialogRef.afterClosed().subscribe(result => {
       if(result==true && !this.company.enabled){
+        this.hideFields1 = true;
+        this.hideFields=false;
         this.deactivateProfile();
       }
     });
@@ -84,7 +89,10 @@ export class CompanyRequestDetailsComponent implements OnInit {
     // this.showActivatedUser=true;
     // this.showFormForActivation=false;
     this.companyService.deactivateCompany(this.id)
-      .subscribe()
-      this.router.navigate(['']);
+      .subscribe(res=>{
+        this.router.navigate(['company-profile-activation-requirements']);
+    
+      })
+      
   }
 }

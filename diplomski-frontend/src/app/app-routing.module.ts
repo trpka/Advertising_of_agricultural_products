@@ -18,6 +18,9 @@ import { ProfileCompanyComponent } from './profile-company/profile-company.compo
 import { RegistrationCompanyComponent } from './registration-company/registration-company.component';
 import { CompanyProfileActivationRequirementsComponent } from './company-profile-activation-requirements/company-profile-activation-requirements.component';
 import { CompanyRequestDetailsComponent } from './company-request-details/company-request-details.component';
+import { RequestsForAdvertisingComponent } from './requests-for-advertising/requests-for-advertising.component';
+import { AdvertisementRequestDetailsComponent } from './advertisement-request-details/advertisement-request-details.component';
+import { ShoppingBasketRegUserComponent } from './shopping-basket-reg-user/shopping-basket-reg-user.component';
 
 const routes: Routes = [
   {path: '', component:Home1Component},
@@ -37,9 +40,11 @@ const routes: Routes = [
   {path: 'profile-company', component:ProfileCompanyComponent},
   {path: 'registration-company', component:RegistrationCompanyComponent},
   {path: 'company-profile-activation-requirements', component:CompanyProfileActivationRequirementsComponent},
-  {path: 'company-request-details/:id', component:CompanyRequestDetailsComponent}
+  {path: 'company-request-details/:id', component:CompanyRequestDetailsComponent},
+  {path: 'requests-for-advertising', component:RequestsForAdvertisingComponent},
+  {path: 'advertisement-request-details/:id', component:AdvertisementRequestDetailsComponent},
+  {path: 'shopping-basket-reg-user', component:ShoppingBasketRegUserComponent}
   
-
 ];
 
 @NgModule({

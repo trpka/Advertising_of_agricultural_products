@@ -3,7 +3,7 @@
     margin: auto;
     width: 50%;
     padding: 10px;
-    height: 978px;
+    height: 985px;
     background-color: #C1E1C1;
   }
   
@@ -103,5 +103,19 @@
   .btn{
     width: 150px;
 
+  }
+
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .bordered-box {
+    border: 2px solid #ccc;
+    padding: 75px;
+    border-radius: 10px;
   }
   

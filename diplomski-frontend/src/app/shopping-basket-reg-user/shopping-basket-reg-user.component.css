@@ -1,0 +1,41 @@
+.col-sm-2 {
+  top: 30px;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  height: 908px;
+  background-color: #C1E1C1;
+  }
+
+  .col-sm-8 {
+    top: 30px;
+   }
+
+  .gore {
+    position: absolute;
+    top: 0;
+  }
+  
+  .dole {
+    position: absolute;
+    bottom: 0;
+  }
+
+  h4{
+    text-align: right;
+  }
+
+  .sticky
+{
+    margin: auto;
+    position:fixed;
+    top:200px;
+}
+
+.sticky1
+{
+    margin: auto;
+    margin-left: 14px;
+    position:fixed;
+    top:200px;
+}

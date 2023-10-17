@@ -27,8 +27,8 @@
 
         <mat-card-header>
           <mat-card-title>{{a.title}}</mat-card-title>
-          <mat-card-subtitle>Kategorija :{{a.category}}</mat-card-subtitle>
-          <mat-card-subtitle>Podkategorija: {{a.subcategory}}</mat-card-subtitle>
+          <mat-card-subtitle>Potkategorija: {{a.subcategory}}</mat-card-subtitle>
+          <mat-card-subtitle>Grad :{{a.city}}</mat-card-subtitle>
           <mat-card-subtitle>Cena : {{a.price}} rsd</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image  src="{{a.productDTO.picture}} "  width="750px" height="300px"  alt="Photo of a Shiba Inu">
@@ -38,22 +38,22 @@
           </h3>
 
         </mat-card-content>
-        <!-- <mat-card-actions>
+        <mat-card-actions>
           <button mat-button (click)="goToAnnouncementDetails(a)"><a>Detalji ...</a></button>
-        </mat-card-actions> -->
+        </mat-card-actions>
 
     </mat-card> 
     </div>
 
-    <!-- <div class="col-md" id="size" style="margin-left: 425px">
-      <button class="btn" (click)="previousPage()" [disabled]="page == 0"> << Prethodna strana</button>
-      <select [(ngModel)]="size" (change)="changePageSize()"> 
+    <div class="col-md" id="size" style="margin-left: 425px">
+      <button class="btn btn-secondary" style="width: 170px;" (click)="previousPage()" [disabled]="page == 0"><< Prethodna strana</button>
+      <select [(ngModel)]="size" (change)="changePageSize()" style="color: black;"> 
           <option value="5">5</option>
           <option value="10">10</option>
       </select>
-      <button class="btn" (click)="nextPage()" [disabled]="last">Sledeća strana >> </button>
+      <button class="btn btn-secondary" style="width: 170px;" (click)="nextPage()" [disabled]="last">Sledeća strana >></button>
       <br/>
-  </div> -->
+  </div>
   
   </div>
   <div class="col-sm-2">

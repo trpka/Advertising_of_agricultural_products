@@ -4,6 +4,7 @@ package com.example.diplomskibackend.service;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.diplomskibackend.dto.CompanyAddressDTO;
 import com.example.diplomskibackend.dto.RegisteredUserDTO;
@@ -49,12 +50,20 @@ public class UserService {
         return userRepository.findById(id).orElseGet(null);
     }
 
+    public User findById1(Long id) {
+        Optional<User> userOpt=this.userRepository.findById(id);
+        if (!userOpt.isPresent()) {
+            return null;
+        }
+        return userOpt.get();
+    }
+
     public List<UserDTO> findAll() throws AccessDeniedException {
         List<User> users=userRepository.findAll();
         List<UserDTO> usersDTO=new ArrayList<>();
         for (User u : users) {
             if(!(u.getRole().equalsIgnoreCase("SysAdmin") || u.getRole().equalsIgnoreCase("Admin"))) {
-                UserDTO dto=new UserDTO(u.getId(),u.getUsername(),u.getPassword(),u.getEmail(),/*u.getFirstName(),u.getLastName(),*/ u.getMobile(), u.getRole());
+                UserDTO dto=new UserDTO(u.getId(),u.getUsername(),u.getPassword(),u.getEmail(),/*u.getFirstName(),u.getLastName(),*/ u.getMobile(),u.isEnabled(), u.getRole());
                 usersDTO.add(dto);
             }
 

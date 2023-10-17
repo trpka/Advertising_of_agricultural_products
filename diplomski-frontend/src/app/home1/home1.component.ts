@@ -4,6 +4,7 @@ import { Advertisement } from './../model/advertisement';
 import { AnnouncementService } from './../service/announcement.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ShoppingBasketService } from '../service/shopping-basket.service';
 
 @Component({
   selector: 'app-home1',
@@ -13,10 +14,15 @@ import { Router } from '@angular/router';
 export class Home1Component implements OnInit {
 
   advertisement: Advertisement;
-  shoppingBasketIsActive : boolean;
-  constructor(private router: Router, private advertisementService:AdvertisementService, private counterService:CounterService) { 
-    this.shoppingBasketIsActive = true;
-  }
+
+  constructor(private router: Router, 
+              private advertisementService:AdvertisementService, 
+              private counterService:CounterService,
+              public shopingBasketService:ShoppingBasketService,
+              public announcementService : AnnouncementService
+              ){ 
+  
+    }
 
   ngOnInit(): void {
     console.log(this.counterService.getCount())
@@ -24,14 +30,17 @@ export class Home1Component implements OnInit {
 
   goToMechanization(){
     //this.counterService.increment();
+    this.announcementService.typeOfAnnouncements = "Mehanizacija";
     this.router.navigate(['mechanization-announcements']);
   }
 
   goToProducts(){
-    this.shoppingBasketIsActive = false;
+    this.announcementService.typeOfAnnouncements = "Poljoprivredni proizvod";
+    this.router.navigate(['mechanization-announcements']);
   }
 
   goToMaterials(){
-
+    this.announcementService.typeOfAnnouncements = "Poljoprivredni materijal";
+    this.router.navigate(['mechanization-announcements']);
   }
 }

@@ -23,7 +23,8 @@ export class NavbarHomeComponent implements OnInit {
               private router: Router,
               public registeredUserService:RegisteredUserService,
               public companyService:CompanyService,
-              public adminService:AdminService
+              public adminService:AdminService,
+              public shopingBasketService:ShoppingBasketService
               ) { }
 
   ngOnInit(): void {
@@ -55,5 +56,16 @@ export class NavbarHomeComponent implements OnInit {
     this.registeredUserService.setEnableEditPage(false)
     this.registeredUserService.setEnableEditPassword(false)
     this.router.navigate(['profile-company']);
+  }
+
+  showShopingBasket(){
+    /*if(this.shopingBasketService.shopingBasketIsActive === true){
+      this.shoppingBasketService.shopingBasketIsActive = false;
+    }
+    else
+    {
+      this.shopingBasketService.shopingBasketIsActive = true;
+    }*/
+    this.router.navigate(['shopping-basket-reg-user']);
   }
 }

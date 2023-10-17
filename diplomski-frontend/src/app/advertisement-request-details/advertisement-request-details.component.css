@@ -1,0 +1,43 @@
+.col-sm-2 {
+    top: 54px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    height: 1000px;
+    background-color: #C1E1C1;
+  }
+  
+  .image-list{
+    margin-left: 250px;
+  }
+  
+  .col-sm-8 {
+    top: 30px;
+  }
+  
+  h4{
+    text-align: right;
+  }
+
+  .example-card {
+    top: 10px;
+    max-width: 1270px;
+    height: 550px;
+  }
+  
+  
+  .example-header-image {
+    margin-top: 10px;
+    background-image: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSOBROPBmsUQgRJtmTYkthb0vTuzxkEg_HDUikgFAV7WODqVIqS');
+    background-size: cover;
+  }
+  
+  mat-card img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    width: 250px;
+  
+  }
+  

@@ -21,13 +21,20 @@
       </div>
     </div>
     <div class="container">
-      <app-button-toggle></app-button-toggle>
+      <section>
+        <h6>&nbsp;</h6>
+        <mat-button-toggle-group [(ngModel)]="typeOfUser" aria-label="Font Style" *ngIf="showButtonForUserAndCompany">
+          <mat-button-toggle (click)="goToMechanizationAnnouncementsRegUser()" value="korisnici">Korisnici</mat-button-toggle>
+          <mat-button-toggle (click)="goToMechanizationAnnouncementsCompany()" value="firme">&nbsp; Firme &nbsp; &nbsp;</mat-button-toggle>
+        </mat-button-toggle-group>
+        <!-- <p>Chosen value is {{typeOfUser}}</p> -->
+      </section>
     </div>
     <div class="row">
       <div class="col-sm-4">
-        <label>Izaberite podkategorije:&nbsp;&nbsp;</label>
+        <label>Izaberite potkategorije:&nbsp;&nbsp;</label>
         <mat-form-field>
-          <mat-label>Podkategorije</mat-label>
+          <mat-label>Potkategorije</mat-label>
           <mat-select [formControl]="toppings" multiple>
             <mat-select-trigger>
               {{toppings.value?.[0] || ''}}
@@ -44,8 +51,8 @@
       <mat-form-field>
         <mat-label>Sortiraj</mat-label>
         <mat-select disableRipple  [(value)]="selectedSort">
-          <mat-option value="priceDesc">Cena(prvo najniža)</mat-option>
-          <mat-option value="priceAsc">Cena(prvo najviša)</mat-option>
+          <mat-option value="priceAsc">Cena(prvo najniža)</mat-option>
+          <mat-option value="priceDesc">Cena(prvo najviša)</mat-option>
           <mat-option value="date">Datum</mat-option>
         </mat-select>
       </mat-form-field>
@@ -105,8 +112,8 @@
 
         <mat-card-header>
           <mat-card-title>{{a.title}}</mat-card-title>
-          <mat-card-subtitle>Kategorija :{{a.category}}</mat-card-subtitle>
-          <mat-card-subtitle>Podkategorija: {{a.subcategory}}</mat-card-subtitle>
+          <mat-card-subtitle>Potkategorija: {{a.subcategory}}</mat-card-subtitle>
+          <mat-card-subtitle>Grad :{{a.city}}</mat-card-subtitle>
           <mat-card-subtitle>Cena : {{a.price}} rsd</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image  src="{{a.productDTO.picture}} "  width="750px" height="300px"  alt="Photo of a Shiba Inu">

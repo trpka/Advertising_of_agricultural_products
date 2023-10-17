@@ -96,6 +96,7 @@ export class AdvertisingRequestComponent implements OnInit {
   calculatePrice(){
      var Difference_In_Time = this.dateForm.get('selectedDate')?.value - this.dateForm1.get('selectedDate')?.value;
      this.numOfDays = Difference_In_Time / (1000 * 3600 * 24)*(-1);
+     this.numOfDays = Math.ceil(this.numOfDays);
      this.totalPrice = this.pricePerDay *   this.numOfDays;
   }
  

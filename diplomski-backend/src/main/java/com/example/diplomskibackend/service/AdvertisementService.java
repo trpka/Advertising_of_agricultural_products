@@ -5,6 +5,8 @@ import com.example.diplomskibackend.dto.AnnouncementDTO;
 import com.example.diplomskibackend.model.*;
 import com.example.diplomskibackend.repository.AdvertisementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -38,6 +40,12 @@ public class AdvertisementService {
         return advertisementDTOS;
     }
 
+    public AdvertisementDTO save(Advertisement advertisement)
+    {
+        Advertisement advertisement1 = this.advertisementRepository.save(advertisement);
+        return new AdvertisementDTO(advertisement1);
+    }
+
     public Advertisement save(AdvertisementDTO advertisementDTO)
     {
         Company company = this.companyService.findById(advertisementDTO.getCompanyId());
@@ -53,6 +61,38 @@ public class AdvertisementService {
         advertisement.setText(advertisementDTO.getText());
 
         return this.advertisementRepository.save(advertisement);
+    }
+
+    public List<AdvertisementDTO> findAllActive(){
+        List<Advertisement> advertisements = this.advertisementRepository.findAllByEnableIsTrue();
+        return this. convertToDto(advertisements);
+    }
+    public List<AdvertisementDTO> convertToDto(List<Advertisement> advertisements){
+        List<AdvertisementDTO> advertisementDTOS = new ArrayList<>();
+        for(Advertisement advertisement: advertisements){
+            advertisementDTOS.add(new AdvertisementDTO(advertisement));
+        }
+        return advertisementDTOS;
+    }
+
+    public Page<Advertisement> findAllInactive(Pageable page) {
+        Page<Advertisement> advertisements = this.advertisementRepository.findAllByEnableIsFalse(page);
+
+        return advertisements;
+    }
+
+    public AdvertisementDTO allowPostingOfAdvertisement(AdvertisementDTO advertisementDTO) {
+
+        Advertisement advertisement = this.findById(advertisementDTO.getId());
+        advertisement.setEnable(true);
+
+        return this.save(advertisement);
+    }
+
+    public Boolean deleteRequest(Long id) {
+        Advertisement advertisement = this.findById(id);
+        this.advertisementRepository.deleteById(id);
+        return true;
     }
 
 }

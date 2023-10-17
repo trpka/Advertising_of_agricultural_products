@@ -1,27 +1,36 @@
-.col-sm-2 {
+/* .col-sm-2 {
   top: 64px;
   margin: auto;
   width: 50%;
   padding: 10px;
   height: 874px;
   background-color: #C1E1C1;
+} */
+
+.col-sm-2 {
+  top: 54px;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  height: 1200px;
+  background-color: #C1E1C1;
 }
+
+
 
 .image-list{
   margin-left: 250px;
 }
 
 .col-sm-8 {
-  top: 64px;
+  top: 30px;
 }
 
 h4{
   text-align: right;
 }
 
-h1{
-  text-align: center;
-}
+
 
 .sticky
 {
@@ -39,14 +48,21 @@ h1{
 }
 
 
-.example-card {
+/* .example-card {
   top: 10px;
   max-width: 1270px;
   height: 852px;
+} */
+
+.example-card {
+  top: 10px;
+  max-width: 1270px;
+  height: 755px;
 }
 
+
 .example-header-image {
-  margin-top: 50px;
+  margin-top: 10px;
   background-image: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSOBROPBmsUQgRJtmTYkthb0vTuzxkEg_HDUikgFAV7WODqVIqS');
   background-size: cover;
 }

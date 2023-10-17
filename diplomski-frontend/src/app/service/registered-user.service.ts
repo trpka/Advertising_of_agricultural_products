@@ -14,6 +14,7 @@ export class RegisteredUserService {
   private enableProfilePage:boolean;
   private enableEditPage:boolean=false;
   private enableEditPassword:boolean=false;
+  public regUserId:number;
   constructor( private http: HttpClient) {
 
   }
@@ -25,6 +26,18 @@ export class RegisteredUserService {
 
   activateById(id: number): Observable<RegisteredUser> {
     return this.http.get<RegisteredUser>(`${this.url1}/${id}`);
+  }
+  
+  isRegisteredUserLoggedInAndIsHisAnnouncement(){
+    let role = sessionStorage.getItem("role");
+    let id = sessionStorage.getItem("id");
+    if(role == "RegisteredUser"){
+      if(Number(id) !== this.regUserId){
+        return true;
+      }
+      
+    }
+    return false;
   }
 
   isRegisteredUserLoggedIn(){
