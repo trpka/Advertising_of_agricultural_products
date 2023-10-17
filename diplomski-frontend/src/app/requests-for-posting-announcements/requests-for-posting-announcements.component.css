@@ -1,4 +1,6 @@
 .card-wrapper {
+    margin-left: 330px;
+    width: 600px;
     display: grid;
     grid-template-columns: repeat(1, 1r);
     gap: 1rem;
@@ -7,9 +9,8 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 300px;
-    width: 750px;
-    width: 50%;
+    height: 200px;
+    width: 400px;
   }
   
   .example-additional-selection {
@@ -22,8 +23,12 @@
     width: 50%;
     padding: 10px;
     height: 100%; */
-    
+    top: 30px;
     background-color: #C1E1C1;
+  }
+
+  .col-sm-8 {
+    top: 30px;
   }
   
   

@@ -11,11 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnnouncementsRecentComponent implements OnInit {
 
+  announcements : AnnouncementDTO[];
+  date:string;
+  year:string;
+  month:string;
+  day:string;
+
   constructor(private announcementService:AnnouncementService, private productService:ProductService) {
 
   }
 
-  announcements : AnnouncementDTO[];
   ngOnInit(): void {
     this.recentAnnouncements();
   }
@@ -25,8 +30,8 @@ export class AnnouncementsRecentComponent implements OnInit {
     this.announcementService.getRecentAnnouncements()
     .subscribe(res => {this.announcements = res;
       for(var a of this.announcements){
-        this.productService.getOne(a.productDTO.id)
-        .subscribe(res1 => a.productDTO = res1)
+        // this.productService.getOne(a.productDTO.id)
+        // .subscribe(res1 => a.productDTO = res1)
       }
     })
   }

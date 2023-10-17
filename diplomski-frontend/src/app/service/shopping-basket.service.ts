@@ -7,7 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ShoppingBasketService {
 
-  selectedAnnouncements : AnnouncementDTO[];
+  public selectedAnnouncements : AnnouncementDTO[];
+  public shopingBasketIsActive:boolean= false;
 
   private numberSubject = new BehaviorSubject<number>(0);
   currentNumber$ = this.numberSubject.asObservable();

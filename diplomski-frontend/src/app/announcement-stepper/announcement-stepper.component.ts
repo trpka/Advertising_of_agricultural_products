@@ -4,6 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AnnouncementService } from '../service/announcement.service';
+import { PopUpActivateAnnouncementComponent } from '../pop-up-activate-announcement/pop-up-activate-announcement.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpRequestToPublishAnnouncementComponent } from '../pop-up-request-to-publish-announcement/pop-up-request-to-publish-announcement.component';
+import { UserService } from '../service/user.service';
+import { User } from '../model/user';
+import { UserDTO } from '../model/userDTO';
 
 @Component({
   selector: 'app-announcement-stepper',
@@ -37,9 +43,19 @@ export class AnnouncementStepperComponent implements OnInit {
   forma: FormGroup;
   textareaValue: string = '';
   selectedOption: string;
+  userDTO:UserDTO;
+  idUser:number;
+  isRegisteredUserLogged:boolean = false;
+  isCompanyLogged:boolean = false;
 
 
-  constructor(private _formBuilder: FormBuilder,  private http: HttpClient, private announcementService:AnnouncementService, private formBuilder: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder,  
+              private http: HttpClient, 
+              private announcementService:AnnouncementService, 
+              private formBuilder: FormBuilder,
+              private dialogRef: MatDialog,
+              private userService:UserService
+              ) {
 
     this.announcementDTO=new AnnouncementDTO(
       {
@@ -72,20 +88,46 @@ export class AnnouncementStepperComponent implements OnInit {
       textareaCtrl: [''], // Initialize the textarea control with an empty value
       selectedOption: ['']
     });
+    this.idUser = Number(sessionStorage.getItem('id'));
+    this.userService.getOne(this.idUser)
+    .subscribe(res1=>{this.userDTO = res1;
+      if(res1.role == "RegisteredUser"){
+        this.isRegisteredUserLogged = true;
+      }
+      else if(res1.role == "Company")
+      {
+        this.isCompanyLogged = true;
+      }
+    })
 
   }
 
   getOptions(): string[] {
-    switch (this.selected) {
-      case 'Mehanizacija':
-        return ['Traktori', 'Prikolice', 'Priključne mašine', 'Kombajni','Mašine i alati'];
-      case 'Poljoprivredni proizvodi':
-        return ['Option A', 'Option B', 'Option C'];
-      case 'Pojoprivredni materijali':
-        return ['Item X', 'Item Y', 'Item Z'];
-      default:
-        return ['None'];
+    if(this.isRegisteredUserLogged == true)
+    {
+      switch (this.selected) {
+        case 'Mehanizacija':
+          return ['Traktori', 'Prikolice', 'Priključne mašine', 'Kombajni','Mašine i alati'];
+        case 'Poljoprivredni proizvodi':
+          return ['Povrće', 'Voće', 'Žitarice', 'Ostalo'];
+        default:
+          return ['None'];
+      }
+
     }
+    else{
+      switch (this.selected) {
+        case 'Mehanizacija':
+          return ['Traktori', 'Prikolice', 'Priključne mašine', 'Kombajni','Mašine i alati'];
+        case 'Poljoprivredni proizvodi':
+          return ['Povrće', 'Voće', 'Žitarice', 'Ostalo'];
+        case 'Pojoprivredni materijali':
+          return ['Semena', 'Đubriva', 'Stočna hrana', 'Zaštita bilja', 'Alati i oprema'];
+        default:
+          return ['None'];
+      }
+    }
+    
   }
 
   public onFileChanged(event: any) {
@@ -94,7 +136,17 @@ export class AnnouncementStepperComponent implements OnInit {
   onUpload() {
     if(this.selectedPictures==''){
       this.selectedPictures=this.selectedFile.name;
-      var path_picture="/assets/mechanization/"+this.selectedFile.name;
+      var path_picture = "";
+      if(this.selected == 'Mehanizacija'){
+       path_picture="/assets/mechanization/"+this.selectedFile.name;
+      }
+      else if(this.selected == 'Poljoprivredni proizvodi'){
+        path_picture="/assets/products/"+this.selectedFile.name;
+      }
+      else if(this.selected == 'Pojoprivredni materijali'){
+        path_picture="/assets/materials/"+this.selectedFile.name;
+      }
+      
       this.fullSelectedPictures=path_picture;
       this.filePath = path_picture.toString();
     }else{
@@ -106,12 +158,16 @@ export class AnnouncementStepperComponent implements OnInit {
   }
 
   save(){
-    
     this.announcementDTO.category = this.selected;
     this.announcementDTO.date = new Date();
     this.announcementDTO.subcategory = this.selectedOption;
     this.announcementDTO.price = Number(this.price);
-    this.announcementDTO.registeredUserId = Number(sessionStorage.getItem('id'));
+    if(this.isRegisteredUserLogged == true){
+      this.announcementDTO.registeredUserId = Number(sessionStorage.getItem('id'));
+    }
+    else if(this.isCompanyLogged == true){
+      this.announcementDTO.companyId = Number(sessionStorage.getItem('id'));
+    }
     this.announcementDTO.city = this.selectedCity;
     this.announcementDTO.enable = false;
    
@@ -123,6 +179,8 @@ export class AnnouncementStepperComponent implements OnInit {
     //this.announcementDTO.productDTO.registeredUserId = 4;
     this.announcementService.save(this.announcementDTO)
     .subscribe()
+    
+    this.dialogRef.open(PopUpRequestToPublishAnnouncementComponent);
   }
 
 

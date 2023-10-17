@@ -32,8 +32,22 @@ public class Product {
     @JsonIgnore
     private Company company;
 
+    @ManyToOne
+    @JsonIgnore
+    private Purchase purchase;
+
     public Product(){
 
+    }
+
+    public Product(String picture, String name, String additional_description, Set<String> pictures, RegisteredUser registeredUser, Company company, Purchase purchase) {
+        this.picture = picture;
+        this.name = name;
+        this.additional_description = additional_description;
+        this.pictures = pictures;
+        this.registeredUser = registeredUser;
+        this.company = company;
+        this.purchase = purchase;
     }
 
     public Product(Long id, String picture, String name, String additional_description, RegisteredUser registeredUser, Company company) {
@@ -116,5 +130,13 @@ public class Product {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public Purchase getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
     }
 }

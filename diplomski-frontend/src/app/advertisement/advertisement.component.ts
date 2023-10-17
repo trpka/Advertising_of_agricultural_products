@@ -47,27 +47,43 @@ export class AdvertisementComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
-    this.advertisementService.getAll()
-    .subscribe(res => {this.advertisements = res;
+  // ngOnInit(): void {
+  //   this.advertisementService.getAll()
+  //   .subscribe(res => {this.advertisements = res;
     
-    this.length = this.advertisements.length;
-    this.randNum = this.randomIntFromInterval(1,this.length);
+  //   this.length = this.advertisements.length;
+  //   this.randNum = this.randomIntFromInterval(1,this.length);
 
-    this.advertisementService.getOne( this.randNum)
-    .subscribe(result =>{ this.advertisement = result;
-      this.companyService.getOneCompany(this.advertisement.companyId)
-      .subscribe(result=>this.company = result)
-    console.log(this.advertisement.companyId)
-    })
+  //   this.advertisementService.getOne( this.randNum)
+  //   .subscribe(result =>{ this.advertisement = result;
+  //     this.companyService.getOneCompany(this.advertisement.companyId)
+  //     .subscribe(result=>this.company = result)
+  //   console.log(this.advertisement.companyId)
+  //   })
 
-    // this.loadAdvertisement(this.randNum);
-    // console.log(this.advertisement.companyId)
-    })
+  //   })
    
+  // }
+
+  ngOnInit(): void {
+    this.advertisementService.getAllActive()
+    .subscribe(res => {this.advertisements = res;
+
+      this.length = this.advertisements.length;
+      this.randomIntFromInterval(1,this.length-1).then(
+        result=>{
+          this.randNum=result;
+          this.advertisement=this.advertisements[this.randNum];
+          this.companyService.getOneCompany(this.advertisement.companyId)
+            .subscribe(result=>{this.company = result;
+              console.log (this.company, "comp")
+            })
+        }
+      );
+    })
   }
 
-  randomIntFromInterval(min:number,max:number) { 
+  async randomIntFromInterval(min:number,max:number) { 
     
     return Math.floor(Math.random() * (max - min + 1) + min)
   }

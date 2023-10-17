@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<div class="row" *ngIf="shoppingBasketIsActive">
+<div class="row" *ngIf="!this.shopingBasketService.shopingBasketIsActive">
 
   <div class="col-sm-2">
     <div class="sticky1">
@@ -50,7 +50,7 @@
 </div>
 
 
-<div class="row" *ngIf="!shoppingBasketIsActive">
+<div class="row" *ngIf="this.shopingBasketService.shopingBasketIsActive">
   <div class="col-sm-8">
     <div class="row ">
       <div class="col-md-0 offset-md-0" >

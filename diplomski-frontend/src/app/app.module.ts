@@ -27,7 +27,6 @@ import { Home1Component } from './home1/home1.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { MechanizationAnnouncements1Component } from './mechanization-announcements1/mechanization-announcements1.component';
 import { AnnouncementDetailsComponent } from './announcement-details/announcement-details.component';
-import { ButtonToggleComponent } from './button-toggle/button-toggle.component';
 import { AnnouncementStepperComponent } from './announcement-stepper/announcement-stepper.component';
 import { ProfileRegisteredUserComponent } from './profile-registered-user/profile-registered-user.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -48,6 +47,17 @@ import { CompanyProfileActivationRequirementsComponent } from './company-profile
 import { ImagesViewComponent } from './images-view/images-view.component';
 import { CompanyRequestDetailsComponent } from './company-request-details/company-request-details.component';
 import { PopUpActivateCompanyRequestComponent } from './pop-up-activate-company-request/pop-up-activate-company-request.component';
+import { RequestsForAdvertisingComponent } from './requests-for-advertising/requests-for-advertising.component';
+import { AdvertisementRequestDetailsComponent } from './advertisement-request-details/advertisement-request-details.component';
+import { PopUpActivateAnnouncementComponent } from './pop-up-activate-announcement/pop-up-activate-announcement.component';
+import { PopUpRequestToPublishAnnouncementComponent } from './pop-up-request-to-publish-announcement/pop-up-request-to-publish-announcement.component';
+import { PopUpAddProductIntoBasketComponent } from './pop-up-add-product-into-basket/pop-up-add-product-into-basket.component';
+import { ShoppingBasketRegUserComponent } from './shopping-basket-reg-user/shopping-basket-reg-user.component';
+import { PopUpPurchaseDoneComponent } from './pop-up-purchase-done/pop-up-purchase-done.component';
+import { PopUpDeactivateCompanyRequestComponent } from './pop-up-deactivate-company-request/pop-up-deactivate-company-request.component';
+import { PopUpDeleteAnnouncementComponent } from './pop-up-delete-announcement/pop-up-delete-announcement.component';
+import { PopUpActionComponent } from './pop-up-action/pop-up-action.component';
+
 
 
 
@@ -62,7 +72,6 @@ import { PopUpActivateCompanyRequestComponent } from './pop-up-activate-company-
     AdvertisementComponent,
     MechanizationAnnouncements1Component,
     AnnouncementDetailsComponent,
-    ButtonToggleComponent,
     AnnouncementStepperComponent,
     ProfileRegisteredUserComponent,
     RegistrationComponent,
@@ -82,7 +91,17 @@ import { PopUpActivateCompanyRequestComponent } from './pop-up-activate-company-
     CompanyProfileActivationRequirementsComponent,
     ImagesViewComponent,
     CompanyRequestDetailsComponent,
-    PopUpActivateCompanyRequestComponent
+    PopUpActivateCompanyRequestComponent,
+    RequestsForAdvertisingComponent,
+    AdvertisementRequestDetailsComponent,
+    PopUpActivateAnnouncementComponent,
+    PopUpRequestToPublishAnnouncementComponent,
+    PopUpAddProductIntoBasketComponent,
+    ShoppingBasketRegUserComponent,
+    PopUpPurchaseDoneComponent,
+    PopUpDeactivateCompanyRequestComponent,
+    PopUpDeleteAnnouncementComponent,
+    PopUpActionComponent
   ],
   imports: [
     BrowserModule,

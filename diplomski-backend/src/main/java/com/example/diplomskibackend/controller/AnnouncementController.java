@@ -58,15 +58,6 @@ public class AnnouncementController {
         return new ResponseEntity<>(terms, HttpStatus.OK);
     }
 
-    @RequestMapping(value="api/announcements-requests",method = RequestMethod.GET,produces = {
-            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-    public ResponseEntity<List<AnnouncementDTO>> findAllRequest()
-    {
-        List<Announcement> announcements= this.announcementService.findAllRequest();
-        List<AnnouncementDTO> announcements1 = this.announcementService.convert(announcements);
-        return new ResponseEntity<>(announcements1, HttpStatus.OK);
-    }
-
     //Metoda koja vraca sve oglase vezane za mehanizaciju
     @RequestMapping(value="api/announcements/mechanization",method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
@@ -118,23 +109,65 @@ public class AnnouncementController {
         return new ResponseEntity<>(announcementDTO1, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value="api/announcements/mech", params= {"page","size"},method = RequestMethod.GET,produces = {
+    @RequestMapping(value="api/announcements/mech-reg-user", params= {"page","size","typeOfAnnouncements"},method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-    public ResponseEntity<AnnouncementPageDTO> findAll(Pageable pageable){
-        Page<Announcement> mechanizationAnnouncements = this.announcementService.findAllMechanizationPage(pageable);
+    public ResponseEntity<AnnouncementPageDTO> findAll(Pageable pageable, @RequestParam String typeOfAnnouncements){
+        Page<Announcement> mechanizationAnnouncements = this.announcementService.findAllMechanizationRegUserPage(pageable,typeOfAnnouncements);
         //Page<Item> items=itemService.findAll(pageable);
         AnnouncementPageDTO announcementPageDTO =new AnnouncementPageDTO(this.announcementService.convert(mechanizationAnnouncements.getContent()), mechanizationAnnouncements.isLast());
         return new ResponseEntity<>(announcementPageDTO,HttpStatus.OK);
     }
 
-    @RequestMapping(value="api/announcements/registered-user", method = RequestMethod.GET,
-            params = "registeredUserId",
-            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<List<AnnouncementDTO>>  findAllAnnouncementsOfASingleRegisteredUser(@RequestParam Long registeredUserId){
-        List<Announcement> announcements= this.announcementService.findAllAnnouncementsOfASingleRegisteredUser(registeredUserId);
-        List<AnnouncementDTO> announcementDTOS = this.announcementService.convert(announcements);
-        return new ResponseEntity<>(announcementDTOS,HttpStatus.OK);
+    @RequestMapping(value="api/announcements/mech-company", params= {"page","size","typeOfAnnouncements"},method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<AnnouncementPageDTO> findAllMechanizationCompanyPage(Pageable pageable, @RequestParam String typeOfAnnouncements){
+        Page<Announcement> mechanizationAnnouncements = this.announcementService.findAllMechanizationCompanyPage(pageable,typeOfAnnouncements);
+        //Page<Item> items=itemService.findAll(pageable);
+        AnnouncementPageDTO announcementPageDTO =new AnnouncementPageDTO(this.announcementService.convert(mechanizationAnnouncements.getContent()), mechanizationAnnouncements.isLast());
+        return new ResponseEntity<>(announcementPageDTO,HttpStatus.OK);
     }
 
+    @RequestMapping(value="api/announcements/registered-user-page", params= {"page","size","registeredUserId"},method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<AnnouncementPageDTO> findAllAnnouncementsOfASingleRegisteredUserPage(Pageable pageable, @RequestParam Long registeredUserId){
+        Page<Announcement> mechanizationAnnouncements = this.announcementService.findAllAnnouncementsOfASingleRegisteredUserPage(pageable,registeredUserId);
+        AnnouncementPageDTO announcementPageDTO =new AnnouncementPageDTO(this.announcementService.convert(mechanizationAnnouncements.getContent()), mechanizationAnnouncements.isLast());
+        return new ResponseEntity<>(announcementPageDTO,HttpStatus.OK);
+    }
+
+    @RequestMapping(value="api/announcement/allow-posting-of-announcement",method = RequestMethod.PUT,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    //@PreAuthorize("hasRole('CLIENT')")
+    public ResponseEntity<AnnouncementDTO> allowPostingOfAnnouncement(@RequestBody AnnouncementDTO announcementDTO){
+
+        AnnouncementDTO announcementDTO1=this.announcementService.allowPostingOfAnnouncement(announcementDTO);
+
+        return new ResponseEntity<>(announcementDTO1,HttpStatus.OK);
+    }
+
+//    @RequestMapping(value="api/announcements-requests", params= {"page","size"},method = RequestMethod.GET,produces = {
+//            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+//    public ResponseEntity<AnnouncementPageDTO> findAllRequest(Pageable pageable){
+//        Page<Announcement> mechanizationAnnouncements = this.announcementService.findAllMechanizationCompanyPage(pageable);
+//        //Page<Item> items=itemService.findAll(pageable);
+//        AnnouncementPageDTO announcementPageDTO =new AnnouncementPageDTO(this.announcementService.convert(mechanizationAnnouncements.getContent()), mechanizationAnnouncements.isLast());
+//        return new ResponseEntity<>(announcementPageDTO,HttpStatus.OK);
+//    }
+
+    @RequestMapping(value="api/announcements-requests", params= {"page","size"},method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<AnnouncementPageDTO> findAllRequest(Pageable pageable)
+    {
+        Page<Announcement> announcements= this.announcementService.findAllRequest(pageable);
+        AnnouncementPageDTO announcementPageDTO =new AnnouncementPageDTO(this.announcementService.convert(announcements.getContent()), announcements.isLast());
+        return new ResponseEntity<>(announcementPageDTO, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/api/announcement/delete-request/{id}",method = RequestMethod.GET,produces=
+            MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> deleteRequest(@PathVariable Long id){
+        Boolean delete = this.announcementService.deleteRequest(id);
+        return new ResponseEntity<>(delete,HttpStatus.OK);
+    }
 
 }

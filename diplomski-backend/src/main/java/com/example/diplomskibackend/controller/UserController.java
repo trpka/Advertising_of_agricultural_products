@@ -3,6 +3,7 @@ package com.example.diplomskibackend.controller;
 import com.example.diplomskibackend.dto.AdvertisementDTO;
 import com.example.diplomskibackend.dto.CompanyAddressDTO;
 import com.example.diplomskibackend.dto.RegisteredUserDTO;
+import com.example.diplomskibackend.dto.UserDTO;
 import com.example.diplomskibackend.model.Advertisement;
 import com.example.diplomskibackend.model.User;
 import com.example.diplomskibackend.service.EmailService;
@@ -54,6 +55,14 @@ public class UserController {
     public ResponseEntity<User> signUpCompany(@RequestBody CompanyAddressDTO companyAddressDTO){
         User user=this.userService.signUpCompany(companyAddressDTO);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value="/api/user/{id}",method = RequestMethod.GET,produces=
+            MediaType.APPLICATION_JSON_VALUE)
+    //@PreAuthorize("hasRole('OWNER')")
+    public ResponseEntity<UserDTO> getById(@PathVariable Long id){
+        User user =this.userService.findById1(id);
+        return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
     }
 
 

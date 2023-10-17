@@ -23,13 +23,10 @@ public class RegisteredUser extends User{
     private List<Product> products;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<CustomerSupport> customerSupports;
+    private List<Purchase> purchases;//nije u konstruktoru
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Message> sentMessages;//nije dodato u konstruktor
-
-    @OneToMany(cascade = CascadeType.ALL)//isto nije
-    private List<Message> receivedMessages;
+    private List<CustomerSupport> customerSupports;
 
 
     public RegisteredUser(String username, String password, String email, /*String firstName, String lastName,*/
@@ -119,19 +116,11 @@ public class RegisteredUser extends User{
         this.customerSupports = customerSupports;
     }
 
-    public List<Message> getSentMessages() {
-        return sentMessages;
+    public List<Purchase> getPurchases() {
+        return purchases;
     }
 
-    public void setSentMessages(List<Message> sentMessages) {
-        this.sentMessages = sentMessages;
-    }
-
-    public List<Message> getReceivedMessages() {
-        return receivedMessages;
-    }
-
-    public void setReceivedMessages(List<Message> receivedMessages) {
-        this.receivedMessages = receivedMessages;
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
     }
 }

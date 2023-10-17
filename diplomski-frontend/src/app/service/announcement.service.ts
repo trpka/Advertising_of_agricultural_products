@@ -15,6 +15,8 @@ export class AnnouncementService {
   public currentPage:number;
   public currentSize:number;
   public isDetailPage: boolean = false;
+  public whichTypeOfUser: string;
+  public typeOfAnnouncements: string;
 
   constructor(private http:HttpClient) { }
 
@@ -29,10 +31,10 @@ export class AnnouncementService {
     return this.http.get<AnnouncementDTO[]>(this.url);
   }
 
-  getAllRequests():Observable<AnnouncementDTO[]>
-  {
-    return this.http.get<AnnouncementDTO[]>(this.url + "-requests");
-  }
+  // getAllRequests():Observable<AnnouncementDTO[]>
+  // {
+  //   return this.http.get<AnnouncementDTO[]>(this.url + "-requests");
+  // }
 
   getRecentAnnouncements():Observable<AnnouncementDTO[]>
   {
@@ -65,16 +67,51 @@ export class AnnouncementService {
     return this.http.post<AnnouncementDTO>(this.url1 + '-product',announcementDTO);
   }
 
-  getAnnouncementsPaged(page:number,size:number): Observable<AnnouncementPage> {
+  getAnnouncementsRegUserPaged(page:number,size:number, typeOfAnnouncements:string): Observable<AnnouncementPage> {
     const params = new HttpParams() 
       .set('page', page)
-      .set('size', size);
+      .set('size', size)
+      .set('typeOfAnnouncements', typeOfAnnouncements);
 
-    return this.http.get<AnnouncementPage>(this.url + "/mech", { params });
+    return this.http.get<AnnouncementPage>(this.url + "/mech-reg-user", { params });
+  } 
+
+  getAnnouncementsCompanyPaged(page:number,size:number,typeOfAnnouncements:string): Observable<AnnouncementPage> {
+    const params = new HttpParams() 
+      .set('page', page)
+      .set('size', size)
+      .set('typeOfAnnouncements', typeOfAnnouncements);
+
+    return this.http.get<AnnouncementPage>(this.url + "/mech-company", { params });
   } 
 
   getAllAnnouncementsOfASingleRegisteredUser(registeredUserId:number):Observable<AnnouncementDTO[]>{
     const params:HttpParams=new HttpParams().append('registeredUserId',registeredUserId);
     return this.http.get<AnnouncementDTO[]>(this.url + "/registered-user",{params});
   }
+
+  allowPostingOfAnnouncement(announcementDTO: AnnouncementDTO): Observable<AnnouncementDTO> {
+    return this.http.put<AnnouncementDTO>(this.url1 + '/allow-posting-of-announcement' ,announcementDTO)
+  }
+
+  getAllRequests(page:number,size:number): Observable<AnnouncementPage> {
+    const params = new HttpParams() 
+      .set('page', page)
+      .set('size', size);
+
+    return this.http.get<AnnouncementPage>(this.url + "-requests", { params });
+  } 
+
+  deleteRequest(id:number):Observable<boolean>{
+    return this.http.get<boolean>(this.url1+"/delete-request/"+id);
+  }
+
+  getAllAnnouncementsOfASingleRegisteredUserPaged(page:number,size:number,registeredUserId:number): Observable<AnnouncementPage> {
+    const params = new HttpParams() 
+      .set('page', page)
+      .set('size', size)
+      .set('registeredUserId', registeredUserId);
+
+    return this.http.get<AnnouncementPage>(this.url + "/registered-user-page", { params });
+  } 
 }

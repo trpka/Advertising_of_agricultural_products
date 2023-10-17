@@ -1,34 +1,129 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<div class="border1">
-<div class="basket">
-<div class="top">
+<div class="border1" *ngIf="!showNotification">
+<div class="basket" >
+<div class="top" >
 </div>
-<h1 style="margin-left: 180px;">Korpa za kupovinu</h1>
-<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vaši izabrani proizvodi su: </h3>
-<div class="card-wrapper">
-  <mat-card id="center" class="example-card" *ngFor="let a of announcements">
+
+<h1 style="margin-left: 340px;margin-top: 40px;">Korpa za kupovinu</h1>
+<!-- <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vaši izabrani proizvodi su: </h3> -->
+<div class="card-wrapper" *ngIf="!secondStep">
+  <h1 *ngIf="lenghtIsNull" style="margin-left: 270px;margin-top: 100px;" >Trenutno nema proizvoda u korpi</h1>
+  <mat-card id="center" class="example-card" *ngFor="let a of announcements" style="margin-bottom: 3px;">
     <mat-card-header>
       <mat-card-title>{{a.productDTO.name}}</mat-card-title>
-      <mat-card-subtitle>Kategorija: {{a.category}}</mat-card-subtitle>
-      <mat-card-subtitle>Podkategorija: {{a.subcategory}}</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="isEqual(a.category)">Kategorija: {{a.category}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="!isEqual(a.category)">Kategorija: {{a.category}}</mat-card-subtitle>
+      <!-- <mat-card-subtitle>Podkategorija: {{a.subcategory}}</mat-card-subtitle> -->
+      <mat-card-subtitle>Grad: {{a.city}}</mat-card-subtitle>
       <mat-card-subtitle>Cena: {{a.price}} rsd</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <div class="card-content" style="margin-left: 50px;">
+      <div class="card-content" style="margin-left: 150px;">
         <img mat-card-image src="{{a.productDTO.picture}}" alt="Photo of a Shiba Inu">
         <h3><!-- Your content here --></h3>
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button (click)="delete(a)" style="background-color: green; color: white;"   style="position: absolute; top: 45px; right: 20px;" ><a>Obriši</a></button>
+      <!-- style="position: absolute; top: 45px; right: 20px;"-->
+      <button (click)="delete(a)" class="btn btn-secondary" style="width: 150px; height: 40px; margin-left: 100px; margin-top: 32px;"  ><a>Obriši</a></button>
     </mat-card-actions>
+
   </mat-card>
 </div>
-<div class="price">
-Ukupna cena: {{price}}
+<div class="address" *ngIf="secondStep">
+  <h1 style="text-align:center;">Još samo jedan korak do uspešne kupovine</h1>
+  <h3 style="text-align:center;">Unesite adresu na koju želite da vam kupovina bude dostavljena</h3>
+  <div>
+    &nbsp;
+  </div>
+  
+  <h3 style="text-align:center;">Grad: </h3>
+  <form>
+  <mat-form-field>
+    <mat-label>Grad</mat-label>
+    <mat-select [(value)]="selectedCity">
+      <mat-option>None</mat-option>
+      <mat-option value="Beograd">Beograd</mat-option>
+      <mat-option value="Bor">Bor</mat-option>
+      <mat-option value="Čačak">Čačak</mat-option>
+      <mat-option value="Jagodina">Jagodina</mat-option>
+      <mat-option value="Kikinda">Kikinda</mat-option>
+      <mat-option value="Kragujevac">Kragujevac</mat-option>
+      <mat-option value="Kraljevo">Kraljevo</mat-option>
+      <mat-option value="Kruševac">Kruševac</mat-option>
+      <mat-option value="Leskovac">Leskovac</mat-option>
+      <mat-option value="Loznica">Loznica</mat-option>
+      <mat-option value="Niš">Niš</mat-option>
+      <mat-option value="Novi Pazar">Novi Pazar</mat-option>
+      <mat-option value="Novi Sad">Novi Sad</mat-option>
+      <mat-option value="Pančevo">Pančevo</mat-option>
+      <mat-option value="Pirot">Pirot</mat-option>
+      <mat-option value="Požarevac">Požarevac</mat-option>
+      <mat-option value="Priština">Priština</mat-option>
+      <mat-option value="Prokuplje">Prokuplje</mat-option>
+      <mat-option value="Smederevo">Smederevo</mat-option>
+      <mat-option value="Sombor">Sombor</mat-option>
+      <mat-option value="Sremska Mitrovica">Sremska Mitrovica</mat-option>
+      <mat-option value="Subotica">Subotica</mat-option>
+      <mat-option value="Šabac">Šabac</mat-option>
+      <mat-option value="Užice">Užice</mat-option>
+      <mat-option value="Valjevo">Valjevo</mat-option>
+      <mat-option value="Vranje">Vranje</mat-option>
+      <mat-option value="Vršac">Vršac</mat-option>
+      <mat-option value="Zaječar">Zaječar</mat-option>
+      <mat-option value="Zrenjanin">Zrenjanin</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+<div>
+  &nbsp;
 </div>
+  <h3 style="text-align:center;">Ulica: </h3>
+  <form [formGroup]="secondFormGroup">
+  <mat-form-field >
+    <mat-label>Ulica</mat-label>
+    <input matInput [(ngModel)]="address"  formControlName="secondCtrl" placeholder="Braće Popović 10" >
+  </mat-form-field>
+</form>
+
+</div>
+<div class="row ">
+  <div class="col-sm-6">
+    <div style="margin-bottom: 0px;">
+      <b>Ukupna cena: </b>{{price}} rsd
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <button  class="btn btn-secondary" style="width: 150px;height: 40px;margin-bottom: 16px;"  (click)="buyFirstStep()" *ngIf="!secondStep" ><a>Kupi</a></button>
+    <button  class="btn btn-secondary" style="width: 150px;height: 40px;margin-bottom: 16px;"  (click)="openDialog1()" *ngIf="secondStep" ><a>Potvrdi kupovinu</a></button>
+  </div>
+</div>
+
+<!-- <div class="price" style="margin-bottom: -45px;">
+<b>Ukupna cena: </b>{{price}} rsd
+</div>
+<div style="margin-left: 200px;">
+  <button  class="btn btn-secondary" style="width: 150px;height: 40px; margin-left: 195px;margin-bottom: 10px;"  ><a>Potvrdi kupovinu</a></button>
+</div> -->
 
 <div class="bottom">
 </div>
 </div>
+</div>
+
+<div   *ngIf="showNotification">
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8" style="margin-top: -100px;">
+      <div class="center-content">
+        <div class="bordered-box">
+          <h1 class="mb-4 text-center">Uspešno ste obavili kupovinu!</h1>
+          <h1 class="mb-4 text-center">Sačekajte! Trenutno se šalje mail, gde ćete dobiti PDF dokument vaše kupovine. Bićete preusmereni na početnu stranicu.</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+    </div>
+  </div>
 </div>

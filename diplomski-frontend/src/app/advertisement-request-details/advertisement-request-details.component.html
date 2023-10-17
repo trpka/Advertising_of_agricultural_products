@@ -1,0 +1,46 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="row">
+
+  <div class="col-sm-2" >
+  </div>
+  <div class="col-sm-8">
+    <div class="row ">
+      <div class="col-sm-0" >
+        <img src="assets/images/main.jpg" width="1289" height="450" >
+      </div>
+    </div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title><h1 style="margin-left:0px;">{{advertisement.title}}</h1></mat-card-title>
+        <mat-card-subtitle><h3>Datum početka reklamiranja : {{day}}.{{month}}.{{year}}.</h3></mat-card-subtitle>
+        <mat-card-subtitle><h3>Datum završetka reklamiranja : {{day1}}.{{month1}}.{{year1}}.</h3></mat-card-subtitle>
+        <mat-card-subtitle><h3>Naziv firme: {{company.name}}</h3></mat-card-subtitle>
+        <mat-card-subtitle><h3>Matični broj firme: {{company.regNumOfCompany}}</h3></mat-card-subtitle>
+        <mat-card-subtitle><h3>Korisničko ime: {{company.username}}</h3></mat-card-subtitle>
+        <mat-card-subtitle><h3>Email: {{company.email}}</h3></mat-card-subtitle>
+        <mat-card-subtitle><h3>Broje telefona: {{company.mobile}}</h3></mat-card-subtitle>
+        <img mat-card-image src="{{advertisement.image}}" style="margin-top: 10px;">
+      </mat-card-header>   
+     
+
+    <mat-card-content style="margin-left: 0px;">
+      <h3>
+        {{advertisement.text}}
+     </h3>
+    </mat-card-content>
+    <mat-card-content>
+      <h2>Cena za odabrani period: {{advertisement.price}} rsd</h2>
+    </mat-card-content> 
+
+    <button class="btn btn-success" style="margin-left: 0px;width: 150px;" (click)="allowPostingOfAdvertisement()">Aktiviraj</button>
+    <button class="btn btn-danger"  style="margin-left: 200px;width: 150px;"  (click)="deleteRequest()">Deaktiviraj</button>
+    </mat-card>
+
+
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>
+

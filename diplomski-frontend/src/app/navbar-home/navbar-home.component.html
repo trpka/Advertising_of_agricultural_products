@@ -30,7 +30,7 @@
         </mat-menu>
               
         <div class="shopping-basket">
-          <a mat-button routerLink="shopping-cart">
+          <a mat-button (click)="showShopingBasket()">
             Korpa&nbsp;
             <i class="fa fa-shopping-basket fa-lg"></i>
             <span class="badge large-badge">{{ numberOfAnnouncementsInBasket}}</span>
@@ -44,11 +44,13 @@
       <mat-toolbar class="custom-toolbar"  *ngIf="adminService.isAdminLoggedIn()">
         <div class="spacer"></div>
 
-        <button mat-button [matMenuTriggerFor]="menu">MenuAdmin</button>
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="profile-registered-user">Profil</button>
-          <button mat-menu-item routerLink="requests-for-posting-announcements">Zahtevi za oglašavanje</button>
+          <button mat-menu-item routerLink="requests-for-posting-announcements">Zahtevi za aktivaciju oglasa</button>
           <button mat-menu-item routerLink="company-profile-activation-requirements">Zahtevi za aktivaciju profila kompanije</button>
+          <button mat-menu-item routerLink="requests-for-advertising">Zahtevi za aktivaciju reklame</button>
+          
          
         </mat-menu>
               
@@ -59,13 +61,14 @@
       <mat-toolbar class="custom-toolbar" *ngIf="companyService.isCompanyLoggedIn()">
         <div class="spacer"></div>
 
-        <button mat-button [matMenuTriggerFor]="menu">MenuCompany</button>
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="profile-company">Profil</button>
           <button mat-menu-item routerLink="advertisement-request">Zahteve za reklamiranje</button>
         </mat-menu>
               
         <a mat-button routerLink="">Početna</a>
+        <a mat-raised-button color="white" routerLink="publication-announcement">Dodaj oglas</a>
        
         <a mat-button (click)="logOut()">Odjavite se</a>
       </mat-toolbar>
