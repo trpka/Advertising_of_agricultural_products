@@ -37,6 +37,6 @@ npm config set legacy-peer-deps true</code>
 <ul>
   <li>e-mail:isaisic587@gmail.com
   </li>
-   <li>Registerede user example: username: isaisic587+1@gmail.com, password: 123</li>
+   <li>Registered user example: username: milos, password: 123</li>
 </ul>
 
